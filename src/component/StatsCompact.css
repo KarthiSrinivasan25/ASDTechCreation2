@@ -1,0 +1,108 @@
+.stats-compact {
+  /* background: linear-gradient(rgba(31, 40, 62, 0.189), rgba(47, 57, 84, 0.452)), url('./stats.png'); */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 20px 0;
+}
+
+.stat-compact-item {
+  text-align: center;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.stat-compact-icon {
+  width: 55px;
+  height: 55px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(4px);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.8rem;
+  border: 1px solid rgba(76, 201, 240, 0.2);
+  transition: all 0.3s ease;
+}
+
+.stat-compact-item:hover .stat-compact-icon {
+  transform: translateY(-4px);
+  border-color: rgba(76, 201, 240, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-compact-icon i {
+  font-size: 1.6rem;
+  background: linear-gradient(135deg, #4cc9f0, #a5b4fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat-compact-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.stat-compact-number .plus {
+  font-size: 1.3rem;
+  background: linear-gradient(135deg, #4cc9f0, #4361ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat-compact-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-top: 0.4rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.stat-compact-divider {
+  width: 35px;
+  height: 2px;
+  background: linear-gradient(90deg, #4cc9f0, #4361ee);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+@keyframes fadeInUpSmall {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-compact-item {
+  animation: fadeInUpSmall 0.6s ease forwards;
+  opacity: 0;
+}
+
+.stat-compact-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.stat-compact-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.stat-compact-item:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.stat-compact-item:nth-child(4) {
+  animation-delay: 0.2s;
+}

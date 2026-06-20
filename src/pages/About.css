@@ -1,0 +1,503 @@
+/* ========== HERO SECTION WITH DUAL ROTATING RINGS ========== */
+    .hero-ring {
+      padding: 60px 0;
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(67, 97, 238, 0.08);
+      color: #4361ee;
+      font-weight: 600;
+      padding: 6px 18px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      color: #1e293b;
+    }
+
+    .hero-title .accent {
+      color: #4361ee;
+      position: relative;
+      display: inline-block;
+    }
+
+    
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: #64748b;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #4361ee;
+      line-height: 1.2;
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-hero-primary {
+      background: linear-gradient(95deg, #4361ee, #3a0ca3);
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s;
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.2);
+    }
+
+    .btn-hero-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(67, 97, 238, 0.3);
+      gap: 15px;
+    }
+
+    .btn-hero-secondary {
+      background: transparent;
+      border: 1px solid #e2e8f0;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      color: #1e293b;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s;
+    }
+
+    .btn-hero-secondary:hover {
+      border-color: #4361ee;
+      color: #4361ee;
+      transform: translateY(-3px);
+      gap: 15px;
+    }
+
+    /* ========== DUAL ROTATING RINGS WITH IMAGE ICONS ========== */
+    .hero-image-ring {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 560px;
+
+    }
+
+    /* Main circular image */
+    .center-image {
+      position: relative;
+      width: 320px;
+      height: 290px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.2);
+      z-index: 20;
+      border: 4px solid white;
+      transition: transform 0.4s ease;
+     
+    }
+
+    .center-image:hover {
+      transform: scale(1.02);
+    }
+
+    .center-image img {
+      width: 100%;
+     height: 100%;
+    }
+
+    /* Outer static ring */
+    .outer-ring {
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      border: 2px solid rgba(67, 97, 238, 0.15);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+    }
+
+    /* Outer rotating ring (Tech Icons) */
+    .outer-rotating-ring {
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      animation: rotateRing 20s linear infinite;
+    }
+
+    /* Inner rotating ring (Service Icons) */
+    .inner-rotating-ring {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      animation: rotateRingReverse 18s linear infinite;
+    }
+
+    @keyframes rotateRing {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes rotateRingReverse {
+      from { transform: translate(-50%, -50%) rotate(360deg); }
+      to { transform: translate(-50%, -50%) rotate(0deg); }
+    }
+
+    /* Decorative dashed ring */
+    .deco-ring {
+      position: absolute;
+      width: 490px;
+      height: 490px;
+      border-radius: 50%;
+      border: 1px dashed rgba(76, 201, 240, 0.2);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 6;
+      pointer-events: none;
+    }
+
+    /* Icon wrapper styling */
+    .ring-icon {
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(67, 97, 238, 0.15);
+      cursor: pointer;
+      z-index: 15;
+    }
+
+    .ring-icon:hover {
+      background: linear-gradient(135deg, #a0aeec, #b5eafa);
+      box-shadow: 0 0 20px rgba(67, 97, 238, 0.5), 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-color: transparent;
+    }
+
+    .ring-icon img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      transition: all 0.2s ease;
+    }
+
+   
+
+    /* Outer ring icons positions (8 icons at radius 280px) */
+    .outer-icon-1 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(280px); }
+    .outer-icon-2 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(198px) translateY(-198px); }
+    .outer-icon-3 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(0px) translateY(-280px); }
+    .outer-icon-4 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(-198px) translateY(-198px); }
+    .outer-icon-5 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(-280px) translateY(0px); }
+    .outer-icon-6 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(-198px) translateY(198px); }
+    .outer-icon-7 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(0px) translateY(280px); }
+    .outer-icon-8 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(198px) translateY(198px); }
+
+    /* Inner ring icons positions (6 icons at radius 210px) */
+    .inner-icon-1 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(210px); }
+    .inner-icon-2 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(0px) translateY(210px); }
+    .inner-icon-3 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(-210px) translateY(0px); }
+    .inner-icon-4 { top: 50%; left: 50%; transform: translate(-50%, -50%) translateX(0px) translateY(-210px); }
+
+
+
+    /* ========== OUR STORY SECTION ========== #f0f0f0 */
+    .story-advanced {
+      padding: 60px 0;
+      background: #eef2ff;  
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-advanced::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(67, 97, 238, 0.03) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .story-badge {
+      display: inline-block;
+      background: rgba(67, 97, 238, 0.1);
+      color: #4361ee;
+      font-weight: 600;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .story-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1e293b, #4361ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .story-subtitle {
+      font-size: 1.2rem;
+      color: #4361ee;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    .story-text {
+      color: #475569;
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .story-highlight {
+      background: linear-gradient(120deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.05));
+      padding: 2rem;
+      border-radius: 24px;
+      margin: 2rem 0;
+      border-left: 4px solid #4361ee;
+    }
+
+    .story-highlight p {
+      margin-bottom: 0;
+      font-style: italic;
+      color: #1e293b;
+      font-weight: 500;
+    }
+
+
+    .mv-unique {
+      margin: 3rem 0 2rem;
+    }
+
+    .mv-split {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .mv-item {
+      flex: 1;
+      min-width: 280px;
+      padding: 2rem;
+      position: relative;
+      background: transparent;
+    }
+
+.mv-item:first-child {
+  border-right: 2px solid;
+  border-image: linear-gradient(180deg, #4361ee, #4cc9f0) 1;
+}
+
+    .mv-icon-large {
+      font-size: 3rem;
+      background: linear-gradient(135deg, #4361ee, #4cc9f0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-right: 12px;
+      display: inline-block;
+    }
+
+  
+
+    .mv-item h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #1e293b;
+      position: relative;
+      display: inline-block;
+    }
+
+    .mv-item h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #4361ee, #4cc9f0);
+      border-radius: 3px;
+    }
+
+    .mv-item p {
+      color: #64748b;
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-top: 1.2rem;
+    }
+
+    .mv-tagline {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.08), rgba(76, 201, 240, 0.05));
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #4361ee;
+      margin-top: 1rem;
+    }
+
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .value-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(67, 97, 238, 0.08);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      border-color: #4361ee;
+      box-shadow: 0 15px 30px -10px rgba(67, 97, 238, 0.1);
+    }
+
+    .value-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.08), rgba(76, 201, 240, 0.08));
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .value-icon i {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #4361ee, #4cc9f0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .value-card h4 {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #1e293b;
+    }
+
+    .value-card p {
+      font-size: 0.85rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+
+
+
+    @media (max-width: 992px) {
+        .hero-image-ring{
+            display: none;
+        }
+      /* .outer-ring, .outer-rotating-ring, .inner-rotating-ring, .deco-ring { display: none; }
+      .ring-icon { display: none; }
+      .hero-image-ring { min-height: auto; }
+      .center-image { width: 250px; height: 230px; } */
+
+       .story-title { font-size: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+
+        .hero-image-ring{
+            display: none;
+        }
+      /* .hero-ring { padding: 50px 0 60px; } */
+      .hero-title { font-size: 2.5rem; }
+      .hero-desc { font-size: 0.95rem; }
+      .hero-stat-number { font-size: 1.5rem; }
+      .center-image { width: 250px; height: 250px; }
+      .breadcrumb-section { margin-top: 68px; }
+
+
+     
+      .story-title { font-size: 2rem; }
+      .story-subtitle { font-size: 1rem; }
+
+      .mv-item h3 { font-size: 1.6rem; }
+      .mv-item:first-child {
+        border-right: none;
+       
+      }
+    }

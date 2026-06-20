@@ -1,0 +1,179 @@
+/* ========== ULTRA ADVANCED STEP BASED PROCESS - WHITE BACKGROUND VERSION ========== */
+.process-ultra {
+  padding: 60px 0;
+  background: #ffffff;
+  position: relative;
+}
+
+.process-ultra .section-badge {
+  background: rgba(67, 97, 238, 0.1);
+  color: #4361ee;
+}
+
+.process-ultra .section-title {
+  background: linear-gradient(135deg, #1e293b, #4361ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0;
+}
+
+.process-ultra .section-header {
+  margin-bottom: 1.5rem;
+}
+
+.process-ultra .section-header p {
+  color: #64748b;
+  margin-bottom: 0;
+}
+
+/* Steps container */
+.steps-ultra {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2rem 0 0;
+  position: relative;
+}
+
+/* Animated connecting line */
+.steps-ultra::before {
+  content: '';
+  position: absolute;
+  top: 42px;
+  left: 8%;
+  width: 84%;
+  height: 3px;
+  background: linear-gradient(90deg, #4361ee, #4cc9f0, #f72585, #4cc9f0, #4361ee);
+  background-size: 300% 100%;
+  border-radius: 3px;
+  animation: connectorFlow 4s ease infinite;
+  opacity: 0.3;
+}
+
+@keyframes connectorFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (max-width: 992px) {
+  .steps-ultra::before {
+    display: none;
+  }
+}
+
+.step-ultra-item {
+  flex: 1;
+  text-align: center;
+  min-width: 140px;
+  position: relative;
+  z-index: 2;
+  padding: 0 0.3rem;
+}
+
+/* 3D Glowing Circle - White background version */
+.step-ultra-circle {
+  width: 75px;
+  height: 75px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.8rem;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  border: 2px solid rgba(67, 97, 238, 0.2);
+  box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.05);
+}
+
+.step-ultra-circle::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(135deg, #4361ee, #4cc9f0);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: -1;
+}
+
+.step-ultra-item:hover .step-ultra-circle::before {
+  opacity: 1;
+}
+
+.step-ultra-item:hover .step-ultra-circle {
+  transform: translateY(-5px) scale(1.05);
+  border-color: transparent;
+  box-shadow: 0 15px 30px rgba(67, 97, 238, 0.2);
+}
+
+.step-number-ultra {
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #1e293b, #4361ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.step-ultra-item:hover .step-number-ultra {
+  color: #ffffff;
+}
+
+.step-icon-ultra {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #4361ee, #4cc9f0);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.step-ultra-item:hover .step-icon-ultra {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.step-title-ultra {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1e293b;
+  margin-bottom: 0.2rem;
+}
+
+
+.step-desc-ultra {
+  font-size: 0.7rem;
+  color: #64748b;
+  max-width: 160px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+
+.step-glow-dot {
+  width: 6px;
+  height: 6px;
+  background: #4361ee;
+  border-radius: 50%;
+  margin: 0.5rem auto 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.step-ultra-item:hover .step-glow-dot {
+  opacity: 1;
+  box-shadow: 0 0 10px #4361ee;
+}

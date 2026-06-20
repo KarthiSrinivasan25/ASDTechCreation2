@@ -1,0 +1,178 @@
+.anniversary-box{
+position:fixed;
+right:0px;
+top:50%;
+transform:translateY(-50%);
+width:180px;
+cursor:pointer;
+z-index:9999;
+}
+
+.anniversary-box img{
+width:70%;
+/* border-radius:22px;
+border:2px solid rgba(255,215,0,.4); */
+/* box-shadow:
+0 0 25px rgba(255,215,0,.25),
+0 10px 40px rgba(0,0,0,.5); */
+transition:.3s;
+ animation: swing 4s ease-in-out infinite;
+}
+
+@keyframes swing{
+    0%{
+        transform: rotate(12deg);
+    }
+    50%{
+        transform: rotate(-12deg);
+    }
+    100%{
+        transform: rotate(12deg);
+    }
+}
+
+
+/* @keyframes rotateLeftRight{
+
+    0%{
+        transform:rotateY(-25deg);
+    }
+
+    50%{
+        transform:rotateY(25deg);
+    }
+
+    100%{
+        transform:rotateY(-25deg);
+    }
+}
+
+@keyframes rotateSwing{
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(-15deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+    75%{
+        transform: rotate(15deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+} */
+
+.anniversary-box:hover img{
+transform:scale(1.05);
+/* box-shadow:
+0 0 45px rgba(255,215,0,.6),
+0 15px 50px rgba(0,0,0,.6); */
+}
+
+.emoji{
+    position:fixed; /* absolute -> fixed */
+    font-size:16px;
+    pointer-events:none;
+    animation:fly 2s ease-out forwards;
+    filter:drop-shadow(0 0 6px rgba(255,215,0,.6));
+    z-index:99999;
+}
+
+.firework{
+    position:fixed; /* absolute -> fixed */
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:gold;
+    box-shadow:0 0 10px gold;
+    animation:boom 1s ease-out forwards;
+    z-index:99999;
+}
+
+
+
+@keyframes fly{
+0%{
+transform:translate(0,0) scale(1);
+opacity:1;
+}
+100%{
+transform:translate(var(--x), var(--y)) scale(.4);
+opacity:0;
+}
+}
+
+@keyframes boom{
+0%{
+transform:scale(1);
+opacity:1;
+}
+100%{
+transform:scale(0);
+opacity:0;
+}
+}
+
+
+@media (max-width: 991px){
+
+    .anniversary-box{
+        width: 140px;
+        right: -5px;
+    }
+
+    .emoji{
+        font-size: 14px;
+    }
+
+    .firework{
+        width: 5px;
+        height: 5px;
+    }
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 767px){
+
+    .anniversary-box{
+        width: 100px;
+        right: -10px;
+        top: 75%;
+    }
+
+    .anniversary-box img{
+        width: 100%;
+    }
+
+    .emoji{
+        font-size: 12px;
+    }
+
+    .firework{
+        width: 4px;
+        height: 4px;
+    }
+}
+
+/* =========================
+   Small Mobile
+========================= */
+
+@media (max-width: 480px){
+
+    .anniversary-box{
+        width: 80px;
+        right: -8px;
+        top: 80%;
+    }
+
+    .emoji{
+        font-size: 10px;
+    }
+}

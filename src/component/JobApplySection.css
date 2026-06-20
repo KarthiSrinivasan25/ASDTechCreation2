@@ -1,0 +1,62 @@
+.apply-section {
+      padding: 60px 0;
+      background: #eef2ff;
+    }
+
+    .apply-card {
+      background: #ffffff;
+      border-radius: 40px;
+      padding: 2.8rem;
+      border: 1px solid rgba(67, 97, 238, 0.1);
+      box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-control-custom, .form-select-custom {
+      width: 100%;
+      padding: 14px 20px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .form-control-custom:focus, .form-select-custom:focus {
+      outline: none;
+      border-color: #4361ee;
+      box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1);
+    }
+
+    .btn-apply {
+      background: linear-gradient(95deg, #4361ee, #3a0ca3);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 60px;
+      color: white;
+      font-weight: 600;
+      width: 100%;
+      font-size: 1rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-apply::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-apply:hover::before {
+      left: 100%;
+    }
+
+    .btn-apply:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(67, 97, 238, 0.35);
+    }
