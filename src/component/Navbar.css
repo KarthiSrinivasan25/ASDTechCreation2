@@ -2,19 +2,19 @@
 .nav-wrapper {
   position: sticky;
   top: 0;
-  z-index: 999;
-  background: rgba(255,255,255,0.65);
+  z-index: 100;                        /* low z-index — drawer/overlay portal above it */
+  background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(22px);
-  border-bottom: 2px solid rgba(250, 128, 114, 0.404);  
-  transition: 0.3s ease;
+  border-bottom: 2px solid rgba(250, 128, 114, 0.404);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-wrapper.scrolled {
-  background: rgba(255,255,255,0.92);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
-/* ================= CONTAINER =================   rgba(99, 101, 241, 0.247)*/
+/* ================= CONTAINER ================= */
 .nav-container {
   max-width: 1200px;
   margin: auto;
@@ -39,8 +39,9 @@
 .logo span {
   font-weight: 800;
   font-size: 18px;
-  background: linear-gradient(135deg,#4f46e5,#06b6d4);
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
@@ -51,131 +52,148 @@
   gap: 22px;
 }
 
-.nav-menu a {
+.nav-menu > a {
   text-decoration: none;
   font-weight: 600;
   color: #1f2937;
   padding: 8px 10px;
   border-radius: 10px;
-  transition: 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
-.nav-menu a:hover {
-  background: rgba(79,70,229,0.08);
+.nav-menu > a:hover {
+  background: rgba(79, 70, 229, 0.08);
   color: #4f46e5;
 }
 
-.nav-menu a.active {
+.nav-menu > a.active {
   color: #4f46e5;
 }
 
 /* ================= CTA ================= */
 .cta {
-  padding: 10px 18px;
-  border-radius: 999px;
+  padding: 10px 18px !important;
+  border-radius: 999px !important;
   color: white !important;
-  background: linear-gradient(135deg,#4f46e5,#06b6d4);
-  box-shadow: 0 10px 30px rgba(79,70,229,0.3);
+  background: linear-gradient(135deg, #4f46e5, #06b6d4) !important;
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+  font-weight: 600 !important;
 }
 
 .cta:hover {
-  background: linear-gradient(135deg,#06b6d4,#4f46e5) !important;
+  background: linear-gradient(135deg, #06b6d4, #4f46e5) !important;
+  opacity: 0.95;
 }
 
-/* ================= MEGA MENU ================= */
+/* ================= MEGA TRIGGER BUTTON ================= */
+.mega-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1f2937;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background 0.25s ease, color 0.25s ease;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.mega-trigger:hover {
+  background: rgba(79, 70, 229, 0.08);
+  color: #4f46e5;
+}
+
+.mega-trigger.active-parent {
+  color: #4f46e5;
+}
+
+.mega-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+  font-size: 12px;
+}
+
+.mega-trigger.mega-open .mega-arrow {
+  transform: rotate(180deg);
+}
+
+/* ================= MEGA WRAPPER ================= */
 .mega-wrapper {
   position: relative;
 }
 
-
-
-.mega-link {
-  cursor: pointer;
-}
-
-/* DESKTOP MEGA PANEL */
-/* DESKTOP MEGA PANEL (SMALLER + CLEAN) */
+/* ================= DESKTOP MEGA PANEL ================= */
 .mega-panel {
   position: absolute;
-  top: 52px;
+  top: calc(100% + 12px);
   left: 0;
 
   display: grid;
-  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
   gap: 18px;
+  min-width: 480px;
 
   padding: 16px 18px;
-  background: rgba(255,255,255,0.98);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(24px);
-
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 14px;
-
-  box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
-  transition: all 0.25s ease;
-
-  z-index: 1000;
-  max-width: 560px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 200;
 }
 
-/* SHOW STATE */
 .mega-panel.show {
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
 }
-.mega-link.active-parent {
-  color: #4f46e5;
- 
-  border-radius: 10px;
-  font-weight: 600;
-}
 
-/* COLUMN */
+/* ================= MEGA COLUMNS ================= */
 .mega-column {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
-/* SECTION TITLE (light, not bold) */
 .mega-column h4 {
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.6px;
   color: #4f46e5;
-  margin-bottom: 6px;
+  margin: 0 0 6px 0;
 }
 
-/* LINKS (clean minimal style) */
 .mega-column a {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   color: #1f2937;
   text-decoration: none;
-
-  padding: 6px 8px;
+  padding: 7px 8px;
   border-radius: 8px;
-
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  display: block;
 }
 
-/* HOVER (soft modern feel) */
 .mega-column a:hover {
-  background: rgba(79,70,229,0.08);
+  background: rgba(79, 70, 229, 0.08);
   color: #4f46e5;
   transform: translateX(2px);
 }
 
-/* ACTIVE LINK */
 .mega-column a.active {
   color: #4f46e5;
-  background: rgba(79,70,229,0.10);
+  background: rgba(79, 70, 229, 0.1);
 }
 
 /* ================= HAMBURGER ================= */
@@ -186,15 +204,18 @@
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1100;
+  padding: 4px;
+  z-index: 9999;           /* must be above overlay (9000) and drawer (9001) */
+  position: relative;
 }
 
 .hamburger span {
+  display: block;
   width: 26px;
   height: 3px;
   background: #111827;
   border-radius: 6px;
-  transition: all 0.35s ease;
+  transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
 .hamburger.open span:nth-child(1) {
@@ -209,18 +230,18 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ================= OVERLAY (IMPORTANT FIX) ================= */
+/* ================= OVERLAY (portaled to body) ================= */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
 
   opacity: 0;
   pointer-events: none;
-  transition: 0.35s ease;
+  transition: opacity 0.35s ease;
 
-  z-index: 1000; /* MUST be below menu */
+  z-index: 9000;           /* above all page content */
 }
 
 .overlay.show {
@@ -230,126 +251,209 @@
 
 /* ================= MOBILE ================= */
 @media (max-width: 992px) {
-.hamburger {
+
+  /* Hide desktop nav inside header */
+  .nav-menu.desktop-only {
+    display: none !important;
+  }
+
+  .hamburger {
     display: flex;
   }
-  /* ================= MOBILE DRAWER ================= */
-  .nav-menu {
+
+  /* ===== DRAWER (portaled to body) ===== */
+  .nav-menu:not(.desktop-only) {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 88%;
-    max-width: 380px;
-    height: 100vh;
+    width: 300px;
+    max-width: 80vw;
+    height: 100%;
+    min-height: 100dvh;
 
-    background: rgba(255,255,255,0.96);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(25px);
 
     flex-direction: column;
-    align-items: flex-start;
-    padding: 85px 18px;
-    gap: 12px;
+    align-items: stretch;
+    padding: 0 0 40px 0;        /* header strip handles top spacing */
+    gap: 4px;
 
-    transition: right 0.35s ease;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
-    z-index: 1001;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9001;
+
+    display: flex;
   }
 
-  .nav-menu.active {
+  .nav-menu:not(.desktop-only).active {
     right: 0;
   }
 
-  /* ================= BASIC LINKS ================= */
-  .nav-menu a {
+  /* ===== LINKS INSIDE DRAWER ===== */
+  .nav-menu:not(.desktop-only) > a {
     width: 100%;
-    padding: 12px 14px;
+    padding: 12px 20px;
     border-radius: 10px;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 500;
   }
 
   .cta {
-    width: 100%;
+    margin-top: 8px;
     text-align: center;
   }
 
-  /* ================= MEGA WRAPPER ================= */
+  /* ===== MEGA WRAPPER ===== */
   .mega-wrapper {
     width: 100%;
   }
 
-  .mega-link {
+  /* ===== MEGA TRIGGER (mobile) ===== */
+  .mega-trigger {
     width: 100%;
-    display: flex;
     justify-content: space-between;
-    padding: 12px 14px;
+    padding: 12px 20px;
+    font-size: 15px;
     border-radius: 10px;
-    background: rgba(79,70,229,0.06);
+    background: rgba(79, 70, 229, 0.06);
   }
 
-  /* ================= MEGA PANEL ================= */
+  .mega-trigger.active-parent {
+    color: #4f46e5;
+    background: rgba(79, 70, 229, 0.08);
+  }
+
+  /* ===== MEGA PANEL (mobile accordion) ===== */
   .mega-panel {
     position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: all !important;
 
     display: grid !important;
-    grid-template-columns: 1fr;   /* IMPORTANT FIX */
-    gap: 14px;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    min-width: unset !important;
 
     max-height: 0;
     overflow: hidden;
-
-    padding: 0;
-
-    opacity: 1;
-    transform: none;
-    pointer-events: all;
-
-    transition: max-height 0.35s ease;
-
-    background: rgba(249,250,251,0.95);
+    padding: 0 4px;
+    box-shadow: none;
+    border: none;
     border-radius: 12px;
+    background: rgba(249, 250, 251, 0.97);
+
+    transition: max-height 0.35s ease, padding 0.25s ease, margin-top 0.25s ease !important;
   }
 
   .mega-panel.show {
-    max-height: 700px;
-    margin-top: 10px;
-    padding: 10px 0;
+    max-height: 600px;
+    padding: 8px 4px;
+    margin-top: 6px;
   }
 
-  /* ================= COLUMN FIX ================= */
+  /* ===== MEGA COLUMNS (mobile) ===== */
   .mega-column {
-    padding: 12px;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
   .mega-column:last-child {
     border-bottom: none;
   }
 
-  /* SECTION TITLE */
   .mega-column h4 {
-    font-size: 11px;
-    font-weight: 400;
-    color: #4f46e5;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: 10px;
+    margin-bottom: 6px;
   }
 
-  /* LINKS */
   .mega-column a {
-    display: block;
-    padding: 10px 8px;
-    border-radius: 8px;
+    padding: 9px 8px;
     font-size: 14px;
     font-weight: 400;
-    color: #1f2937;
+    transform: none !important;
+  }
+}
+
+/* ================= DESKTOP: hide portal drawer ================= */
+@media (min-width: 993px) {
+  .nav-menu:not(.desktop-only) {
+    display: none !important;
+  }
+
+  .overlay {
+    display: none !important;
+  }
+}
+
+/* ================= DRAWER HEADER ================= */
+.drawer-header {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 16px 16px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    margin-bottom: 8px;
+    flex-shrink: 0;
+  }
+
+  /* Logo inside drawer */
+  .drawer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     text-decoration: none;
   }
 
-  .mega-column a:hover {
-    background: rgba(79,70,229,0.06);
-    color: #4f46e5;
+  .drawer-logo img {
+    height: 36px;
+  }
+
+  .drawer-logo span {
+    font-weight: 800;
+    font-size: 15px;
+    background: linear-gradient(135deg, #4f46e5, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Close button */
+  .drawer-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(79, 70, 229, 0.25);
+    background: rgba(79, 70, 229, 0.06);
+    cursor: pointer;
+
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .drawer-close:hover {
+    /* background: rgba(79, 70, 229, 0.14); */
+    border-color: rgba(79, 70, 229, 0.5);
+  }
+
+  .drawer-close-icon {
+    font-size: 14px;
+    font-weight: 700;
+    color: salmon;
+    line-height: 1;
+    pointer-events: none;
   }
 }
