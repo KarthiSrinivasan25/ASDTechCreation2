@@ -301,6 +301,11 @@
     font-weight: 500;
   }
 
+  .nav-menu > a:hover {
+  
+  color: #4f46e5;
+}
+
   .cta {
     margin-top: 8px;
     text-align: center;
