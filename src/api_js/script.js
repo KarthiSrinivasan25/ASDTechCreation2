@@ -177,7 +177,6 @@ export default projects;
 
 window.addEventListener('load', () => {
 
-    // script.js முழு code
-
+   
 });
 

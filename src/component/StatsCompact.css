@@ -1,3 +1,6 @@
+
+
+
 .stats-compact {
   /* background: linear-gradient(rgba(31, 40, 62, 0.189), rgba(47, 57, 84, 0.452)), url('./stats.png'); */
   background-size: cover;
@@ -6,6 +9,27 @@
   padding: 20px 0;
 }
 
+.section-statbadge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.918);
+  color: #4361ee;
+  font-weight: 600;
+  padding: 5px 16px;
+  border-radius: 40px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.section-stattitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+ color: #e6f5fd;
+  margin-bottom: 1rem;
+}
+
+.statpara{
+  color: rgb(245, 214, 194);
+}
 .stat-compact-item {
   text-align: center;
   padding: 0.75rem;

@@ -5,6 +5,10 @@ import PortfolioCard from "../component/PortfolioCard";
 import projects from "../api_js/script";
 import "./Portfolio.css";
 import GallerySection from "../component/GallerySection";
+import TechnologiesSection from "../component/TechnologiesSection";
+import StatsCompact from "../component/StatsCompact";
+import Testimonial from "../component/Testinomial";
+import Cta from "../component/Cta";
 
 function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -103,6 +107,26 @@ function Portfolio() {
 
 
       <GallerySection />
+
+      <TechnologiesSection />
+
+      <StatsCompact
+  badge="Measurable Impact"
+  title="Results That Speak for Themselves"
+  description="We deliver tangible results that drive growth, efficiency, and success for our clients."
+/>
+
+
+<Testimonial />
+
+<Cta
+  badgeTitle="Explore Our Work"
+  prefix="Like What You"
+  highlight="See"
+  suffix="in Our Portfolio?"
+  description="We design and develop high-performance websites and digital products that combine creativity with real business results. Let’s build something even better for your brand."
+  button2="Start Your Project"
+/>
     </>
   );
 }

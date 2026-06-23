@@ -1,177 +1,370 @@
-import React, { useState, useEffect } from "react";
+
 import "./TechnologiesSection.css";
+import { useEffect } from "react";
 
-const TechnologiesSection = () => {
-  const [activeTab, setActiveTab] = useState("frontend");
+function TechnologiesSection(){
+    useEffect(() => {
+      const skillsData = [
+            { id: 'html', name: 'HTML', sub: 'Markup Language', icon: 'fa-html5', category: 'frontend', hot: false,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' },
+            { id: 'css', name: 'CSS', sub: 'Styling Language', icon: 'fa-css3-alt', category: 'frontend', hot: false,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4' },
+            { id: 'js', name: 'JavaScript', sub: 'Programming Language', icon: 'fa-js', category: 'frontend', hot: true,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4' },
+            { id: 'bootstrap', name: 'Bootstrap', sub: 'CSS Framework', icon: 'fa-bootstrap', category: 'frontend',
+                hot: false, video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4' },
+            { id: 'php', name: 'PHP', sub: 'Scripting Language', icon: 'fa-php', category: 'backend', hot: false,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4' },
+            { id: 'java', name: 'Java', sub: 'Programming Language', icon: 'fa-java', category: 'backend', hot: true,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4' },
+            { id: 'springboot', name: 'Spring Boot', sub: 'Java Framework', icon: 'fa-leaf', category: 'framework',
+                hot: true, video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4' },
+            { id: 'android', name: 'Android', sub: 'Mobile Development', icon: 'fa-android', category: 'mobile', hot: true,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4' },
+            { id: 'kotlin', name: 'Kotlin', sub: 'Android Language', icon: 'fa-code', category: 'mobile', hot: false,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4' },
+            { id: 'react', name: 'React', sub: 'UI Library', icon: 'fa-react', category: 'frontend', hot: true,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' },
+            { id: 'mysql', name: 'MySQL', sub: 'Relational Database', icon: 'fa-database', category: 'database', hot: false,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4' },
+            { id: 'firebase', name: 'Firebase', sub: 'Backend-as-a-Service', icon: 'fa-firebase', category: 'database',
+                hot: true, video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4' },
+            { id: 'python', name: 'Python', sub: 'Programming Language', icon: 'fa-python', category: 'backend', hot: true,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4' },
+            { id: 'flask', name: 'Flask', sub: 'Python Framework', icon: 'fa-flask', category: 'framework', hot: false,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4' },
+            { id: 'django', name: 'Django', sub: 'Python Framework', icon: 'fa-leaf', category: 'framework', hot: false,
+                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4' }
+        ];
 
-  useEffect(() => {
-    const container = document.getElementById("particleField");
+        // ================================================================
+        // RENDER SKILLS (maintains order)
+        // ================================================================
+        const grid = document.getElementById('skillsGrid');
+        const noResults = document.getElementById('noResults');
+        //const skillCount = document.getElementById('skillCount');
 
-    if (!container) return;
+        function renderSkills(filter = 'all') {
+            grid.innerHTML = '';
 
-    for (let i = 0; i < 60; i++) {
-      const particle = document.createElement("div");
-      particle.classList.add("particle");
+            // Filter data (preserving order)
+            const filtered = skillsData.filter(skill => {
+                return filter === 'all' || skill.category === filter;
+            });
 
-      const size = Math.random() * 4 + 2;
+            // Update counter
+           // skillCount.textContent = filtered.length;
 
-      particle.style.width = size + "px";
-      particle.style.height = size + "px";
-      particle.style.left = Math.random() * 100 + "%";
-      particle.style.animationDuration =
-        Math.random() * 15 + 8 + "s";
-      particle.style.animationDelay =
-        Math.random() * 5 + "s";
+            // if (filtered.length === 0) {
+            //     noResults.style.display = 'block';
+            //     grid.style.display = 'none';
+            //     return;
+            // }
 
-      container.appendChild(particle);
-    }
+            noResults.style.display = 'none';
+            grid.style.display = 'grid';
 
-    return () => {
-      container.innerHTML = "";
-    };
-  }, []);
+            filtered.forEach(skill => {
+                const card = document.createElement('div');
+                card.className = 'skill-card';
+                card.dataset.skill = skill.id;
+                card.innerHTML = `
+                    <span class="skill-category-badge">${skill.category}</span>
+                    ${skill.hot ? '<span class="hot-badge">🔥 Hot</span>' : ''}
+                    <span class="skill-icon"><i class="fab ${skill.icon}"></i></span>
+                    <span class="skill-name">${skill.name}</span>
+                    <span class="skill-sub">${skill.sub}</span>
+                    <span class="play-indicator"><i class="fas fa-play-circle"></i> Watch</span>
+                `;
+                card.addEventListener('click', () => openVideoPreview(skill.id));
+                grid.appendChild(card);
+            });
+        }
 
-  const frontend = [
-    {
-      icon: "fab fa-html5",
-      name: "HTML5",
-      desc: "Semantic Structure",
-    },
-    {
-      icon: "fab fa-css3-alt",
-      name: "CSS3",
-      desc: "Modern Animations",
-    },
-    {
-      icon: "fab fa-bootstrap",
-      name: "Bootstrap",
-      desc: "Responsive Framework",
-    },
-    {
-      icon: "fab fa-js",
-      name: "JavaScript",
-      desc: "Interactive Magic",
-    },
-    {
-      icon: "fab fa-react",
-      name: "React.js",
-      desc: "Component Based UI",
-    },
-  ];
+        // ================================================================
+        // FILTER
+        // ================================================================
+        const filterPills = document.querySelectorAll('.filter-pill');
+        let currentFilter = 'all';
 
-  const backend = [
-    {
-      icon: "fab fa-java",
-      name: "Java",
-      desc: "Enterprise Grade",
-    },
-    {
-      icon: "fab fa-php",
-      name: "PHP",
-      desc: "Dynamic Backend",
-    },
-  ];
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                currentFilter = pill.dataset.filter;
+                renderSkills(currentFilter);
+            });
+        });
 
-  const database = [
-    {
-      icon: "fas fa-database",
-      name: "MySQL",
-      desc: "Relational Database",
-    },
-    {
-      icon: "fas fa-fire",
-      name: "Firebase",
-      desc: "Realtime NoSQL",
-    },
-  ];
+        // ================================================================
+        // RESET VIEW
+        // ================================================================
+        // document.getElementById('resetViewBtn').addEventListener('click', () => {
+        //     // Reset filter to 'All'
+        //     filterPills.forEach(p => p.classList.remove('active'));
+        //     document.querySelector('.filter-pill[data-filter="all"]').classList.add('active');
+        //     currentFilter = 'all';
+        //     renderSkills('all');
 
-  const renderTech = (items) => (
-    <div className="tech-hex-grid">
-      {items.map((item, index) => (
-        <div className="tech-hex-item" key={index}>
-          <div className="tech-hex-icon">
-            <i className={item.icon}></i>
-          </div>
+        //     // Scroll to top of grid
+        //     document.querySelector('.skills-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // });
 
-          <div className="tech-hex-name">{item.name}</div>
+        // ================================================================
+        // VIDEO PREVIEW
+        // ================================================================
+        const overlay = document.getElementById('videoOverlay');
+        const video = document.getElementById('skillVideo');
+        const videoPlaceholder = document.getElementById('videoPlaceholder');
+        const progressBar = document.getElementById('progressBar');
+        const videoTime = document.getElementById('videoTime');
+        const videoIcon = document.getElementById('videoIcon');
+        const videoName = document.getElementById('videoName');
+        const videoSub = document.getElementById('videoSub');
+        const closeBtn = document.getElementById('videoClose');
+        const muteBtn = document.getElementById('videoMuteBtn');
+        const replayBtn = document.getElementById('videoReplayBtn');
+        const fullscreenBtn = document.getElementById('videoFullscreenBtn');
+        const countdownDisplay = document.getElementById('countdownDisplay');
+        const countdownCircle = document.getElementById('countdownCircle');
 
-          <div className="tech-hex-desc">{item.desc}</div>
+        let currentSkill = null;
+        let autoCloseTimer = null;
+        let progressInterval = null;
+        let countdownInterval = null;
+        let remainingSeconds = 10;
+        let isMuted = true;
 
-          <div className="tech-glow"></div>
+        function openVideoPreview(skillId) {
+            const skill = skillsData.find(s => s.id === skillId);
+            if (!skill) return;
+
+            currentSkill = skillId;
+
+            const iconClass = skill.icon;
+
+            videoIcon.innerHTML = `<i class="fab ${iconClass}"></i>`;
+            videoName.textContent = skill.name;
+            videoSub.textContent = skill.sub;
+
+            video.src = skill.video;
+            video.load();
+
+            videoPlaceholder.style.display = 'flex';
+            progressBar.style.width = '0%';
+            videoTime.textContent = '0:00 / 0:00';
+            remainingSeconds = 8 + Math.floor(Math.random() * 3);
+            countdownDisplay.textContent = remainingSeconds + 's';
+            countdownCircle.style.strokeDashoffset = '100';
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            setTimeout(() => {
+                video.play().catch(() => {});
+                videoPlaceholder.style.display = 'none';
+            }, 500);
+
+            startProgressTracking();
+            startCountdown();
+        }
+
+        function startCountdown() {
+            clearInterval(countdownInterval);
+            const total = remainingSeconds;
+
+            countdownInterval = setInterval(() => {
+                remainingSeconds--;
+                if (remainingSeconds <= 0) {
+                    clearInterval(countdownInterval);
+                    closeVideoPreview();
+                    return;
+                }
+                countdownDisplay.textContent = remainingSeconds + 's';
+                const progress = ((total - remainingSeconds) / total) * 100;
+                countdownCircle.style.strokeDashoffset = 100 - progress;
+            }, 1000);
+        }
+
+        function startProgressTracking() {
+            clearInterval(progressInterval);
+            progressInterval = setInterval(() => {
+                if (video.duration && !isNaN(video.duration)) {
+                    const progress = (video.currentTime / video.duration) * 100;
+                    progressBar.style.width = Math.min(progress, 100) + '%';
+                    videoTime.textContent = formatTime(video.currentTime) + ' / ' + formatTime(video.duration);
+                }
+            }, 100);
+        }
+
+        function formatTime(seconds) {
+            if (!seconds || isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        function closeVideoPreview() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            video.pause();
+            video.currentTime = 0;
+            clearTimeout(autoCloseTimer);
+            clearInterval(progressInterval);
+            clearInterval(countdownInterval);
+            progressBar.style.width = '0%';
+        }
+
+        // ===== VIDEO EVENTS =====
+        video.addEventListener('loadedmetadata', () => {
+            videoTime.textContent = '0:00 / ' + formatTime(video.duration);
+        });
+
+        video.addEventListener('ended', closeVideoPreview);
+
+        // ===== CONTROLS =====
+        muteBtn.addEventListener('click', () => {
+            isMuted = !isMuted;
+            video.muted = isMuted;
+            muteBtn.innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+        });
+
+        replayBtn.addEventListener('click', () => {
+            video.currentTime = 0;
+            video.play();
+        });
+
+        fullscreenBtn.addEventListener('click', () => {
+            const container = document.querySelector('.video-preview-container');
+            if (!document.fullscreenElement) {
+                container.requestFullscreen().catch(() => {});
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        // ===== CLOSE HANDLERS =====
+        closeBtn.addEventListener('click', closeVideoPreview);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeVideoPreview();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                closeVideoPreview();
+            }
+            if (e.key === ' ' && overlay.classList.contains('active')) {
+                e.preventDefault();
+                if (video.paused) video.play();
+                else video.pause();
+            }
+        });
+
+        // ================================================================
+        // INIT
+        // ================================================================
+        renderSkills();
+  video.addEventListener('dragstart', (e) => e.preventDefault());
+
+    }, []);
+ return(
+   <>
+   <section className="tech-section-interactive">
+        <div className="container">
+            <div className="text-center mb-4">
+                <span className="section-badge"><i className="fas fa-microchip me-1"></i> Technologies</span>
+                <h2 className="section-title">
+  Technologies Powering Our Solutions
+</h2>
+                <p className="text-secondary">
+                    Discover the cutting-edge technologies behind our successful projects and solutions.
+                </p>
+            </div>
+
+           
+            <div className="skill-controls">
+                {/* <div className="skill-counter">
+                    <i className="fas fa-code"></i>
+                    <span>Skills:</span>
+                    <span className="count-number" id="skillCount">15</span>
+                </div>
+
+                <button className="reset-btn" id="resetViewBtn">
+                    <i className="fas fa-sync-alt"></i> Reset View
+                </button> */}
+
+                <div className="filter-pills" id="filterPills">
+                    <span className="filter-pill active" data-filter="all"><i className="fas fa-th-large"></i> All</span>
+                    <span className="filter-pill" data-filter="frontend"><i className="fas fa-laptop-code"></i> Frontend</span>
+                    <span className="filter-pill" data-filter="backend"><i className="fas fa-server"></i> Backend</span>
+                    <span className="filter-pill" data-filter="mobile"><i className="fas fa-mobile-alt"></i> Mobile</span>
+                    <span className="filter-pill" data-filter="database"><i className="fas fa-database"></i> Database</span>
+                    <span className="filter-pill" data-filter="framework"><i className="fas fa-layer-group"></i> Framework</span>
+                </div>
+            </div>
+
+            <div className="skills-grid" id="skillsGrid"></div>
+
+            <div className="no-results" id="noResults">
+                <i className="fas fa-search"></i>
+                <p>No skills found matching your filter.</p>
+            </div>
         </div>
-      ))}
-    </div>
-  );
-
-  return (
-    <section className="tech-futuristic">
-      <div className="animated-bg"></div>
-
-      <div
-        className="particle-field"
-        id="particleField"
-      ></div>
-
-      <div className="floating-orb orb-1"></div>
-      <div className="floating-orb orb-2"></div>
-      <div className="floating-orb orb-3"></div>
-
-      <div className="container">
-        <div className="section-header text-center mb-5">
-          <span className="section-badge">
-            <i className="fas fa-microchip me-1"></i>
-            Our Arsenal
-          </span>
-
-          <h2 className="section-title">
-            Technologies We Master
-          </h2>
-
-          <p>
-            Cutting-edge tools for modern web solutions
-          </p>
-        </div>
-
-        <div className="tech-tabs">
-          <button
-            className={`tech-tab-btn ${
-              activeTab === "frontend" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("frontend")}
-          >
-            Frontend
-          </button>
-
-          <button
-            className={`tech-tab-btn ${
-              activeTab === "backend" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("backend")}
-          >
-            Backend
-          </button>
-
-          <button
-            className={`tech-tab-btn ${
-              activeTab === "database" ? "active" : ""
-            }`}
-            onClick={() => setActiveTab("database")}
-          >
-            Database
-          </button>
-        </div>
-
-        {activeTab === "frontend" &&
-          renderTech(frontend)}
-
-        {activeTab === "backend" &&
-          renderTech(backend)}
-
-        {activeTab === "database" &&
-          renderTech(database)}
-      </div>
     </section>
-  );
-};
+
+{/* Video show */}
+
+  <div className="video-preview-overlay" id="videoOverlay">
+        <div className="video-preview-container">
+            <div className="video-preview-header">
+                <div className="tech-info">
+                    <span className="icon" id="videoIcon"><i className="fab fa-react"></i></span>
+                    <div>
+                        <div className="name" id="videoName">React</div>
+                        <div className="sub" id="videoSub">UI Library</div>
+                    </div>
+                </div>
+                <button className="video-preview-close" id="videoClose"><i className="fas fa-times"></i></button>
+            </div>
+
+            <div className="video-wrapper">
+                <video id="skillVideo" playsinline muted>
+                    <source src="" type="video/mp4" />
+                </video>
+                <div className="video-placeholder" id="videoPlaceholder">
+                    <i className="fas fa-play-circle"></i>
+                    <span>Loading demo video...</span>
+                </div>
+                <div className="autoplay-badge">
+                    <i className="fas fa-clock"></i>
+                    <span>Auto-closes in</span>
+                    <span className="countdown" id="countdownDisplay">10s</span>
+                </div>
+                <div className="countdown-ring">
+                    <svg viewBox="0 0 40 40" width="40" height="40">
+                        <circle className="bg" cx="20" cy="20" r="17" />
+                        <circle className="progress" id="countdownCircle" cx="20" cy="20" r="17" />
+                    </svg>
+                </div>
+            </div>
+
+            <div className="video-progress">
+                <div className="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div className="video-controls">
+                <span className="time" id="videoTime">0:00 / 0:00</span>
+                <div>
+                    <button className="controls-btn" id="videoMuteBtn"><i className="fas fa-volume-mute"></i></button>
+                    <button className="controls-btn" id="videoReplayBtn"><i className="fas fa-redo"></i></button>
+                    <button className="controls-btn" id="videoFullscreenBtn"><i className="fas fa-expand"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </>
+ )
+}
 
 export default TechnologiesSection;
