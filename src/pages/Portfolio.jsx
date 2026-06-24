@@ -184,7 +184,7 @@ function Portfolio() {
 
   return (
     <>
-      <BreadCrumb pageName="Career" />
+      <BreadCrumb pageName="Portfolio" />
 
       <Hero
         HeroTitlePrefix="Where Creativity Meets Code"
@@ -202,7 +202,7 @@ function Portfolio() {
             <h2 className="section-title">Featured Projects</h2>
           </div>
 
-          <div className="row g-5">
+          <div className="row g-4">
             {projects.map((project) => (
               <div key={project.id} className="col-md-6 col-lg-4">
                 <PortfolioCard project={project} onPreview={setSelectedProject} />

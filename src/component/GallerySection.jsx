@@ -54,12 +54,54 @@ function GallerySection() {
                     </div>
                     <div class="drag-handle"><i class="fas fa-wand-magic-sparkles"></i> Drag</div>
                 `;
-                div.addEventListener('click', (e) => {
-                    if (isDraggingGrid) return;
-                    openLightbox(i);
-                });
-                div.addEventListener('mousedown', (e) => startGridDrag(e, i, div));
-                div.addEventListener('touchstart', (e) => startGridDrag(e, i, div), { passive: false });
+               let touchStartX = 0;
+let touchStartY = 0;
+let moved = false;
+
+div.addEventListener('click', () => {
+    if (!isDraggingGrid) {
+        openLightbox(i);
+    }
+});
+
+// Desktop drag
+div.addEventListener('mousedown', (e) => {
+    startGridDrag(e, i, div);
+});
+
+// Mobile tap / drag
+div.addEventListener(
+    'touchstart',
+    (e) => {
+        moved = false;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    },
+    { passive: true }
+);
+
+div.addEventListener(
+    'touchmove',
+    (e) => {
+        const dx = Math.abs(e.touches[0].clientX - touchStartX);
+        const dy = Math.abs(e.touches[0].clientY - touchStartY);
+
+        if (dx > 10 || dy > 10) {
+            moved = true;
+
+            if (!isDraggingGrid) {
+                startGridDrag(e, i, div);
+            }
+        }
+    },
+    { passive: false }
+);
+
+div.addEventListener('touchend', () => {
+    if (!moved) {
+        openLightbox(i);
+    }
+});
                 grid.appendChild(div);
                 allItems.push(div);
             });
@@ -135,8 +177,9 @@ function GallerySection() {
         function startGridDrag(e, index, element) {
             const target = e.target;
             if (target.closest('.gallery-item-overlay')) return;
-            e.preventDefault();
-
+            if (e.cancelable) {
+        e.preventDefault();
+    }
             const pos = getEventPos(e);
             const rect = element.getBoundingClientRect();
             offsetX = pos.x - rect.left;
@@ -432,7 +475,7 @@ function GallerySection() {
         window.addEventListener('touchmove', onLightboxDragMove, { passive: false });
         window.addEventListener('touchend', onLightboxDragEnd, { passive: true });
 
-        closeBtn.addEventListener('click', closeLightbox);
+        closeBtn.addEventListener('touchend', closeLightbox);
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
