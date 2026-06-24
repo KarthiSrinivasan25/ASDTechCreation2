@@ -137,8 +137,8 @@ function TechnologiesSection(){
         let autoCloseTimer = null;
         let progressInterval = null;
         let countdownInterval = null;
-        let remainingSeconds = 12;
-        const MAX_PLAY_TIME = 12;
+        let remainingSeconds = 11;
+        const MAX_PLAY_TIME = 11;
         let isMuted = true;
         let videoLimiterInterval = null;
         
@@ -181,8 +181,24 @@ function TechnologiesSection(){
         videoPlaceholder.style.display = 'none';
     }, 500);
 
+    // startProgressTracking();
+    // startCountdown();
+
+    let timersStarted = false;
+
+video.onplaying = () => {
+    if (timersStarted) return; // prevent multiple triggers
+    timersStarted = true;
+
     startProgressTracking();
     startCountdown();
+
+    videoLimiterInterval = setInterval(() => {
+        if (video.currentTime >= MAX_PLAY_TIME) {
+            closeVideoPreview();
+        }
+    }, 200);
+};
 
     // 🔥 force stop at 15s
     videoLimiterInterval = setInterval(() => {
