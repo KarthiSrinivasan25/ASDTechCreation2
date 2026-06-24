@@ -1,20 +1,25 @@
 
 import "./TechnologiesSection.css";
 import { useEffect } from "react";
+import htmlVideo from "../assets/videos/html.mp4";
+import cssVideo from "../assets/videos/css.mp4";
+import javascriptVideo from "../assets/videos/javascript.mp4";
+import bootstrapVideo from "../assets/videos/bootstrap.mp4";
+import phpVideo from "../assets/videos/php.mp4";
 
 function TechnologiesSection(){
     useEffect(() => {
       const skillsData = [
             { id: 'html', name: 'HTML', sub: 'Markup Language', icon: 'fa-html5', category: 'frontend', hot: false,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' },
+                video: htmlVideo },
             { id: 'css', name: 'CSS', sub: 'Styling Language', icon: 'fa-css3-alt', category: 'frontend', hot: false,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4' },
+                video: cssVideo },
             { id: 'js', name: 'JavaScript', sub: 'Programming Language', icon: 'fa-js', category: 'frontend', hot: true,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4' },
+                video: javascriptVideo },
             { id: 'bootstrap', name: 'Bootstrap', sub: 'CSS Framework', icon: 'fa-bootstrap', category: 'frontend',
-                hot: false, video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4' },
+                hot: false, video: bootstrapVideo },
             { id: 'php', name: 'PHP', sub: 'Scripting Language', icon: 'fa-php', category: 'backend', hot: false,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4' },
+                video: phpVideo },
             { id: 'java', name: 'Java', sub: 'Programming Language', icon: 'fa-java', category: 'backend', hot: true,
                 video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4' },
             { id: 'springboot', name: 'Spring Boot', sub: 'Java Framework', icon: 'fa-leaf', category: 'framework',
@@ -132,43 +137,60 @@ function TechnologiesSection(){
         let autoCloseTimer = null;
         let progressInterval = null;
         let countdownInterval = null;
-        let remainingSeconds = 10;
+        let remainingSeconds = 12;
+        const MAX_PLAY_TIME = 12;
         let isMuted = true;
+        let videoLimiterInterval = null;
+        
 
         function openVideoPreview(skillId) {
-            const skill = skillsData.find(s => s.id === skillId);
-            if (!skill) return;
+    const skill = skillsData.find(s => s.id === skillId);
+    if (!skill) return;
 
-            currentSkill = skillId;
+    currentSkill = skillId;
 
-            const iconClass = skill.icon;
+    // reset old timers (VERY IMPORTANT)
+    clearInterval(progressInterval);
+    clearInterval(countdownInterval);
+    clearInterval(videoLimiterInterval);
 
-            videoIcon.innerHTML = `<i class="fab ${iconClass}"></i>`;
-            videoName.textContent = skill.name;
-            videoSub.textContent = skill.sub;
+    video.currentTime = 0; // 🔥 always start fresh
 
-            video.src = skill.video;
-            video.load();
+    videoIcon.innerHTML = `<i class="fab ${skill.icon}"></i>`;
+    videoName.textContent = skill.name;
+    videoSub.textContent = skill.sub;
 
-            videoPlaceholder.style.display = 'flex';
-            progressBar.style.width = '0%';
-            videoTime.textContent = '0:00 / 0:00';
-            remainingSeconds = 8 + Math.floor(Math.random() * 3);
-            countdownDisplay.textContent = remainingSeconds + 's';
-            countdownCircle.style.strokeDashoffset = '100';
+    video.src = skill.video;
+    video.load();
 
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    videoPlaceholder.style.display = 'flex';
+    progressBar.style.width = '0%';
+    videoTime.textContent = '0:00 / 0:00';
 
-            setTimeout(() => {
-                video.play().catch(() => {});
-                videoPlaceholder.style.display = 'none';
-            }, 500);
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
 
-            startProgressTracking();
-            startCountdown();
+    // 🔥 ALWAYS RESET TIMER
+    remainingSeconds = MAX_PLAY_TIME;
+
+    countdownDisplay.textContent = remainingSeconds + 's';
+    countdownCircle.style.strokeDashoffset = '100';
+
+    setTimeout(() => {
+        video.play().catch(() => {});
+        videoPlaceholder.style.display = 'none';
+    }, 500);
+
+    startProgressTracking();
+    startCountdown();
+
+    // 🔥 force stop at 15s
+    videoLimiterInterval = setInterval(() => {
+        if (video.currentTime >= MAX_PLAY_TIME) {
+            closeVideoPreview();
         }
-
+    }, 200);
+}
         function startCountdown() {
             clearInterval(countdownInterval);
             const total = remainingSeconds;
@@ -205,15 +227,18 @@ function TechnologiesSection(){
         }
 
         function closeVideoPreview() {
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-            video.pause();
-            video.currentTime = 0;
-            clearTimeout(autoCloseTimer);
-            clearInterval(progressInterval);
-            clearInterval(countdownInterval);
-            progressBar.style.width = '0%';
-        }
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+
+    video.pause();
+    video.currentTime = 0;
+
+    clearInterval(progressInterval);
+    clearInterval(countdownInterval);
+    clearInterval(videoLimiterInterval);
+
+    progressBar.style.width = '0%';
+}
 
         // ===== VIDEO EVENTS =====
         video.addEventListener('loadedmetadata', () => {
