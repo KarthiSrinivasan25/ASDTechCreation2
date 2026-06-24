@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import BreadCrumb from "../component/BreadCrumb";
 import Hero from "../component/Hero";
 import PortfolioCard from "../component/PortfolioCard";
@@ -10,21 +10,177 @@ import StatsCompact from "../component/StatsCompact";
 import Testimonial from "../component/Testinomial";
 import Cta from "../component/Cta";
 
-function Portfolio() {
-  const [selectedProject, setSelectedProject] = useState(null);
+/* ─── INLINE SVG ICONS (no extra dependency) ─── */
+const IconX = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+const IconLeft = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="15 18 9 12 15 6" />
+  </svg>
+);
+const IconRight = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="9 18 15 12 9 6" />
+  </svg>
+);
+const IconDownload = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+);
+const IconShare = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+  </svg>
+);
+const IconExpand = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    <polyline points="15 3 21 3 21 9" /><polyline points="9 21 3 21 3 15" />
+    <line x1="21" y1="3" x2="14" y2="10" /><line x1="3" y1="21" x2="10" y2="14" />
+  </svg>
+);
 
-  // Lock body scroll when lightbox opens
+/* ─── LIGHTBOX COMPONENT ─── */
+function Lightbox({ project, onClose }) {
+  const [current, setCurrent] = useState(0);
+  const [loaded, setLoaded] = useState({});
+  const stripRef = useRef(null);
+  const total = project.gallery?.length || 0;
+
+  const goTo = useCallback(
+    (i) => {
+      const idx = ((i % total) + total) % total;
+      setCurrent(idx);
+      setTimeout(() => {
+        const el = stripRef.current?.children[idx];
+        if (el) el.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }, 50);
+    },
+    [total]
+  );
+
   useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") goTo(current + 1);
+      if (e.key === "ArrowLeft") goTo(current - 1);
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
     return () => {
+      window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [selectedProject]);
+  }, [current, goTo, onClose]);
+
+  if (!project || total === 0) return null;
+
+  return (
+    <div className="lb-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={`${project.title} gallery`}>
+      <div className="lb-panel" onClick={(e) => e.stopPropagation()}>
+
+        {/* HEADER */}
+        <div className="lb-header">
+          <div className="lb-header-left">
+            <span className="lb-badge">Gallery</span>
+            <span className="lb-title">{project.title}</span>
+          </div>
+          <button className="lb-close-btn" onClick={onClose} aria-label="Close gallery">
+            <IconX />
+          </button>
+        </div>
+
+        {/* FEATURED IMAGE */}
+        <div className="lb-featured-wrap">
+          <button className="lb-nav lb-nav-prev" onClick={() => goTo(current - 1)} aria-label="Previous">
+            <IconLeft />
+          </button>
+
+          <div className="lb-featured">
+            {!loaded[current] && <div className="lb-skeleton" />}
+            <img
+              key={current}
+              src={project.gallery[current]}
+              alt={`${project.title} ${current + 1}`}
+              className="lb-featured-img"
+              style={{ opacity: loaded[current] ? 1 : 0 }}
+              onLoad={() => setLoaded((p) => ({ ...p, [current]: true }))}
+            />
+            <span className="lb-counter">{current + 1} / {total}</span>
+            <button
+              className="lb-expand-btn"
+              onClick={() => window.open(project.gallery[current], "_blank")}
+              aria-label="Open full size"
+            >
+              <IconExpand />
+            </button>
+          </div>
+
+          <button className="lb-nav lb-nav-next" onClick={() => goTo(current + 1)} aria-label="Next">
+            <IconRight />
+          </button>
+        </div>
+
+        {/* THUMBNAIL STRIP */}
+        <div className="lb-strip" ref={stripRef} role="list">
+          {project.gallery.map((img, i) => (
+            <div
+              key={i}
+              role="listitem"
+              className={`lb-thumb${i === current ? " lb-thumb-active" : ""}`}
+              onClick={() => goTo(i)}
+              tabIndex={0}
+              onKeyDown={(e) => e.key === "Enter" && goTo(i)}
+              aria-label={`Image ${i + 1}`}
+              aria-current={i === current}
+            >
+              <img src={img} alt="" loading="lazy" />
+            </div>
+          ))}
+        </div>
+
+        {/* FOOTER */}
+        <div className="lb-footer">
+          <div className="lb-meta">
+            <span className="lb-meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg>
+              {total} images
+            </span>
+            {project.year && (
+              <span className="lb-meta-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+                {project.year}
+              </span>
+            )}
+            {project.views && (
+              <span className="lb-meta-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                {project.views}
+              </span>
+            )}
+          </div>
+          <div className="lb-actions">
+            <button className="lb-btn">
+              <IconShare /> Share
+            </button>
+            <button className="lb-btn lb-btn-primary">
+              <IconDownload /> Download
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}
+
+/* ─── PORTFOLIO PAGE ─── */
+function Portfolio() {
+  const [selectedProject, setSelectedProject] = useState(null);
 
   return (
     <>
@@ -37,10 +193,7 @@ function Portfolio() {
       />
 
       {/* PROJECT GRID */}
-      <section className="portfolio-preview" style={{
-                  backgroundColor:
-                    "#eef2ff"
-                }}>
+      <section className="portfolio-preview" style={{ backgroundColor: "#eef2ff" }}>
         <div className="container">
           <div className="section-header">
             <span className="section-badge">
@@ -52,10 +205,7 @@ function Portfolio() {
           <div className="row g-5">
             {projects.map((project) => (
               <div key={project.id} className="col-md-6 col-lg-4">
-                <PortfolioCard
-                  project={project}
-                  onPreview={setSelectedProject}
-                />
+                <PortfolioCard project={project} onPreview={setSelectedProject} />
               </div>
             ))}
           </div>
@@ -64,194 +214,30 @@ function Portfolio() {
 
       {/* LIGHTBOX */}
       {selectedProject && (
-        <div
-          className="lightbox-overlay active"
-          onClick={() => setSelectedProject(null)}
-        >
-          <div
-            className="lightbox-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* CLOSE */}
-            <button
-              className="lightbox-close"
-              onClick={() => setSelectedProject(null)}
-            >
-              <i className="fas fa-times"></i>
-            </button>
-
-            {/* TITLE */}
-            <div className="lightbox-title">
-              {selectedProject?.title}
-            </div>
-
-            {/* IMAGES */}
-            <div className="lightbox-grid">
-              {selectedProject?.gallery?.map((img, i) => (
-                <img
-                  key={i}
-                  src={img}
-                  alt={`${selectedProject.title}-${i}`}
-                  loading="lazy"
-                />
-              ))}
-            </div>
-
-            {/* COUNTER */}
-            <div className="lightbox-counter">
-              {selectedProject?.gallery?.length || 0} Images
-            </div>
-          </div>
-        </div>
+        <Lightbox project={selectedProject} onClose={() => setSelectedProject(null)} />
       )}
 
-
       <GallerySection />
-
       <TechnologiesSection />
 
       <StatsCompact
-  badge="Measurable Impact"
-  title="Results That Speak for Themselves"
-  description="We deliver tangible results that drive growth, efficiency, and success for our clients."
-/>
+        badge="Measurable Impact"
+        title="Results That Speak for Themselves"
+        description="We deliver tangible results that drive growth, efficiency, and success for our clients."
+      />
 
+      <Testimonial />
 
-<Testimonial />
-
-<Cta
-  badgeTitle="Explore Our Work"
-  prefix="Like What You"
-  highlight="See"
-  suffix="in Our Portfolio?"
-  description="We design and develop high-performance websites and digital products that combine creativity with real business results. Let’s build something even better for your brand."
-  button2="Start Your Project"
-/>
+      <Cta
+        badgeTitle="Explore Our Work"
+        prefix="Like What You"
+        highlight="See"
+        suffix="in Our Portfolio?"
+        description="We design and develop high-performance websites and digital products that combine creativity with real business results. Let's build something even better for your brand."
+        button2="Start Your Project"
+      />
     </>
   );
 }
 
 export default Portfolio;
-
-
-
-// PORTFOLIO PAGE CONTENT (ORDERWISE)
-// 🥇 1. Hero Section (Top Intro)
-
-// Title:
-
-// Our Work That Builds Digital Success
-
-// Subtitle:
-
-// We design and develop modern, fast, and scalable websites for businesses of all sizes.
-
-// Short line:
-
-// Explore some of our best projects that deliver real results.
-
-// 🥈 2. Featured Projects Section
-
-// Heading:
-
-// Featured Projects
-
-// Intro line:
-
-// Here are some of our recently completed high-quality projects.
-
-// Each Project Card Format:
-
-// Project Name
-// Industry (e.g. Restaurant, E-commerce, Portfolio)
-// Short description (1–2 lines)
-// Technologies used
-// Live Demo button
-// View Case Study button
-// 🥉 3. Case Study Section
-
-// Heading:
-
-// Case Studies
-
-// Template (use for each project):
-
-// Project Name
-
-// Client Goal:
-
-// Client wanted a modern website to improve online presence and generate leads.
-
-// Our Solution:
-
-// We built a fully responsive, SEO-friendly website with optimized UI/UX.
-
-// Technologies Used:
-
-// HTML, CSS, JavaScript / React / WordPress (based on project)
-
-// Results:
-
-// Improved user engagement, faster loading speed, and better conversions.
-
-// 4. Project Gallery / Screenshots
-
-// Heading:
-
-// UI Showcase
-
-// Text:
-
-// A glimpse of our design quality across desktop and mobile devices.
-
-// (Here add images of projects)
-
-// 5. Technologies Section
-
-// Heading:
-
-// Technologies We Use
-
-// List:
-
-// HTML5 / CSS3
-// JavaScript
-// React / Next.js
-// WordPress
-// PHP / Node.js
-// UI/UX Design (Figma)
-// 6. Results Section (Impact)
-
-// Heading:
-
-// Business Impact
-
-// Points:
-
-// Faster website performance
-// SEO-friendly structure
-// Increased customer inquiries
-// Mobile responsive designs
-// Improved user experience
-// 7. CTA Section (Bottom)
-
-// Heading:
-
-// Have a Project in Mind?
-
-// Text:
-
-// Let’s build something great together. We turn your ideas into powerful digital solutions.
-
-// Button:
-
-// Contact Us
-
-// 🔥 FINAL FLOW (IMPORTANT ORDER)
-// Hero Intro
-// Featured Projects
-// Case Studies
-// UI Gallery
-// Technologies
-// Results / Impact
-// Contact CTA
