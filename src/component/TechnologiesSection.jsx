@@ -6,6 +6,22 @@ import cssVideo from "../assets/videos/css.mp4";
 import javascriptVideo from "../assets/videos/javascript.mp4";
 import bootstrapVideo from "../assets/videos/bootstrap.mp4";
 import phpVideo from "../assets/videos/php.mp4";
+import reactVideo from "../assets/videos/react.mp4";
+import javaVideo from "../assets/videos/java.mp4";
+import androidVideo from "../assets/videos/android.mp4";
+import mysqlVideo from "../assets/videos/mysql.mp4";
+import springVideo from "../assets/videos/springboot.mp4";
+import kotlinVideo from "../assets/videos/kotlin.mp4";
+
+import springBootIcon from "../assets/icons/springboot.png";
+import firebaseIcon from "../assets/icons/firebase.png";
+import flaskIcon from "../assets/icons/flask.png";
+import djangoIcon from "../assets/icons/django.png";
+import kotlinIcon from "../assets/icons/kotlin.png";
+import mysqlIcon from "../assets/icons/mysql.png";
+import pythonIcon from "../assets/icons/python.png";
+import javaIcon from "../assets/icons/java.png";
+
 
 function TechnologiesSection(){
     useEffect(() => {
@@ -20,25 +36,25 @@ function TechnologiesSection(){
                 hot: false, video: bootstrapVideo },
             { id: 'php', name: 'PHP', sub: 'Scripting Language', icon: 'fa-php', category: 'backend', hot: false,
                 video: phpVideo },
-            { id: 'java', name: 'Java', sub: 'Programming Language', icon: 'fa-java', category: 'backend', hot: true,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4' },
-            { id: 'springboot', name: 'Spring Boot', sub: 'Java Framework', icon: 'fa-leaf', category: 'framework',
-                hot: true, video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4' },
+            { id: 'java', name: 'Java', sub: 'Programming Language', image: javaIcon, category: 'backend', hot: true,
+                video: javaVideo },
+            { id: 'springboot', name: 'Spring Boot', sub: 'Java Framework', image: springBootIcon, category: 'framework',
+                hot: true, video: springVideo },
             { id: 'android', name: 'Android', sub: 'Mobile Development', icon: 'fa-android', category: 'mobile', hot: true,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4' },
-            { id: 'kotlin', name: 'Kotlin', sub: 'Android Language', icon: 'fa-code', category: 'mobile', hot: false,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4' },
+                video: androidVideo },
+            { id: 'kotlin', name: 'Kotlin', sub: 'Android Language', image: kotlinIcon, category: 'mobile', hot: false,
+                video: kotlinVideo },
             { id: 'react', name: 'React', sub: 'UI Library', icon: 'fa-react', category: 'frontend', hot: true,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4' },
-            { id: 'mysql', name: 'MySQL', sub: 'Relational Database', icon: 'fa-database', category: 'database', hot: false,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4' },
-            { id: 'firebase', name: 'Firebase', sub: 'Backend-as-a-Service', icon: 'fa-firebase', category: 'database',
+                video: reactVideo },
+            { id: 'mysql', name: 'MySQL', sub: 'Relational Database', image: mysqlIcon, category: 'database', hot: false,
+                video: mysqlVideo },
+            { id: 'firebase', name: 'Firebase', sub: 'Backend-as-a-Service', image: firebaseIcon, category: 'database',
                 hot: true, video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4' },
-            { id: 'python', name: 'Python', sub: 'Programming Language', icon: 'fa-python', category: 'backend', hot: true,
+            { id: 'python', name: 'Python', sub: 'Programming Language', image: pythonIcon, category: 'backend', hot: true,
                 video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4' },
-            { id: 'flask', name: 'Flask', sub: 'Python Framework', icon: 'fa-flask', category: 'framework', hot: false,
+            { id: 'flask', name: 'Flask', sub: 'Python Framework', image: flaskIcon, category: 'framework', hot: false,
                 video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4' },
-            { id: 'django', name: 'Django', sub: 'Python Framework', icon: 'fa-leaf', category: 'framework', hot: false,
+            { id: 'django', name: 'Django', sub: 'Python Framework', image: springBootIcon, category: 'framework', hot: false,
                 video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4' }
         ];
 
@@ -76,8 +92,13 @@ function TechnologiesSection(){
                 card.innerHTML = `
                     <span class="skill-category-badge">${skill.category}</span>
                     ${skill.hot ? '<span class="hot-badge">🔥 Hot</span>' : ''}
-                    <span class="skill-icon"><i class="fab ${skill.icon}"></i></span>
-                    <span class="skill-name">${skill.name}</span>
+<span class="skill-icon">
+    ${
+      skill.image
+        ? `<img src="${skill.image}" alt="${skill.name}" class="skill-image-icon" />`
+        : `<i class="fab ${skill.icon}"></i>`
+    }
+</span>                    <span class="skill-name">${skill.name}</span>
                     <span class="skill-sub">${skill.sub}</span>
                     <span class="play-indicator"><i class="fas fa-play-circle"></i> Watch</span>
                 `;
@@ -156,7 +177,9 @@ function TechnologiesSection(){
 
     video.currentTime = 0; // 🔥 always start fresh
 
-    videoIcon.innerHTML = `<i class="fab ${skill.icon}"></i>`;
+    videoIcon.innerHTML = skill.image
+  ? `<img src="${skill.image}" alt="${skill.name}" class="popup-tech-icon" />`
+  : `<i class="fab ${skill.icon}"></i>`;
     videoName.textContent = skill.name;
     videoSub.textContent = skill.sub;
 

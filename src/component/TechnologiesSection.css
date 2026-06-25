@@ -6,7 +6,17 @@
         }
 
        
+.popup-tech-icon{
+    width: clamp(28px, 5vw, 40px);
+    height: clamp(28px, 5vw, 40px);
+    object-fit: contain;
+}
 
+.skill-image-icon{
+    width: clamp(36px, 6vw, 50px);
+    height: clamp(36px, 6vw, 50px);
+    object-fit: contain;
+}
         /* Controls - No search, just filter pills + counter */
         .skill-controls {
             display: flex;
@@ -494,6 +504,8 @@
             .reset-btn {
                 align-self: center;
             }
+
+            
         }
         @media (max-width: 480px) {
             .skills-grid {
