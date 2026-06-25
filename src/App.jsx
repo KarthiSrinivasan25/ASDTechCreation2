@@ -10,6 +10,7 @@ import Contact from "./pages/Contact"
 import Footer from "./component/Footer"
 import AnniversaryWidget from "./component/AnniversaryWidget";
 import AnniversaryPopup from "./component/AnniversaryPopup"
+import Project_Detail from "./pages/Project_Detail";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/project-details/:id" element={<Project_Detail />} />
       </Routes>
 <AnniversaryWidget />
 <AnniversaryPopup />

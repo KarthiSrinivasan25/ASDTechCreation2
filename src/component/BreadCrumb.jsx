@@ -2,7 +2,8 @@ import './BreadCrumb.css'
 
 function BreadCrumb(props) {
   return (
-    <section className="breadcrumb-advanced-section" style={{ backgroundImage: "url('./bread1.jpg')" }}>
+    // style={{ backgroundImage: "url('./bread1.jpg')" }}
+    <section className="breadcrumb-advanced-section" >
       <div className="breadcrumb-particles" id="breadcrumbParticles"></div>
       <div className="container">
         <div className="breadcrumb-advanced-wrapper">

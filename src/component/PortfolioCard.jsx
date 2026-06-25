@@ -1,5 +1,7 @@
 import { FaCode, FaMobileAlt, FaChartLine, FaArrowRight } from "react-icons/fa";
 import projects from "../api_js/script.js";
+import { Link } from "react-router-dom";
+
 const categoryIcons = {
   "Web App": FaCode,
   "Mobile App": FaMobileAlt,
@@ -42,9 +44,13 @@ function PortfolioCard({ project, onPreview }) {
         </div>
 
         <div className="project-link-row">
-          <a href="#" className="case-study-link">
-            <FaArrowRight style={{ marginLeft: "6px" }} /> Case Study
-          </a>
+          <Link
+  to={`/project-details/${project.id}`}
+  className="case-study-link"
+>
+  <FaArrowRight style={{ marginLeft: "6px" }} /> Case Study
+</Link>
+
           <a href="#" className="live-demo">
             Live Demo
           </a>
