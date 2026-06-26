@@ -86,7 +86,7 @@ return ( <div
    className="anniversary-box"
    onClick={celebrate}
  > <img
-     src="./Anniversary_Logo.png"
+     src="/Anniversary_Logo.png"
      alt="Anniversary"
    /> </div>
 );

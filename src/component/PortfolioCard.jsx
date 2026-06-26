@@ -45,11 +45,11 @@ function PortfolioCard({ project, onPreview }) {
 
         <div className="project-link-row">
           <Link
-  to={`/project-details/${project.id}`}
-  className="case-study-link"
->
-  <FaArrowRight style={{ marginLeft: "6px" }} /> Case Study
-</Link>
+            to={`/project-details/${project.id}`}
+            className="case-study-link"
+          >
+            <FaArrowRight style={{ marginLeft: "6px" }} /> Case Study
+          </Link>
 
           <a href="#" className="live-demo">
             Live Demo
