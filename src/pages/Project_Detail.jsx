@@ -414,24 +414,7 @@ function Project_Detail() {
             </div>
           )}
 
-          {/* RESULTS */}
-          {project.results?.length > 0 && (
-            <div className="results-section">
-              <span className="section-badge" style={{background:"rgba(76,201,240,0.15)",color:"#4cc9f0"}}>
-                <i className="fas fa-chart-line me-1"></i> Impact
-              </span>
-              <h2 style={{color:"white",fontWeight:700,fontSize:"1.8rem"}}>Measurable Results</h2>
-              <div className="results-grid">
-                {project.results.map((r,i) => (
-                  <div className="result-item" key={i}>
-                    <div className="result-number">{r.number}</div>
-                    <div className="result-label">{r.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
+         
           {/* CTA */}
           <div className="project-cta">
             <h3>Ready to Build Something Amazing?</h3>
@@ -441,6 +424,71 @@ function Project_Detail() {
 
         </div>
       </section>
+
+       {/* CLIENT TESTIMONIAL */}
+{project.testimonial && (
+  <section className="project-testimonial">
+    <div className="container">
+      <div className="testimonial-header text-center">
+        <span className="section-badge"><i className="fas fa-images me-1"></i> Client Feedback</span>
+              <h2 className="section-title">What the Client Said</h2>
+              
+      </div>
+
+      <div className="testimonial-box">
+
+        <div className="quote-bg">
+          <i className="fas fa-quote-left"></i>
+        </div>
+
+        <div className="testimonial-top">
+
+          <div className="client-profile">
+            <img
+              src={project.testimonial.image}
+              alt={project.testimonial.name}
+            />
+
+            <div>
+              <h4>{project.testimonial.name}</h4>
+              <span>{project.testimonial.designation}</span>
+
+              <div className="company">
+                <i className="fas fa-building me-2"></i>
+                {project.testimonial.company}
+              </div>
+            </div>
+          </div>
+
+          <div className="rating">
+            {[...Array(5)].map((_, i) => (
+              <i key={i} className="fas fa-star"></i>
+            ))}
+          </div>
+
+        </div>
+
+        <p className="testimonial-text">
+          {project.testimonial.message}
+        </p>
+
+        <div className="testimonial-footer">
+
+          <div className="verified">
+            <i className="fas fa-circle-check me-2"></i>
+            Verified Client
+          </div>
+
+          <div className="project-name">
+            {project.title}
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+)}
     </>
   );
 }

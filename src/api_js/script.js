@@ -144,12 +144,14 @@ const projects = [
       "The client needed a modern, fast-loading website to replace their outdated offline catalogue. The main challenge was organizing hundreds of products into a clean, searchable UI while keeping the backend lightweight and maintainable.",
     solution:
       "We designed a component-driven frontend with Bootstrap, backed by a Java servlet API and MySQL. Product categories are dynamically loaded, and the admin panel allows easy content updates without touching any code.",
-    results: [
-      { number: "200K+", label: "Monthly Active Users" },
-      { number: "3x", label: "Faster Page Load" },
-      { number: "85%", label: "Customer Satisfaction" },
-      { number: "60%", label: "Increase in Online Orders" },
-    ],
+    testimonial: {
+    name: "David Wilson",
+    designation: "Chief Technology Officer",
+    company: "NovaTech Solutions",
+    image: "/user.png",
+    message:
+      "Working with this team was a fantastic experience. They understood our requirements immediately, delivered every milestone on time, and the final product exceeded expectations in both performance and design."
+},
     gallery: [
       {
         src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
@@ -208,12 +210,14 @@ const projects = [
       "Manual ledger books were error-prone and inaccessible remotely. The client needed a secure, simple app that even non-technical staff could use confidently for daily transaction entries.",
     solution:
       "We built a native Android app with Java and Firebase, featuring PIN-based authentication, real-time sync, and an intuitive transaction entry form. Offline mode ensures data isn't lost even without internet.",
-    results: [
-      { number: "+310%", label: "Revenue Tracked Digitally" },
-      { number: "0", label: "Data Loss Incidents" },
-      { number: "100%", label: "Real-time Sync" },
-      { number: "2min", label: "Average Entry Time" },
-    ],
+    testimonial: {
+  name: "Prakash S",
+  designation: "Owner",
+  company: "PST Jewellers",
+  image: "/user.png",
+  message:
+    "The Silver Ledger app completely transformed how we manage our daily transactions. The interface is simple enough for our staff to use without training, and real-time synchronization has eliminated manual errors. It has become an essential part of our business."
+},
     gallery: [
       {
         src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
@@ -267,12 +271,14 @@ const projects = [
       "Field sales teams had no mobile access to business data and had to call the office for order and inventory updates, causing delays and errors in customer service.",
     solution:
       "A lightweight Android app with Firebase backend giving sales staff instant access to product lists, order status, and customer details. Push notifications alert teams to new orders in real time.",
-    results: [
-      { number: "500+", label: "Teams Using App" },
-      { number: "70%", label: "Faster Order Processing" },
-      { number: "4.7★", label: "App Store Rating" },
-      { number: "40%", label: "Reduction in Call Volume" },
-    ],
+    testimonial: {
+  name: "Karthik Raj",
+  designation: "Operations Manager",
+  company: "Leeangadi Pvt. Ltd.",
+  image: "/user.png",
+  message:
+    "Our field staff can now access orders, inventory, and customer information instantly from anywhere. The app is fast, reliable, and has significantly improved communication between our office and sales team."
+},
     gallery: [
       {
         src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
@@ -325,12 +331,14 @@ const projects = [
       "The farm relied entirely on paper records, making it nearly impossible to track performance trends or quickly access historical data. Records were frequently lost or damaged.",
     solution:
       "A simple, offline-capable Android app with clear data entry screens for daily farm activity. Firebase cloud backup ensures no data is ever lost, and auto-generated reports give the owner weekly insights without manual calculation.",
-    results: [
-      { number: "100%", label: "Paperless Operations" },
-      { number: "35%", label: "Improvement in Yield Tracking" },
-      { number: "0", label: "Lost Records" },
-      { number: "2hr", label: "Saved Daily on Admin" },
-    ],
+    testimonial: {
+  name: "R. Vinayagam",
+  designation: "Farm Owner",
+  company: "Vinayaga Poultry Farm",
+  image: "/user.png",
+  message:
+    "We previously maintained everything in notebooks, making it difficult to track production. This app has simplified our daily operations, securely stores our records, and provides useful reports that help us make better business decisions."
+},
     gallery: [
       {
         src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
