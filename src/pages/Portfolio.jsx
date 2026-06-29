@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import SEO from '../component/SEO';
 import BreadCrumb from "../component/BreadCrumb";
 import Hero from "../component/Hero";
 import PortfolioCard from "../component/PortfolioCard";
@@ -80,6 +81,8 @@ function Lightbox({ project, onClose }) {
   if (!project || total === 0) return null;
 
   return (
+
+    
     <div className="lb-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={`${project.title} gallery`}>
       <div className="lb-panel" onClick={(e) => e.stopPropagation()}>
 
@@ -184,6 +187,13 @@ function Portfolio() {
 
   return (
     <>
+    <SEO
+  title="Portfolio | ASDTech Creation"
+  description="View our portfolio showcasing successful website development, mobile applications, eCommerce projects, and digital solutions delivered to our clients."
+  keywords="ASDTech Portfolio, Website Projects, Mobile App Projects, eCommerce Projects"
+/>
+
+
       <BreadCrumb pageName="Portfolio" />
 
       <Hero

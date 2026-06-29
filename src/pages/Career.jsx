@@ -4,12 +4,20 @@ import Cta from '../component/Cta'
 import JobApplySection from '../component/JobApplySection'
 import JobSection from '../component/JobSection'
 import './Career.css'
-
+import SEO from '../component/SEO';
 function Career() {
     return (
 
 
         <>
+
+        <SEO
+  title="Careers | ASDTech Creation"
+  description="Join ASDTech Creation and build your career in web development, mobile app development, UI/UX design, digital marketing, and software engineering."
+  keywords="Careers at ASDTech Creation, Web Developer Jobs, Mobile App Developer Jobs, Software Jobs"
+/>
+
+
             <BreadCrumb pageName="Career" />
 
 

@@ -8,11 +8,21 @@ import PortfolioPreviewCard from '../component/PortfolioPreviewCard';
 import OurWorkFlow from '../component/OurWorkFlow';
 import ServicesCards from '../component/ServicesCards';
 import { Link } from "react-router-dom";
+import SEO from '../component/SEO';
 
 
 function Home() {
   return (
     <>
+
+    <SEO
+  title="ASDTech Creation | Web Development, Mobile App Development & SEO Company"
+  description="ASDTech Creation is a leading web development company offering website development, mobile app development, eCommerce solutions, SEO services, and digital solutions for businesses."
+  keywords="ASDTech Creation, Web Development Company, Website Development, Mobile App Development, SEO Services, eCommerce Website Development, eCommerce App Development, Digital Solutions"
+/>
+
+
+
       <section>
 
 

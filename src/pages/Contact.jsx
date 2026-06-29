@@ -3,10 +3,16 @@ import Hero from '../component/Hero'
 import ContactForm from '../component/ContactForm'
 import Cta from '../component/Cta'
 import './Contact.css'
+import SEO from '../component/SEO';
 function Contact() {
     return (
         <>
 
+<SEO
+  title="Contact Us | ASDTech Creation"
+  description="Contact ASDTech Creation for professional website development, mobile app development, SEO services, and eCommerce solutions."
+  keywords="Contact ASDTech Creation, Web Development Company Contact, Mobile App Development Company, SEO Company Contact"
+/>
             <BreadCrumb pageName="Contact" />
 
             <Hero HeroTitlePrefix="Let's Create Something" HeroTitleSuffix="Extraordinary" HeroDescription="Have a project in mind? We'd love to hear from you. Fill out the form and we'll get back to you within 24 hours."/>

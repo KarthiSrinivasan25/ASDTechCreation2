@@ -16,7 +16,7 @@ import android from '../assets/icons/android.png'
 import asd from '../assets/asd_logo.jpg'
 import OurTeam from "../component/OurTeam";
 import Cta from "../component/Cta";
-
+import SEO from '../component/SEO';
 
 
 function About() {
@@ -24,6 +24,13 @@ function About() {
 
 
     <>
+
+<SEO
+  title="About Us | ASDTech Creation"
+  description="Learn about ASDTech Creation, our mission, vision, and expertise in website development, mobile app development, eCommerce solutions, and SEO services."
+  keywords="About ASDTech Creation, Web Development Company, Mobile App Development Company, SEO Company"
+/>
+
       <BreadCrumb pageName="About"/>
 
       <section className="hero-ring">

@@ -7,12 +7,20 @@ import OurWorkFlow from '../component/OurWorkFlow'
 import ServicesCards from '../component/ServicesCards'
 import React from "react";
 import { Link } from "react-router-dom";
-
+import SEO from '../component/SEO';
 
 function Service() {
     return (
 
         <>
+        <SEO
+  title="Our Services | ASDTech Creation"
+  description="Explore our professional services including website development, mobile app development, SEO services, eCommerce website development, and custom software solutions."
+  keywords="Website Development Services, Mobile App Development Services, SEO Services, eCommerce Development, Software Development Services"
+/>
+
+
+
             <BreadCrumb pageName="Service" />
 
             <Hero HeroTitlePrefix="Smart Digital Solutions for" HeroTitleSuffix="Modern Businesses" HeroDescription="We build fast, scalable, and user-friendly digital products that help your business grow in the digital world." />
