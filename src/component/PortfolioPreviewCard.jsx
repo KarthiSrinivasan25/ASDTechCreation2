@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import projectsData from "../api_js/script"
 function PortfolioPreviewCard({ limit }) {
     const portfolioData = [
         {
@@ -38,40 +38,41 @@ function PortfolioPreviewCard({ limit }) {
     ];
 
     const projects = limit
-        ? portfolioData.slice(0, limit)
-        : portfolioData;
+    ? projectsData.slice(0, limit)
+    : projectsData;
 
     return (
         <>
-            {projects.map((project) => (
-                <div
-                    className="portfolio-preview-card"
-                    key={project.id}
-                >
-                    <div className="portfolio-preview-img">
-                        <img
-                            src={project.image}
-                            alt={project.title}
-                        />
+    {projects.map((project) => (
+        <div
+            className="portfolio-preview-card"
+            key={project.id}
+        >
+            <div className="portfolio-preview-img">
+                <img
+                    src={project.image}
+                    alt={project.title}
+                />
 
-                        <div className="portfolio-preview-overlay">
-                            <Link to="/portfolio">
-                                <i className="fas fa-eye"></i>
-                            </Link>
-                        </div>
-                    </div>
-
-                    <div className="portfolio-preview-info">
-                        <h4>{project.title}</h4>
-                        <p>{project.description}</p>
-
-                        <span className="portfolio-preview-cat">
-                            {project.category}
-                        </span>
-                    </div>
+                <div className="portfolio-preview-overlay">
+                    <Link to={`/project-details/${project.id}`}>
+                        <i className="fas fa-eye"></i>
+                    </Link>
                 </div>
-            ))}
-        </>
+            </div>
+
+            <div className="portfolio-preview-info">
+                <h4>{project.title}</h4>
+
+                <p>{project.description}</p>
+
+                <span className="portfolio-preview-cat">
+                    {project.category}
+                </span>
+            </div>
+        </div>
+    ))}
+</>
     );
 }
 

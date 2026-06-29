@@ -67,9 +67,9 @@ function Navbar() {
 
   const isServiceActive =
     location.pathname.startsWith("/service") ||
-    location.pathname.startsWith("/web-development") ||
-    location.pathname.startsWith("/mobile-apps") ||
-    location.pathname.startsWith("/seo");
+    location.pathname.startsWith("/service/web") ||
+    location.pathname.startsWith("/service/mobile") ||
+    location.pathname.startsWith("/service/seo");
 
   const MegaPanel = ({ show }) => (
     <div className={`mega-panel ${show ? "show" : ""}`}>
@@ -79,12 +79,12 @@ function Navbar() {
       </div>
       <div className="mega-column">
         <h4>Development</h4>
-        <NavLink to="/web-development" onClick={closeAll}>Web Development</NavLink>
-        <NavLink to="/mobile-apps"     onClick={closeAll}>Mobile Apps</NavLink>
+        <NavLink to="/service/web" onClick={closeAll}>Web Development</NavLink>
+        <NavLink to="/service/mobile"     onClick={closeAll}>Mobile Apps</NavLink>
       </div>
       <div className="mega-column">
         <h4>Marketing</h4>
-        <NavLink to="/seo" onClick={closeAll}>SEO</NavLink>
+        <NavLink to="/service/seo" onClick={closeAll}>SEO</NavLink>
       </div>
     </div>
   );

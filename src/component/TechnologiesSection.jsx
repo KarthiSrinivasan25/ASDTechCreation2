@@ -12,6 +12,11 @@ import androidVideo from "../assets/videos/android.mp4";
 import mysqlVideo from "../assets/videos/mysql.mp4";
 import springVideo from "../assets/videos/springboot.mp4";
 import kotlinVideo from "../assets/videos/kotlin.mp4";
+import pythonVideo from "../assets/videos/python.mp4";
+import djangoVideo from "../assets/videos/django.mp4";
+import flaskVideo from "../assets/videos/flask.mp4";
+import firebaseVideo from "../assets/videos/firebase.mp4";
+
 
 import springBootIcon from "../assets/icons/springboot.png";
 import firebaseIcon from "../assets/icons/firebase.png";
@@ -49,13 +54,13 @@ function TechnologiesSection(){
             { id: 'mysql', name: 'MySQL', sub: 'Relational Database', image: mysqlIcon, category: 'database', hot: false,
                 video: mysqlVideo },
             { id: 'firebase', name: 'Firebase', sub: 'Backend-as-a-Service', image: firebaseIcon, category: 'database',
-                hot: true, video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4' },
+                hot: true, video: firebaseVideo },
             { id: 'python', name: 'Python', sub: 'Programming Language', image: pythonIcon, category: 'backend', hot: true,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4' },
+                video: pythonVideo },
             { id: 'flask', name: 'Flask', sub: 'Python Framework', image: flaskIcon, category: 'framework', hot: false,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4' },
-            { id: 'django', name: 'Django', sub: 'Python Framework', image: springBootIcon, category: 'framework', hot: false,
-                video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4' }
+                video: flaskVideo },
+            { id: 'django', name: 'Django', sub: 'Python Framework', image: djangoIcon, category: 'framework', hot: false,
+                video: djangoVideo }
         ];
 
         // ================================================================

@@ -12,7 +12,7 @@ import AnniversaryWidget from "./component/AnniversaryWidget";
 import AnniversaryPopup from "./component/AnniversaryPopup"
 import Project_Detail from "./pages/Project_Detail";
 import ScrollToTop from "./component/ScrollToTop";
-
+import ServiceDetail from './pages/ServiceDetail'
 
 function App() {
 
@@ -30,6 +30,8 @@ function App() {
         <Route path="/career" element={<Career />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/project-details/:id" element={<Project_Detail />} />
+        <Route path="/service/:serviceId" element={<ServiceDetail />} />
+        
       </Routes>
 
       <AnniversaryWidget />
