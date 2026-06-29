@@ -11,12 +11,15 @@ import Footer from "./component/Footer"
 import AnniversaryWidget from "./component/AnniversaryWidget";
 import AnniversaryPopup from "./component/AnniversaryPopup"
 import Project_Detail from "./pages/Project_Detail";
+import ScrollToTop from "./component/ScrollToTop";
 
 
 function App() {
 
   return (
- <BrowserRouter>
+    <BrowserRouter>
+      <ScrollToTop />
+
       <Navbar />
 
       <Routes>
@@ -28,11 +31,12 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/project-details/:id" element={<Project_Detail />} />
       </Routes>
-<AnniversaryWidget />
-<AnniversaryPopup />
+
+      <AnniversaryWidget />
+      <AnniversaryPopup />
       <Footer />
     </BrowserRouter>
-    
+
   )
 }
 
