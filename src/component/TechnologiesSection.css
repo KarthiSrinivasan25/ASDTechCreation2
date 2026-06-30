@@ -1,7 +1,7 @@
   .tech-section-interactive {
             padding: 60px 0;
-            /* background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%); */
-            background-color: #eef2ff;
+            background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%);
+            /* background-color: #eef2ff; */
             position: relative;
         }
 

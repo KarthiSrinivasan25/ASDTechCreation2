@@ -48,9 +48,9 @@ function Career() {
             <JobApplySection />
 
 
-            <Cta prefix="Not Finding" highlight="The Right Fit?" suffix="Let’s Change That."  
+            {/* <Cta prefix="Not Finding" highlight="The Right Fit?" suffix="Let’s Change That."  
             description="We're always looking for talented people. Send us your resume anyway!"
-            button1="Send Application" />
+            button1="Send Application" /> */}
         </>
     )
 }

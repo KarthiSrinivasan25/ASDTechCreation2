@@ -2,7 +2,11 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./Navbar.css";
+import { FaWhatsapp } from "react-icons/fa";
 
+// import { FaRocket, FaBolt, FaPalette, FaChartLine } from "react-icons/fa";
+import { FaGlobe, FaMobileAlt, FaSearch, FaShoppingCart } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
 function Navbar() {
   const [mobileOpen, setMobileOpen]   = useState(false);
   const [desktopMega, setDesktopMega] = useState(false);
@@ -131,14 +135,60 @@ function Navbar() {
         <NavLink to="/portfolio" onClick={closeAll}>Portfolio</NavLink>
         <NavLink to="/career"    onClick={closeAll}>Career</NavLink>
         <NavLink to="/contact"   onClick={closeAll}>Contact</NavLink>
-        <NavLink to="/contact" className="cta" onClick={closeAll}>Get Started</NavLink>
+        <a
+  href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20want%20to%20build%20a%20website"
+  className="cta whatsapp"
+  target="_blank"
+  rel="noreferrer"
+  onClick={closeAll}
+>
+  <FaWhatsapp style={{ marginRight: "8px" }} />
+  WhatsApp
+</a>
       </div>
     </>,
     document.body
   );
 
   return (
-    <header className={`nav-wrapper ${scrolled ? "scrolled" : ""}`}>
+    <>
+    <div className="topbar">
+  {/* LEFT SLIDER */}
+  <div className="topbar-left">
+    <div className="slider-text">
+     <div className="slider-text">
+  <span><FaGlobe /> Website Development</span>
+  <span><FaMobileAlt /> Mobile App Development</span>
+  <span><FaSearch /> SEO Optimization</span>
+  <span><FaShoppingCart /> E-Commerce Solutions</span>
+</div>
+    </div>
+  </div>
+
+  {/* RIGHT SIDE */}
+  <div className="topbar-right">
+  <div className="topbar-phones-inline">
+    <a href="tel:+918754631713" className="topbar-phone">
+      <FaPhoneAlt /> 87546 31713
+    </a>
+
+    <span className="phone-sep">|</span>
+
+    <a href="tel:+919876543210" className="topbar-phone">
+      <FaPhoneAlt /> 98765 43210
+    </a>
+  </div>
+
+  <div className="lang-dropdown">
+    <select>
+      <option value="en">EN</option>
+      <option value="ta">TA</option>
+    </select>
+  </div>
+</div>
+</div>
+    
+     <header className={`nav-wrapper ${scrolled ? "scrolled" : ""}`}>
       <nav className="nav-container">
 
         <NavLink to="/" className="logo" onClick={closeAll}>
@@ -175,13 +225,24 @@ function Navbar() {
           <NavLink to="/portfolio" onClick={closeAll}>Portfolio</NavLink>
           <NavLink to="/career"    onClick={closeAll}>Career</NavLink>
           <NavLink to="/contact"   onClick={closeAll}>Contact</NavLink>
-          <NavLink to="/contact" className="cta" onClick={closeAll}>Get Started</NavLink>
+          <a
+  href="https://wa.me/918754631713?text=Hi%20I%20want%20to%20build%20a%20website"
+  className="cta whatsapp"
+  target="_blank"
+  rel="noreferrer"
+  onClick={closeAll}
+>
+  <FaWhatsapp style={{ marginRight: "8px" }} />
+  WhatsApp
+</a>
         </div>
 
       </nav>
 
       {mobileDrawer}
     </header>
+    </>
+   
   );
 }
 

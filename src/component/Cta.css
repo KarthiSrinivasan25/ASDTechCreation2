@@ -249,3 +249,208 @@
       .cta-trust { gap: 1rem; }
       .trust-item { font-size: 0.7rem; }
     }
+
+    .smart-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* MAIN MODAL */
+.smart-modal {
+    width: 850px;
+    max-width: 95%;
+    background: #ffffff;
+    border-radius: 14px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    animation: popIn 0.25s ease;
+}
+
+/* LEFT SIDE */
+.smart-left {
+    flex: 1;
+    position: relative;
+    padding: 40px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* 👇 background blend effect */
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url("./stats.png") center/cover no-repeat;
+    overflow: hidden;
+}
+
+/* DARK OVERLAY FOR READABILITY */
+.smart-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.92),
+        rgba(37, 99, 235, 0.65)
+    );
+    z-index: 1;
+}
+
+/* CONTENT ABOVE OVERLAY */
+.smart-left > * {
+    position: relative;
+    z-index: 2;
+}
+
+.smart-top-row {
+    margin-bottom: 15px;
+}
+
+/* BADGE - NOW FULL HEADER STYLE */
+.smart-badge {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    line-height: 1.2;
+}
+/* TITLE */
+.smart-left h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+/* DESCRIPTION */
+.smart-left p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+/* FEATURES */
+.smart-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.feature-card1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 0.3s;
+}
+
+.feature-card1 i {
+    color: #93c5fd;
+}
+
+.feature-card1:hover {
+    transform: translateX(6px);
+    background: rgba(255,255,255,0.18);
+}
+
+/* FOOTER NOTE */
+.smart-footer-note {
+    margin-top: auto;
+    font-size: 12px;
+    opacity: 0.85;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 10px;
+}
+/* RIGHT SIDE */
+.smart-right {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.smart-right h3 {
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+/* INPUTS */
+.smart-right input,
+.smart-right textarea,
+.smart-right select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    outline: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.smart-right input:focus,
+.smart-right textarea:focus,
+.smart-right select:focus {
+    border-color: #2563eb;
+}
+
+/* BUTTON */
+.smart-btn {
+    margin-top: 10px;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.smart-btn:hover {
+    background: #1d4ed8;
+}
+
+/* CLOSE */
+.smart-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #111827;
+}
+
+/* ANIMATION */
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .smart-modal {
+        flex-direction: column;
+    }
+
+    .smart-left {
+        display: none;
+    }
+}

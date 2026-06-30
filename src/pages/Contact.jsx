@@ -125,9 +125,9 @@ function Contact() {
             </section>
 
 
-             <Cta prefix="Ready to" highlight="Start" suffix="Your Project?"  
+             {/* <Cta prefix="Ready to" highlight="Start" suffix="Your Project?"  
             description="Get a free consultation and quote from our experts"
-            button2="Schedule Free Call" />
+            button2="Schedule Free Call" /> */}
 
         </>
     )
