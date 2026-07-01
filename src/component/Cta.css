@@ -283,7 +283,7 @@
     justify-content: center;
 
     /* 👇 background blend effect */
-    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url("./stats.png") center/cover no-repeat;
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3));
     overflow: hidden;
 }
 

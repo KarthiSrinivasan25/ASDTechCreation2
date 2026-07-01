@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SmartModal({ show, onClose, popupType }) {
+function SmartModal({ show, onClose, popupType, bgImage = "./stats.png" }) {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -16,7 +16,9 @@ function SmartModal({ show, onClose, popupType }) {
             <div className="smart-modal" onClick={(e) => e.stopPropagation()}>
 
                 {/* LEFT SIDE */}
-                <div className="smart-left">
+                <div className="smart-left"  style={{
+                backgroundImage: `linear-gradient(rgba(31,40,62,0.2), rgba(47,57,84,0.4)), url(${bgImage})`
+            }}>
                     <div className="smart-bg-overlay"></div>
 
                     <div className="smart-top-row">
