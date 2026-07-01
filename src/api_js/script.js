@@ -145,13 +145,11 @@ const projects = [
     solution:
       "We designed a component-driven frontend with Bootstrap, backed by a Java servlet API and MySQL. Product categories are dynamically loaded, and the admin panel allows easy content updates without touching any code.",
     testimonial: {
-    name: "David Wilson",
-    designation: "Chief Technology Officer",
-    company: "NovaTech Solutions",
+    name: "Ashok",
+    designation: "CEO",
+    company: "Leeangadi Pvt. Ltd.",
     image: "/user.png",
-    message:
-      "Working with this team was a fantastic experience. They understood our requirements immediately, delivered every milestone on time, and the final product exceeded expectations in both performance and design."
-},
+    message:"Working with this team was a fantastic experience. They understood our requirements immediately, delivered every milestone on time, and the final product exceeded expectations in both performance and design, ensuring smooth communication and consistent support throughout the entire project lifecycle."},
     gallery: [
       {
         src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
@@ -211,12 +209,11 @@ const projects = [
     solution:
       "We built a native Android app with Java and Firebase, featuring PIN-based authentication, real-time sync, and an intuitive transaction entry form. Offline mode ensures data isn't lost even without internet.",
     testimonial: {
-  name: "Prakash S",
+  name: "Sathish P",
   designation: "Owner",
-  company: "PST Jewellers",
+  company: "PST Silver Ledger",
   image: "/user.png",
-  message:
-    "The Silver Ledger app completely transformed how we manage our daily transactions. The interface is simple enough for our staff to use without training, and real-time synchronization has eliminated manual errors. It has become an essential part of our business."
+  message: "Silver Ledger simplified our daily transaction calculations and made business operations much more efficient. Its user-friendly interface required no staff training, while real-time synchronization reduced manual errors. It has become an essential tool for managing our business smoothly and effectively."
 },
     gallery: [
       {
@@ -272,12 +269,11 @@ const projects = [
     solution:
       "A lightweight Android app with Firebase backend giving sales staff instant access to product lists, order status, and customer details. Push notifications alert teams to new orders in real time.",
     testimonial: {
-  name: "Karthik Raj",
-  designation: "Operations Manager",
+  name: "Ashok",
+  designation: "CEO",
   company: "Leeangadi Pvt. Ltd.",
   image: "/user.png",
-  message:
-    "Our field staff can now access orders, inventory, and customer information instantly from anywhere. The app is fast, reliable, and has significantly improved communication between our office and sales team."
+  message:"Our field staff can now instantly access invoices, bills, delivery challans, and customer details from anywhere. The app is fast, reliable, and makes data entry effortless while enabling seamless generation of PDFs. This has significantly improved our workflow, coordination, and overall operational efficiency."
 },
     gallery: [
       {
@@ -332,12 +328,11 @@ const projects = [
     solution:
       "A simple, offline-capable Android app with clear data entry screens for daily farm activity. Firebase cloud backup ensures no data is ever lost, and auto-generated reports give the owner weekly insights without manual calculation.",
     testimonial: {
-  name: "R. Vinayagam",
+  name: "Nagarajan A",
   designation: "Farm Owner",
   company: "Vinayaga Poultry Farm",
   image: "/user.png",
-  message:
-    "We previously maintained everything in notebooks, making it difficult to track production. This app has simplified our daily operations, securely stores our records, and provides useful reports that help us make better business decisions."
+  message:"We previously maintained everything in notebooks, which made production tracking difficult. This app has simplified our daily operations, securely stores our records, and generates useful reports that help us make better business decisions and improve overall efficiency consistently and effectively."
 },
     gallery: [
       {

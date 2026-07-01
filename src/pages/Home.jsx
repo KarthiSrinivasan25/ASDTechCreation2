@@ -63,7 +63,7 @@ function Home() {
               </div>
 
               <div className="carousel-item" style={{ backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('/home3.png')" }}>
-                <div className="carousel-caption">
+                <div className="carousel-caption p-5">
                   <h1>SEO & Digital Growth Solutions</h1>
                   <p>Boost your website ranking with on-page SEO, technical SEO, content optimization, and data-driven digital marketing strategies.</p>
                   <a href="#" className="carousel-btn">Improve Ranking <i className="fas fa-arrow-right ms-2"></i></a>

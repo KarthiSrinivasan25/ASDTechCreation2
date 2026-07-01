@@ -497,22 +497,36 @@
   position: relative;
 }
 
-/* SLIDER TEXT */
+/* container */
 .slider-text {
   position: absolute;
   display: flex;
-  gap: 40px;
+  align-items: center;
+  gap: 20px;
   white-space: nowrap;
-
   animation: slideText 12s linear infinite;
 }
 
-.slider-text span {
+/* text items */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* space between icon and text */
   font-weight: 500;
   opacity: 0.9;
 }
 
-/* ANIMATION */
+/* separator */
+.sep {
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  font-size: 13px;
+  line-height: 1;
+  color: #ff7b00;
+}
+
+/* animation */
 @keyframes slideText {
   0% {
     transform: translateX(100%);
@@ -561,7 +575,7 @@
 
 /* separator */
 .phone-sep {
-  color: rgb(255, 123, 0);
+  color: #ff7b00;
   font-size: 12px;
 }
 /* LANGUAGE */

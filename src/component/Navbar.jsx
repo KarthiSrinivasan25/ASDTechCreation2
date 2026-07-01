@@ -8,10 +8,10 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FaGlobe, FaMobileAlt, FaSearch, FaShoppingCart } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
 function Navbar() {
-  const [mobileOpen, setMobileOpen]   = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [desktopMega, setDesktopMega] = useState(false);
-  const [mobileMega,  setMobileMega]  = useState(false);
-  const [scrolled, setScrolled]       = useState(false);
+  const [mobileMega, setMobileMega] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const desktopMegaRef = useRef(null);
   const location = useLocation();
@@ -84,7 +84,7 @@ function Navbar() {
       <div className="mega-column">
         <h4>Development</h4>
         <NavLink to="/service/web" onClick={closeAll}>Web Development</NavLink>
-        <NavLink to="/service/mobile"     onClick={closeAll}>Mobile Apps</NavLink>
+        <NavLink to="/service/mobile" onClick={closeAll}>Mobile Apps</NavLink>
       </div>
       <div className="mega-column">
         <h4>Marketing</h4>
@@ -118,7 +118,7 @@ function Navbar() {
           </button>
         </div>
 
-        <NavLink to="/"      onClick={closeAll}>Home</NavLink>
+        <NavLink to="/" onClick={closeAll}>Home</NavLink>
         <NavLink to="/about" onClick={closeAll}>About</NavLink>
 
         <div className="mega-wrapper">
@@ -133,18 +133,18 @@ function Navbar() {
         </div>
 
         <NavLink to="/portfolio" onClick={closeAll}>Portfolio</NavLink>
-        <NavLink to="/career"    onClick={closeAll}>Career</NavLink>
-        <NavLink to="/contact"   onClick={closeAll}>Contact</NavLink>
+        <NavLink to="/career" onClick={closeAll}>Career</NavLink>
+        <NavLink to="/contact" onClick={closeAll}>Contact</NavLink>
         <a
-  href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20want%20to%20build%20a%20website"
-  className="cta whatsapp"
-  target="_blank"
-  rel="noreferrer"
-  onClick={closeAll}
->
-  <FaWhatsapp style={{ marginRight: "8px" }} />
-  WhatsApp
-</a>
+          href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20want%20to%20build%20a%20website"
+          className="cta whatsapp"
+          target="_blank"
+          rel="noreferrer"
+          onClick={closeAll}
+        >
+          <FaWhatsapp style={{ marginRight: "8px" }} />
+          WhatsApp
+        </a>
       </div>
     </>,
     document.body
@@ -152,97 +152,103 @@ function Navbar() {
 
   return (
     <>
-    <div className="topbar">
-  {/* LEFT SLIDER */}
-  <div className="topbar-left">
-    <div className="slider-text">
-     <div className="slider-text">
-  <span><FaGlobe /> Website Development</span>
-  <span><FaMobileAlt /> Mobile App Development</span>
-  <span><FaSearch /> SEO Optimization</span>
-  <span><FaShoppingCart /> E-Commerce Solutions</span>
-</div>
-    </div>
-  </div>
-
-  {/* RIGHT SIDE */}
-  <div className="topbar-right">
-  <div className="topbar-phones-inline">
-    <a href="tel:+918754631713" className="topbar-phone">
-      <FaPhoneAlt /> 87546 31713
-    </a>
-
-    <span className="phone-sep">|</span>
-
-    <a href="tel:+919876543210" className="topbar-phone">
-      <FaPhoneAlt /> 98765 43210
-    </a>
-  </div>
-
-  <div className="lang-dropdown">
-    <select>
-      <option value="en">EN</option>
-      <option value="ta">TA</option>
-    </select>
-  </div>
-</div>
-</div>
+      <div className="topbar">
+        {/* LEFT SLIDER */}
+        <div className="topbar-left">
+  <div className="slider-text">
     
-     <header className={`nav-wrapper ${scrolled ? "scrolled" : ""}`}>
-      <nav className="nav-container">
+    <span className="item"><FaGlobe /> Website Development</span>
+    <span className="sep">|</span>
 
-        <NavLink to="/" className="logo" onClick={closeAll}>
-          <img src="/asd_logo.png" alt="logo" />
-          <span>ASDTech Creation</span>
-        </NavLink>
+    <span className="item"><FaMobileAlt /> Mobile App Development</span>
+    <span className="sep">|</span>
 
-        {/* HAMBURGER — always visible on mobile, sits above drawer via z-index */}
-        <button
-          className={`hamburger ${mobileOpen ? "open" : ""}`}
-          onClick={() => setMobileOpen((p) => !p)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-        >
-          <span></span><span></span><span></span>
-        </button>
+    <span className="item"><FaSearch /> SEO Optimization</span>
+    <span className="sep">|</span>
 
-        {/* DESKTOP NAV */}
-        <div className="nav-menu desktop-only">
-          <NavLink to="/"      onClick={closeAll}>Home</NavLink>
-          <NavLink to="/about" onClick={closeAll}>About</NavLink>
+    <span className="item"><FaShoppingCart /> E-Commerce Solutions</span>
 
-          <div className="mega-wrapper" ref={desktopMegaRef}>
-            <button
-              className={`mega-trigger ${isServiceActive ? "active-parent" : ""} ${desktopMega ? "mega-open" : ""}`}
-              onClick={() => setDesktopMega((p) => !p)}
-              aria-expanded={desktopMega}
-            >
-              Services <span className="mega-arrow">▾</span>
-            </button>
-            <MegaPanel show={desktopMega} />
+  </div>
+</div>
+
+        {/* RIGHT SIDE */}
+        <div className="topbar-right">
+          <div className="topbar-phones-inline">
+            <a href="tel:+918754631713" className="topbar-phone">
+              <FaPhoneAlt /> 87546 31713
+            </a>
+
+            <span className="phone-sep">|</span>
+
+            <a href="tel:+919876543210" className="topbar-phone">
+              <FaPhoneAlt /> 98765 43210
+            </a>
           </div>
 
-          <NavLink to="/portfolio" onClick={closeAll}>Portfolio</NavLink>
-          <NavLink to="/career"    onClick={closeAll}>Career</NavLink>
-          <NavLink to="/contact"   onClick={closeAll}>Contact</NavLink>
-          <a
-  href="https://wa.me/918754631713?text=Hi%20I%20want%20to%20build%20a%20website"
-  className="cta whatsapp"
-  target="_blank"
-  rel="noreferrer"
-  onClick={closeAll}
->
-  <FaWhatsapp style={{ marginRight: "8px" }} />
-  WhatsApp
-</a>
+          <div className="lang-dropdown">
+            <select>
+              <option value="en">EN</option>
+              <option value="ta">TA</option>
+            </select>
+          </div>
         </div>
+      </div>
 
-      </nav>
+      <header className={`nav-wrapper ${scrolled ? "scrolled" : ""}`}>
+        <nav className="nav-container">
 
-      {mobileDrawer}
-    </header>
+          <NavLink to="/" className="logo" onClick={closeAll}>
+            <img src="/asd_logo.png" alt="logo" />
+            <span>ASDTech Creation</span>
+          </NavLink>
+
+          {/* HAMBURGER — always visible on mobile, sits above drawer via z-index */}
+          <button
+            className={`hamburger ${mobileOpen ? "open" : ""}`}
+            onClick={() => setMobileOpen((p) => !p)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+          >
+            <span></span><span></span><span></span>
+          </button>
+
+          {/* DESKTOP NAV */}
+          <div className="nav-menu desktop-only">
+            <NavLink to="/" onClick={closeAll}>Home</NavLink>
+            <NavLink to="/about" onClick={closeAll}>About</NavLink>
+
+            <div className="mega-wrapper" ref={desktopMegaRef}>
+              <button
+                className={`mega-trigger ${isServiceActive ? "active-parent" : ""} ${desktopMega ? "mega-open" : ""}`}
+                onClick={() => setDesktopMega((p) => !p)}
+                aria-expanded={desktopMega}
+              >
+                Services <span className="mega-arrow">▾</span>
+              </button>
+              <MegaPanel show={desktopMega} />
+            </div>
+
+            <NavLink to="/portfolio" onClick={closeAll}>Portfolio</NavLink>
+            <NavLink to="/career" onClick={closeAll}>Career</NavLink>
+            <NavLink to="/contact" onClick={closeAll}>Contact</NavLink>
+            <a
+              href="https://wa.me/918754631713?text=Hi%20I%20want%20to%20build%20a%20website"
+              className="cta whatsapp"
+              target="_blank"
+              rel="noreferrer"
+              onClick={closeAll}
+            >
+              <FaWhatsapp style={{ marginRight: "8px" }} />
+              WhatsApp
+            </a>
+          </div>
+
+        </nav>
+
+        {mobileDrawer}
+      </header>
     </>
-   
+
   );
 }
 

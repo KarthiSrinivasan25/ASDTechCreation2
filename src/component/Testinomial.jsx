@@ -1,34 +1,50 @@
 import { useEffect, useRef, useState } from "react";
 import "./Testinomial.css";
-
-const data = [
-  {
-    title: "A reliable development partner we trust.",
-    text: "ASDTech Creation helped us build a scalable system with clean architecture and fast performance.",
-    name: "Arjun Mehta",
-    role: "CEO, TechNova",
-    img: "https://randomuser.me/api/portraits/men/32.jpg",
-    rating: 5
-  },
-  {
-    title: "Excellent UI and backend execution.",
-    text: "They delivered ahead of schedule with great quality and smooth UX.",
-    name: "Sarah Johnson",
-    role: "Founder, StyleCart",
-    img: "https://randomuser.me/api/portraits/women/44.jpg",
-    rating: 5
-  },
-  {
-    title: "Highly professional engineering team.",
-    text: "Strong communication and scalable backend system delivered perfectly.",
-    name: "Michael Lee",
-    role: "CTO, FinEdge",
-    img: "https://randomuser.me/api/portraits/men/76.jpg",
-    rating: 5
-  }
-];
+import projects from "../api_js/script"; // Import your projects data
 
 function Testimonial() {
+  // Extract testimonials from projects that have testimonial data
+  const testimonialData = projects
+    .filter(project => project.testimonial) // Only include projects with testimonial
+    .map(project => ({
+      title: project.title,
+      text: project.testimonial.message,
+      name: project.testimonial.name,
+      role: `${project.testimonial.designation}, ${project.testimonial.company}`,
+      img: project.testimonial.image || "https://randomuser.me/api/portraits/men/32.jpg",
+      rating: 5,
+      projectCategory: project.category,
+      projectLink: project.liveUrl
+    }));
+
+  // If no testimonials, use fallback data
+  const data = testimonialData.length > 0 ? testimonialData : [
+    {
+      title: "A reliable development partner we trust.",
+      text: "ASDTech Creation helped us build a scalable system with clean architecture and fast performance.",
+      name: "Arjun Mehta",
+      role: "CEO, TechNova",
+      img: "https://randomuser.me/api/portraits/men/32.jpg",
+      rating: 5
+    },
+    {
+      title: "Excellent UI and backend execution.",
+      text: "They delivered ahead of schedule with great quality and smooth UX.",
+      name: "Sarah Johnson",
+      role: "Founder, StyleCart",
+      img: "https://randomuser.me/api/portraits/women/44.jpg",
+      rating: 5
+    },
+    {
+      title: "Highly professional engineering team.",
+      text: "Strong communication and scalable backend system delivered perfectly.",
+      name: "Michael Lee",
+      role: "CTO, FinEdge",
+      img: "https://randomuser.me/api/portraits/men/76.jpg",
+      rating: 5
+    }
+  ];
+
   const [current, setCurrent] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [fade, setFade] = useState(false);
@@ -67,7 +83,7 @@ function Testimonial() {
     }
 
     return () => clearInterval(intervalRef.current);
-  }, [autoPlay]);
+  }, [autoPlay, data.length]);
 
   // PROGRESS BAR ANIMATION
   useEffect(() => {
@@ -87,19 +103,11 @@ function Testimonial() {
     <section className="testimonials-dynamic">
       <div className="container">
 
-        {/* <div className="testimonials-header text-center mb-5">
-          <span className="badge"></span>
-          <h2>What clients say about ASDTech Creation</h2>
-          <p>Real feedback from real projects and real clients</p>
-        </div> */}
-
-
- <div className="section-header">
-      <span className="section-badge"><i className="fas fa-gem me-1"></i> Testimonials</span>
-      <h2 className="section-title">What clients say about ASDTech Creation</h2>
-      <p className="text-secondary">Real feedback from real projects and real clients</p>
-    </div>
-
+        <div className="section-header">
+          <span className="section-badge"><i className="fas fa-gem me-1"></i> Testimonials</span>
+          <h2 className="section-title">What clients say about ASDTech Creation</h2>
+          <p className="text-secondary">Real feedback from real projects and real clients</p>
+        </div>
 
         <div className="row g-4">
 
@@ -109,7 +117,7 @@ function Testimonial() {
 
               <div className="main-topbar">
                 <div className="rating">
-                  {"★".repeat(d.rating)}
+                  {"★".repeat(d.rating || 5)}
                 </div>
 
                 <button id="toggleBtn" onClick={toggleAuto}>
@@ -125,6 +133,9 @@ function Testimonial() {
                 <div>
                   <strong>{d.name}</strong>
                   <span>{d.role}</span>
+                  {d.projectCategory && (
+                    <span className="project-tag">Project: {d.projectCategory}</span>
+                  )}
                 </div>
               </div>
 
@@ -147,6 +158,9 @@ function Testimonial() {
                 >
                   <p>{item.title}</p>
                   <span>{item.name}</span>
+                  {item.projectCategory && (
+                    <span className="side-project-tag">{item.projectCategory}</span>
+                  )}
                 </div>
               ))}
 
