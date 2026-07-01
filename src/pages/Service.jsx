@@ -8,6 +8,7 @@ import ServicesCards from '../component/ServicesCards'
 import React from "react";
 import { Link } from "react-router-dom";
 import SEO from '../component/SEO';
+import Cta from '../component/Cta'
 
 function Service() {
     return (
@@ -134,6 +135,15 @@ function Service() {
                     </div>
                 </div>
             </section>
+
+            <Cta
+  badgeTitle="Let's Build Together"
+  prefix="Ready to Grow"
+  highlight="Your Business"
+  suffix="with Our Services?"
+  description="From custom websites and mobile apps to SEO and digital solutions, ASDTech Creation delivers innovative, scalable, and result-driven services tailored to your business goals. Let's turn your ideas into reality."
+  button2="Get Free Consultation"
+/>
 
         </>
 

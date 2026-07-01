@@ -136,7 +136,7 @@ function Navbar() {
         <NavLink to="/career" onClick={closeAll}>Career</NavLink>
         <NavLink to="/contact" onClick={closeAll}>Contact</NavLink>
         <a
-          href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20want%20to%20build%20a%20website"
+          href="https://wa.me/919363184093?text=Hi%20I%20want%20to%20build%20a%20website"
           className="cta whatsapp"
           target="_blank"
           rel="noreferrer"
@@ -175,13 +175,13 @@ function Navbar() {
         <div className="topbar-right">
           <div className="topbar-phones-inline">
             <a href="tel:+918754631713" className="topbar-phone">
-              <FaPhoneAlt /> 87546 31713
+              <FaPhoneAlt /> 93631 84093
             </a>
 
             <span className="phone-sep">|</span>
 
             <a href="tel:+919876543210" className="topbar-phone">
-              <FaPhoneAlt /> 98765 43210
+              <FaPhoneAlt /> 93610 64430
             </a>
           </div>
 
@@ -232,7 +232,7 @@ function Navbar() {
             <NavLink to="/career" onClick={closeAll}>Career</NavLink>
             <NavLink to="/contact" onClick={closeAll}>Contact</NavLink>
             <a
-              href="https://wa.me/918754631713?text=Hi%20I%20want%20to%20build%20a%20website"
+              href="https://wa.me/919363184093?text=Hi%20I%20want%20to%20build%20a%20website"
               className="cta whatsapp"
               target="_blank"
               rel="noreferrer"

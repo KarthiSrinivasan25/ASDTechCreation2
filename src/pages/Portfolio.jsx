@@ -1,10 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import "./Portfolio.css";
 import SEO from '../component/SEO';
 import BreadCrumb from "../component/BreadCrumb";
 import Hero from "../component/Hero";
 import PortfolioCard from "../component/PortfolioCard";
 import projects from "../api_js/script";
-import "./Portfolio.css";
+
 import GallerySection from "../component/GallerySection";
 import TechnologiesSection from "../component/TechnologiesSection";
 import StatsCompact from "../component/StatsCompact";

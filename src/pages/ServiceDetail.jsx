@@ -14,7 +14,7 @@ const serviceData = {
         icon: 'fa-code',
         heroTag: 'Web Development',
         heroTagIcon: 'fa-code',
-        heroTitle: 'Build High-Performance Web Applications',
+        heroTitle: 'Build High-Performance ',
         heroTitleHighlight: 'Web Applications',
         heroDesc: 'We build fast, scalable, and secure web applications that drive business growth and deliver exceptional user experiences.',
         heroStats: [
@@ -83,7 +83,7 @@ const serviceData = {
         icon: 'fa-chart-line',
         heroTag: 'SEO Services',
         heroTagIcon: 'fa-chart-line',
-        heroTitle: 'Dominate Search Rankings with Data-Driven SEO',
+        heroTitle: 'Dominate Search Rankings with ',
         heroTitleHighlight: 'Data-Driven SEO',
         heroDesc: 'We help businesses increase organic traffic, improve search rankings, and drive sustainable growth through proven SEO strategies.',
         heroStats: [
@@ -148,7 +148,7 @@ const serviceData = {
         icon: 'fa-mobile-alt',
         heroTag: 'Mobile App Development',
         heroTagIcon: 'fa-mobile-alt',
-        heroTitle: 'Build World-Class Mobile Applications',
+        heroTitle: 'Build World-Class ',
         heroTitleHighlight: 'Mobile Applications',
         heroDesc: 'We design and develop native and cross-platform mobile apps that deliver exceptional user experiences and drive business growth.',
         heroStats: [
@@ -296,11 +296,11 @@ function ServiceDetail() {
         <>
             <BreadCrumb pageName={data?.name} />
 
-            <Hero
-                HeroTitlePrefix="Where Creativity Meets Code"
-                HeroTitleSuffix="Meets Code"
-                HeroDescription="Get a complete overview of this service, including its features, workflow, technologies, and real-world value for your business growth."
-            />
+        <Hero
+    HeroTitlePrefix={data?.heroTitle}
+    HeroTitleSuffix={data?.heroTitleHighlight}
+    HeroDescription={data?.heroDesc}
+/>
 
             <section className="service-detail-section">
                 <div className="container">

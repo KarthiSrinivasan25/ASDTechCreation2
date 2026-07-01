@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SmartModal({ show, onClose, popupType, bgImage = "./stats.png" }) {
+function SmartModal({ show, onClose, popupType, bgImage = "./bread.jpg" }) {
     const [formData, setFormData] = useState({
         name: "",
         email: "",

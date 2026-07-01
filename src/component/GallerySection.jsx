@@ -475,7 +475,9 @@ div.addEventListener('touchend', () => {
         window.addEventListener('touchmove', onLightboxDragMove, { passive: false });
         window.addEventListener('touchend', onLightboxDragEnd, { passive: true });
 
-        closeBtn.addEventListener('touchend', closeLightbox);
+
+        closeBtn.addEventListener("click", closeLightbox);
+closeBtn.addEventListener("touchend", closeLightbox);
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });

@@ -40,8 +40,8 @@ function Contact() {
                                     <div className="info-icon-premium"><i className="fas fa-phone-alt"></i></div>
                                     <div className="info-text-premium">
                                         <h4>Phone</h4>
-                                        <p>+91 9361 064430</p>
-                                        <p>+91 8754 631713</p>
+                                        <p>+91 93631 84093</p>
+                                        <p>+91 93610 64430</p>
                                     </div>
                                 </div>
 

@@ -5,8 +5,10 @@ import BreadCrumb from "../component/BreadCrumb";
 import Hero from "../component/Hero";
 import "./Project_Detail.css";
 import projects from "../api_js/script.js";
+import Testinomial from "../component/Testinomial.jsx";
 
 function Project_Detail() {
+   
   const { id } = useParams();
   const project = projects.find((p) => p.id === Number(id));
 
@@ -239,6 +241,8 @@ function Project_Detail() {
   /* ─────────────────────────────────────────
      RENDER
   ───────────────────────────────────────── */
+
+  
   return (
     <>
       <BreadCrumb pageName="Project Overview" />
@@ -425,70 +429,9 @@ function Project_Detail() {
         </div>
       </section>
 
-       {/* CLIENT TESTIMONIAL */}
-{project.testimonial && (
-  <section className="project-testimonial">
-    <div className="container">
-      <div className="testimonial-header text-center">
-        <span className="section-badge"><i className="fas fa-images me-1"></i> Client Feedback</span>
-              <h2 className="section-title">What the Client Said</h2>
-              
-      </div>
 
-      <div className="testimonial-box">
 
-        <div className="quote-bg">
-          <i className="fas fa-quote-left"></i>
-        </div>
-
-        <div className="testimonial-top">
-
-          <div className="client-profile">
-            <img
-              src={project.testimonial.image}
-              alt={project.testimonial.name}
-            />
-
-            <div>
-              <h4>{project.testimonial.name}</h4>
-              <span>{project.testimonial.designation}</span>
-
-              <div className="company">
-                <i className="fas fa-building me-2"></i>
-                {project.testimonial.company}
-              </div>
-            </div>
-          </div>
-
-          <div className="rating">
-            {[...Array(5)].map((_, i) => (
-              <i key={i} className="fas fa-star"></i>
-            ))}
-          </div>
-
-        </div>
-
-        <p className="testimonial-text">
-          {project.testimonial.message}
-        </p>
-
-        <div className="testimonial-footer">
-
-          <div className="verified">
-            <i className="fas fa-circle-check me-2"></i>
-            Verified Client
-          </div>
-
-          <div className="project-name">
-            {project.title}
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-)}
+{project && <Testinomial projectId={project.id} />}
     </>
   );
 }
