@@ -13,12 +13,19 @@ import AnniversaryPopup from "./component/AnniversaryPopup"
 import Project_Detail from "./pages/Project_Detail";
 import ScrollToTop from "./component/ScrollToTop";
 import ServiceDetail from './pages/ServiceDetail'
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiesPolicy from "./pages/CookiesPolicy";
+import Accessibility from "./pages/Accessibility";
+import ScrollToTopButton from "./component/ScrollToTopButton";
+import HelpCenter from "./pages/HelpCenter";
+import TermsConditions from "./pages/TermsConditions";
 
 function App() {
 
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <ScrollToTopButton />
 
       <Navbar />
 
@@ -31,7 +38,11 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/project-details/:id" element={<Project_Detail />} />
         <Route path="/service/:serviceId" element={<ServiceDetail />} />
-        
+        <Route path="/help-center" element={<HelpCenter />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/cookies-policy" element={<CookiesPolicy />} />
+        <Route path="/accessibility" element={<Accessibility />} />
+        <Route path="/terms-and-conditions" element={<TermsConditions />} />
       </Routes>
 
       <AnniversaryWidget />

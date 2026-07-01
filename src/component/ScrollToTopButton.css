@@ -1,0 +1,282 @@
+/* ==============================
+   PREMIUM SCROLL TO TOP BUTTON
+============================== */
+
+.scroll-top-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+
+  width: 50px;
+  height: 50px;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+  font-size: 18px;
+
+  background: linear-gradient(135deg, #06b6d4, #2563eb);
+
+  overflow: hidden;
+
+  z-index: 9999;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(40px) scale(.8);
+
+  transition:
+    transform .4s ease,
+    opacity .4s ease,
+    visibility .4s ease,
+    box-shadow .4s ease;
+
+  box-shadow:
+    0 8px 25px rgba(37, 99, 235, .35);
+
+  animation: floating 3s ease-in-out infinite;
+}
+
+/* Show Button */
+
+.scroll-top-btn.show {
+
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0) scale(1);
+
+}
+
+/* Hover */
+
+.scroll-top-btn:hover {
+
+  transform: translateY(-6px) scale(1.08);
+
+  box-shadow:
+      0 12px 35px rgba(37,99,235,.45),
+      0 0 20px rgba(6,182,212,.45);
+
+}
+
+/* Click */
+
+.scroll-top-btn:active {
+
+  transform: scale(.95);
+
+}
+
+/* Icon */
+
+.scroll-top-btn i{
+
+  position: relative;
+
+  z-index: 5;
+
+  transition: .3s;
+
+}
+
+.scroll-top-btn:hover i{
+
+  transform: translateY(-2px);
+
+}
+
+/* =================================
+      Animated Gradient
+================================== */
+
+.scroll-top-btn::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  border-radius:50%;
+
+  background:
+  linear-gradient(
+      135deg,
+      #38bdf8,
+      #2563eb,
+      #06b6d4,
+      #3b82f6
+  );
+
+  background-size:300% 300%;
+
+  animation:gradientMove 6s linear infinite;
+
+  z-index:0;
+
+}
+
+/* =================================
+          Shine Effect
+================================== */
+
+.scroll-top-btn::after{
+
+  content:"";
+
+  position:absolute;
+
+  top:-120%;
+
+  left:-50%;
+
+  width:40%;
+
+  height:300%;
+
+  background:rgba(255,255,255,.55);
+
+  transform:rotate(25deg);
+
+  transition:.7s;
+
+}
+
+.scroll-top-btn:hover::after{
+
+  left:140%;
+
+}
+
+/* =================================
+          Pulse Ring
+================================== */
+
+.scroll-top-btn span{
+
+  position:absolute;
+
+  inset:-5px;
+
+  border-radius:50%;
+
+  border:2px solid rgba(6,182,212,.35);
+
+  animation:pulseRing 2s infinite;
+
+}
+
+/* =================================
+         Floating Animation
+================================== */
+
+@keyframes floating{
+
+  0%{
+
+      transform:translateY(0);
+
+  }
+
+  50%{
+
+      transform:translateY(-5px);
+
+  }
+
+  100%{
+
+      transform:translateY(0);
+
+  }
+
+}
+
+/* =================================
+        Gradient Animation
+================================== */
+
+@keyframes gradientMove{
+
+0%{
+
+background-position:0% 50%;
+
+}
+
+50%{
+
+background-position:100% 50%;
+
+}
+
+100%{
+
+background-position:0% 50%;
+
+}
+
+}
+
+/* =================================
+          Pulse Ring
+================================== */
+
+@keyframes pulseRing{
+
+0%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+70%{
+
+transform:scale(1.45);
+
+opacity:0;
+
+}
+
+100%{
+
+opacity:0;
+
+}
+
+}
+
+/* =================================
+         Responsive
+================================== */
+
+@media (max-width:768px){
+
+.scroll-top-btn{
+
+width:36px;
+
+height:36px;
+
+right:18px;
+
+bottom:20px;
+
+font-size:16px;
+
+}
+
+}

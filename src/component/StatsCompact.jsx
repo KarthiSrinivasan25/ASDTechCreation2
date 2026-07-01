@@ -42,7 +42,7 @@ const StatCard = ({ icon, target, suffix, label }) => {
   }, [target]);
 
   return (
-    <div className="col-lg-3 col-md-6">
+    <div className="col-6 col-lg-3 col-md-6">
       <div className="stat-compact-item" ref={cardRef}>
         <div className="stat-compact-icon">
           <i className={icon}></i>

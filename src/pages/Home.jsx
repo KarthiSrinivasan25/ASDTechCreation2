@@ -105,7 +105,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="col-lg-6">
+            <div className="col-lg-6 d-none d-lg-block">
               <div className="about-image-wrapper">
                 <img src="./about.png" alt="Web development team" className="img-fluid" />
                 <div className="image-gradient-overlay"></div>

@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
   return (
     <footer className="advanced-footer">
-      
+
       {/* Tech Background Effects */}
       <div className="tech-lines"></div>
 
@@ -60,28 +61,47 @@ function Footer() {
             </div>
 
             {/* Explore */}
-           <div className="col-lg-2 col-md-6 col-6">
+            <div className="col-lg-2 col-md-6 col-6">
               <h5 className="footer-heading">Explore</h5>
 
               <ul className="footer-links">
-                <li><a href="#"><i className="fas fa-chevron-right"></i> Home</a></li>
-                <li><a href="#"><i className="fas fa-chevron-right"></i> About</a></li>
-                <li><a href="#"><i className="fas fa-chevron-right"></i> Services</a></li>
-                <li><a href="#"><i className="fas fa-chevron-right"></i> Portfolio</a></li>
-                <li><a href="#"><i className="fas fa-chevron-right"></i> Careers</a></li>
+                <li>
+                  <Link to="/"><i className="fas fa-chevron-right"></i> Home</Link>
+                </li>
+                <li>
+                  <Link to="/about"><i className="fas fa-chevron-right"></i> About</Link>
+                </li>
+                <li>
+                  <Link to="/service"><i className="fas fa-chevron-right"></i> Services</Link>
+                </li>
+                <li>
+                  <Link to="/portfolio"><i className="fas fa-chevron-right"></i> Portfolio</Link>
+                </li>
+                <li>
+                  <Link to="/career"><i className="fas fa-chevron-right"></i> Careers</Link>
+                </li>
+                <li>
+                  <Link to="/contact"><i className="fas fa-chevron-right"></i> Contact</Link>
+                </li>
               </ul>
             </div>
 
             {/* Resources */}
-           <div className="col-lg-2 col-md-6 col-6">
+            <div className="col-lg-2 col-md-6 col-6">
               <h5 className="footer-heading">Resources</h5>
 
               <ul className="footer-links">
-                <li><a href="#"><i className="fas fa-chevron-right"></i> Blog</a></li>
-                <li><a href="#"><i className="fas fa-chevron-right"></i> Case Studies</a></li>
-                <li><a href="#"><i className="fas fa-chevron-right"></i> Help Center</a></li>
-                <li><a href="#"><i className="fas fa-chevron-right"></i> Privacy</a></li>
-                <li><a href="#"><i className="fas fa-chevron-right"></i> Terms</a></li>
+                {/* <li><a href="#"><i className="fas fa-chevron-right"></i> Blog</a></li>
+                <li><a href="#"><i className="fas fa-chevron-right"></i> Case Studies</a></li> */}
+                <li>
+                  <Link to="/help-center"><i className="fas fa-chevron-right"></i> Help Center</Link>
+                </li>
+                <li>
+                  <Link to="/privacy-policy"><i className="fas fa-chevron-right"></i> Privacy</Link>
+                </li>
+                <li>
+                  <Link to="/terms-and-conditions"><i className="fas fa-chevron-right"></i> Terms</Link>
+                </li>
               </ul>
             </div>
 
@@ -91,7 +111,7 @@ function Footer() {
 
               <div className="contact-info-item">
                 <i className="fas fa-map-marker-alt"></i>
-                <span>Chennai, Tamil Nadu, India</span>
+                <span>Salem, Tamil Nadu, India</span>
               </div>
 
               <div className="contact-info-item">
@@ -127,9 +147,9 @@ function Footer() {
             </div>
 
             <div className="col-md-6 text-md-end text-center">
-              <a href="#" className="me-3">Privacy</a>
-              <a href="#" className="me-3">Cookies</a>
-              <a href="#">Accessibility</a>
+              <Link to="/privacy-policy" className="me-3">Privacy</Link>
+              <Link to="/cookies-policy" className="me-3">Cookies</Link>
+              <Link to="/accessibility">Accessibility</Link>
             </div>
 
           </div>
