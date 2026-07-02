@@ -78,7 +78,8 @@
     /* ========== WHY JOIN US ========== */
     .why-join {
       padding: 60px 0;
-       background: #eef2ff;
+       background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%);
+       position: relative;
     }
 
     .section-badge {

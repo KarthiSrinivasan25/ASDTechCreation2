@@ -8,7 +8,7 @@ import projects from "../api_js/script.js";
 import Testinomial from "../component/Testinomial.jsx";
 
 function Project_Detail() {
-   
+
   const { id } = useParams();
   const project = projects.find((p) => p.id === Number(id));
 
@@ -19,11 +19,11 @@ function Project_Detail() {
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   // refs — never stale inside timers / rAF
-  const displayIndexRef  = useRef(0);
-  const isAnimatingRef   = useRef(false);
+  const displayIndexRef = useRef(0);
+  const isAnimatingRef = useRef(false);
   const isAutoPlayingRef = useRef(true);
-  const autoPlayTimer    = useRef(null);
-  const thumbnailsRef    = useRef(null);
+  const autoPlayTimer = useRef(null);
+  const thumbnailsRef = useRef(null);
 
   if (!project) return <h2>Project not found</h2>;
   const gallery = project.gallery || [];
@@ -40,18 +40,18 @@ function Project_Detail() {
   }
 
   function mkBurst(x, y) {
-    const colors = ["#4cc9f0","#4361ee","#a5b4fc","#f72585","#ffd700"];
+    const colors = ["#4cc9f0", "#4361ee", "#a5b4fc", "#f72585", "#ffd700"];
     for (let i = 0; i < 30; i++) {
       const el = document.createElement("div");
       el.className = "sparkle-burst";
-      const size  = 4 + Math.random() * 10;
+      const size = 4 + Math.random() * 10;
       const angle = Math.random() * Math.PI * 2;
-      const dist  = 40 + Math.random() * 100;
+      const dist = 40 + Math.random() * 100;
       el.style.cssText = `
         width:${size}px;height:${size}px;
-        left:${x + Math.cos(angle)*dist}px;top:${y + Math.sin(angle)*dist}px;
+        left:${x + Math.cos(angle) * dist}px;top:${y + Math.sin(angle) * dist}px;
         transform:translate(-50%,-50%);
-        background:radial-gradient(circle,${colors[~~(Math.random()*colors.length)]},transparent);
+        background:radial-gradient(circle,${colors[~~(Math.random() * colors.length)]},transparent);
         animation-duration:${0.4 + Math.random() * 0.4}s`;
       document.body.appendChild(el);
       setTimeout(() => el.remove(), 800);
@@ -80,10 +80,10 @@ function Project_Detail() {
 
     const fr = fromThumbEl.getBoundingClientRect();
     const tr = featuredEl.getBoundingClientRect();
-    const sx = fr.left + fr.width  / 2;
-    const sy = fr.top  + fr.height / 2;
-    const ex = tr.left + tr.width  / 2;
-    const ey = tr.top  + tr.height / 2;
+    const sx = fr.left + fr.width / 2;
+    const sy = fr.top + fr.height / 2;
+    const ex = tr.left + tr.width / 2;
+    const ey = tr.top + tr.height / 2;
 
     // create butterfly
     const bf = document.createElement("div");
@@ -97,9 +97,9 @@ function Project_Detail() {
       bf.style.opacity = "1";
       for (let i = 0; i < 8; i++)
         mkSparkle(
-          sx + (Math.random()-0.5)*60,
-          sy + (Math.random()-0.5)*60,
-          ["large","medium","small"][~~(Math.random()*3)]
+          sx + (Math.random() - 0.5) * 60,
+          sy + (Math.random() - 0.5) * 60,
+          ["large", "medium", "small"][~~(Math.random() * 3)]
         );
     }, 50);
 
@@ -107,23 +107,23 @@ function Project_Detail() {
     const trail = setInterval(() => {
       if (bf.style.opacity === "0") return;
       const r = bf.getBoundingClientRect();
-      const cx = r.left + r.width/2, cy = r.top + r.height/2;
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
       for (let i = 0; i < 3; i++)
         mkSparkle(
-          cx + (Math.random()-0.5)*30,
-          cy + (Math.random()-0.5)*30,
-          ["large","medium","small"][~~(Math.random()*3)]
+          cx + (Math.random() - 0.5) * 30,
+          cy + (Math.random() - 0.5) * 30,
+          ["large", "medium", "small"][~~(Math.random() * 3)]
         );
     }, 30);
 
     // animate
     const t0 = Date.now(), dur = 1000;
     function tick() {
-      const p = Math.min((Date.now()-t0)/dur, 1);
-      const e = p < 0.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2;
-      bf.style.left      = (sx + (ex-sx)*e + Math.sin(e*20)*8) + "px";
-      bf.style.top       = (sy + (ey-sy)*e - Math.sin(e*Math.PI)*120 + Math.sin(e*15)*6) + "px";
-      bf.style.transform = `translate(-50%,-50%) scale(${0.3+e*0.7}) rotate(${e*250}deg)`;
+      const p = Math.min((Date.now() - t0) / dur, 1);
+      const e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+      bf.style.left = (sx + (ex - sx) * e + Math.sin(e * 20) * 8) + "px";
+      bf.style.top = (sy + (ey - sy) * e - Math.sin(e * Math.PI) * 120 + Math.sin(e * 15) * 6) + "px";
+      bf.style.transform = `translate(-50%,-50%) scale(${0.3 + e * 0.7}) rotate(${e * 250}deg)`;
 
       if (p < 1) { requestAnimationFrame(tick); return; }
 
@@ -156,9 +156,9 @@ function Project_Detail() {
     const cr = container.getBoundingClientRect();
     const tr = target.getBoundingClientRect();
     if (container.scrollWidth > container.clientWidth) {
-      container.scrollTo({ left: Math.max(0, container.scrollLeft + tr.left - cr.left - cr.width/2 + tr.width/2), behavior: smooth ? "smooth" : "auto" });
+      container.scrollTo({ left: Math.max(0, container.scrollLeft + tr.left - cr.left - cr.width / 2 + tr.width / 2), behavior: smooth ? "smooth" : "auto" });
     } else {
-      container.scrollTo({ top: Math.max(0, container.scrollTop + tr.top - cr.top - cr.height/2 + tr.height/2), behavior: smooth ? "smooth" : "auto" });
+      container.scrollTo({ top: Math.max(0, container.scrollTop + tr.top - cr.top - cr.height / 2 + tr.height / 2), behavior: smooth ? "smooth" : "auto" });
     }
   }
 
@@ -186,7 +186,7 @@ function Project_Detail() {
 
       // get the NEXT thumb element from DOM
       const thumbEls = thumbnailsRef.current?.querySelectorAll(".spotlight-thumb");
-      const fromEl   = thumbEls ? thumbEls[nextIdx] : null;
+      const fromEl = thumbEls ? thumbEls[nextIdx] : null;
 
       flyAndSwap(nextIdx, fromEl);
 
@@ -207,9 +207,9 @@ function Project_Detail() {
   function navigate(dir) {
     if (isAnimatingRef.current || gallery.length === 0) return;
     stopAutoPlay();
-    const nextIdx  = (displayIndexRef.current + dir + gallery.length) % gallery.length;
+    const nextIdx = (displayIndexRef.current + dir + gallery.length) % gallery.length;
     const thumbEls = thumbnailsRef.current?.querySelectorAll(".spotlight-thumb");
-    const fromEl   = thumbEls ? thumbEls[nextIdx] : null;
+    const fromEl = thumbEls ? thumbEls[nextIdx] : null;
     flyAndSwap(nextIdx, fromEl);
     setTimeout(startAutoPlay, 5000);
   }
@@ -217,20 +217,20 @@ function Project_Detail() {
   /* ─────────────────────────────────────────
      LIGHTBOX
   ───────────────────────────────────────── */
-  function openLightbox(i) { setLightboxIndex(i); setLightboxOpen(true); document.body.style.overflow="hidden"; }
-  function closeLightbox()  { setLightboxOpen(false); document.body.style.overflow=""; startAutoPlay(); }
+  function openLightbox(i) { setLightboxIndex(i); setLightboxOpen(true); document.body.style.overflow = "hidden"; }
+  function closeLightbox() { setLightboxOpen(false); document.body.style.overflow = ""; startAutoPlay(); }
 
   useEffect(() => {
     function onKey(e) {
       if (lightboxOpen) {
-        if (e.key==="Escape")     closeLightbox();
-        if (e.key==="ArrowLeft")  setLightboxIndex(p=>(p-1+gallery.length)%gallery.length);
-        if (e.key==="ArrowRight") setLightboxIndex(p=>(p+1)%gallery.length);
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") setLightboxIndex(p => (p - 1 + gallery.length) % gallery.length);
+        if (e.key === "ArrowRight") setLightboxIndex(p => (p + 1) % gallery.length);
         return;
       }
-      if (e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA") return;
-      if (e.key==="ArrowLeft")  navigate(-1);
-      if (e.key==="ArrowRight") navigate(1);
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+      if (e.key === "ArrowLeft") navigate(-1);
+      if (e.key === "ArrowRight") navigate(1);
     }
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
@@ -242,7 +242,7 @@ function Project_Detail() {
      RENDER
   ───────────────────────────────────────── */
 
-  
+
   return (
     <>
       <BreadCrumb pageName="Project Overview" />
@@ -289,11 +289,11 @@ function Project_Detail() {
             <div className="project-sidebar">
               <div className="sidebar-title"><i className="fas fa-list-ul me-2"></i> Project Details</div>
               {[
-                { icon:"fa-user",         label:"Client",    value: project.client },
-                { icon:"fa-calendar-alt", label:"Started",   value: project.started },
-                { icon:"fa-clock",        label:"Duration",  value: project.duration },
-                { icon:"fa-tag",          label:"Category",  value: project.category },
-                project.industry && { icon:"fa-building", label:"Industry", value: project.industry },
+                { icon: "fa-user", label: "Client", value: project.client },
+                { icon: "fa-calendar-alt", label: "Started", value: project.started },
+                { icon: "fa-clock", label: "Duration", value: project.duration },
+                { icon: "fa-tag", label: "Category", value: project.category },
+                project.industry && { icon: "fa-building", label: "Industry", value: project.industry },
               ].filter(Boolean).map((item, i) => (
                 <div className="sidebar-item" key={i}>
                   <span className="item-icon"><i className={`fas ${item.icon}`}></i></span>
@@ -306,8 +306,8 @@ function Project_Detail() {
                   <div>
                     <div className="item-label">Live URL</div>
                     <div className="item-value">
-                      <a href={project.liveUrl} target="_blank" rel="noreferrer" style={{color:"#4361ee",textDecoration:"none"}}>
-                        {project.liveUrl.replace("https://","")}
+                      <a href={project.liveUrl} target="_blank" rel="noreferrer" style={{ color: "#4361ee", textDecoration: "none" }}>
+                        {project.liveUrl.replace("https://", "")}
                       </a>
                     </div>
                   </div>
@@ -316,15 +316,25 @@ function Project_Detail() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      <section className="project-tech-section" style={{
+        backgroundImage:
+          "linear-gradient(rgba(31, 40, 62, 0.189), rgba(47, 57, 84, 0.452)), url('/stats.png')",
+      }}>
+
+        <div className="container">
+
           {/* TECH STACK */}
           {project.techStack?.length > 0 && (
             <div className="tech-stack-section">
-              <span className="section-badge"><i className="fas fa-microchip me-1"></i> Technology Stack</span>
-              <h2 className="section-title">Built With</h2>
+              <span className="tech-section-badge"><i className="fas fa-microchip me-1"></i> Technology Stack</span>
+              <h2 className="tech-section-title">Built With</h2>
               <div className="tech-grid">
                 {project.techStack.map((tech, i) => (
                   <span className="tech-item" key={i}>
-                    <i className={tech.icon} style={{color:tech.color}}></i> {tech.label}
+                    <i className={tech.icon} style={{ color: tech.color }}></i> {tech.label}
                   </span>
                 ))}
               </div>
@@ -336,28 +346,42 @@ function Project_Detail() {
             <div className="challenges-section">
               {project.challenge && (
                 <div className="challenge-card">
-                  <span className="card-icon"><i className="fas fa-exclamation-triangle"></i></span>
-                  <h4>Challenge</h4><p>{project.challenge}</p>
+                  <div className="card-header">
+                    <span className="card-icon"><i className="fas fa-exclamation-triangle"></i></span>
+                    <h4>Challenge</h4>
+                  </div>
+                  <p>{project.challenge}</p>
                 </div>
               )}
               {project.solution && (
                 <div className="solution-card">
-                  <span className="card-icon"><i className="fas fa-lightbulb"></i></span>
-                  <h4>Solution</h4><p>{project.solution}</p>
+
+                  <div className="card-header">
+                    <span className="card-icon"><i className="fas fa-lightbulb"></i></span>
+                    <h4>Solution</h4>
+                  </div>
+                  <p>{project.solution}</p>
                 </div>
               )}
             </div>
           )}
+
+        </div>
+      </section>
+
+      <section className="gallery-section">
+        <div className="container">
+
 
           {/* GALLERY */}
           {gallery.length > 0 && (
             <div className="gallery-spotlight">
               <span className="section-badge"><i className="fas fa-images me-1"></i> Project Gallery</span>
               <h2 className="section-title">Visual Showcase</h2>
-              <p className="text-secondary" style={{marginBottom:"1rem"}}>
-                <i className="fas fa-star" style={{color:"#4cc9f0"}}></i> A collection of screenshots and visuals highlighting the project features, UI design, and user experience.
+              <p className="text-secondary" style={{ marginBottom: "1rem" }}>
+                <i className="fas fa-star" style={{ color: "#4cc9f0" }}></i> A collection of screenshots and visuals highlighting the project features, UI design, and user experience.
               </p>
-              
+
 
               <div className="spotlight-container">
                 {/* FEATURED */}
@@ -372,10 +396,10 @@ function Project_Detail() {
                     <div className="featured-sub">{currentImg.sub}</div>
                   </div>
                   <div className="featured-counter">{displayIndex + 1} / {gallery.length}</div>
-                  <button className="featured-nav-btn prev" onClick={e=>{e.stopPropagation();navigate(-1);}}>
+                  <button className="featured-nav-btn prev" onClick={e => { e.stopPropagation(); navigate(-1); }}>
                     <i className="fas fa-chevron-left"></i>
                   </button>
-                  <button className="featured-nav-btn next" onClick={e=>{e.stopPropagation();navigate(1);}}>
+                  <button className="featured-nav-btn next" onClick={e => { e.stopPropagation(); navigate(1); }}>
                     <i className="fas fa-chevron-right"></i>
                   </button>
                 </div>
@@ -387,8 +411,8 @@ function Project_Detail() {
                       key={index}
                       className={[
                         "spotlight-thumb",
-                        index === activeThumb                          ? "active"   : "",
-                        index === (activeThumb + 1) % gallery.length  ? "upcoming" : "",
+                        index === activeThumb ? "active" : "",
+                        index === (activeThumb + 1) % gallery.length ? "upcoming" : "",
                       ].join(" ").trim()}
                       onClick={e => {
                         if (isAnimatingRef.current) return;
@@ -398,7 +422,7 @@ function Project_Detail() {
                       }}
                     >
                       <img src={img.src} alt={img.title} loading="lazy" />
-                      <span className="thumb-index">{String(index+1).padStart(2,"0")}</span>
+                      <span className="thumb-index">{String(index + 1).padStart(2, "0")}</span>
                       <span className="thumb-title">{img.title}</span>
                     </div>
                   ))}
@@ -409,29 +433,29 @@ function Project_Detail() {
 
           {/* LIGHTBOX */}
           {lightboxOpen && (
-            <div className="lightbox-overlay active" onClick={e=>{if(e.target.classList.contains("lightbox-overlay"))closeLightbox();}}>
+            <div className="lightbox-overlay active" onClick={e => { if (e.target.classList.contains("lightbox-overlay")) closeLightbox(); }}>
               <button className="lightbox-close" onClick={closeLightbox}><i className="fas fa-times"></i></button>
               <div className="lightbox-main">
                 <img src={gallery[lightboxIndex]?.src} alt={gallery[lightboxIndex]?.title} />
               </div>
-              <div className="lightbox-counter">{lightboxIndex+1} / {gallery.length}</div>
+              <div className="lightbox-counter">{lightboxIndex + 1} / {gallery.length}</div>
             </div>
           )}
 
-         
+
           {/* CTA */}
-          <div className="project-cta">
+          {/* <div className="project-cta">
             <h3>Ready to Build Something Amazing?</h3>
             <p>Let's discuss how we can create a similar success story for your business.</p>
             <a href="#" className="btn-cta"><i className="fas fa-paper-plane"></i> Start Your Project</a>
-          </div>
+          </div> */}
 
         </div>
       </section>
 
 
 
-{project && <Testinomial projectId={project.id} />}
+      {project && <Testinomial projectId={project.id} />}
     </>
   );
 }

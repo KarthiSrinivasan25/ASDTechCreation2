@@ -204,7 +204,7 @@ function Portfolio() {
       />
 
       {/* PROJECT GRID */}
-      <section className="portfolio-preview" style={{ backgroundColor: "#eef2ff" }}>
+      <section className="portfolio-preview">
         <div className="container">
           <div className="section-header">
             <span className="section-badge">
