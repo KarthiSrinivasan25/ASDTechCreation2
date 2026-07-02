@@ -15,11 +15,11 @@ function Home() {
   return (
     <>
 
-    <SEO
-  title="ASDTech Creation | Web Development, Mobile App Development & SEO Company"
-  description="ASDTech Creation is a leading web development company offering website development, mobile app development, eCommerce solutions, SEO services, and digital solutions for businesses."
-  keywords="ASDTech Creation, Web Development Company, Website Development, Mobile App Development, SEO Services, eCommerce Website Development, eCommerce App Development, Digital Solutions"
-/>
+      <SEO
+        title="ASDTech Creation | Web Development, Mobile App Development & SEO Company"
+        description="ASDTech Creation is a leading web development company offering website development, mobile app development, eCommerce solutions, SEO services, and digital solutions for businesses."
+        keywords="ASDTech Creation, Web Development Company, Website Development, Mobile App Development, SEO Services, eCommerce Website Development, eCommerce App Development, Digital Solutions"
+      />
 
 
 
@@ -290,7 +290,7 @@ function Home() {
 
 
 
- {/* <section className="portfolio-preview">
+      {/* <section className="portfolio-preview">
         <div className="container">
           <div className="section-header">
             <span className="section-badge">

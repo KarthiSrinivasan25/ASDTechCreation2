@@ -30,7 +30,7 @@ const serviceData = {
         overview: {
             image: '/webImage.png',
             title: 'Custom Web Solutions That Drive Results',
-            desc: 'We build websites and web applications that combine stunning design with powerful functionality. Our focus is on creating digital experiences that engage users and achieve your business objectives.',
+            desc: 'We build modern, high-performance websites and web applications that seamlessly combine stunning design with powerful functionality. Every project is carefully crafted to deliver an exceptional user experience, ensuring your visitors stay engaged while achieving your business goals. From responsive business websites and eCommerce platforms to custom web applications and enterprise solutions, we develop scalable, secure, and fast-loading digital products tailored to your unique requirements. By leveraging the latest technologies, clean coding standards, and user-centric design principles, we create solutions that not only look impressive but also perform flawlessly across all devices. Our focus is to help your business establish a strong online presence, improve customer engagement, streamline operations, and drive sustainable growth through innovative web solutions.',
             list: [
                 'Custom design tailored to your brand',
                 'SEO-optimized for better search rankings',
@@ -65,16 +65,67 @@ const serviceData = {
             { icon: 'fab fa-bootstrap', color: '#7952b3', name: 'Bootstrap' }
         ],
         pricing: [
-            { price: '$2,500', period: '/project', title: 'Starter', desc: 'Perfect for small businesses', features: ['5 Pages Website', 'Mobile Responsive', 'SEO Optimized', '1 Month Support'], btnText: 'Get Started', popular: false },
-            { price: '$5,500', period: '/project', title: 'Professional', desc: 'For growing businesses', features: ['15 Pages Website', 'Custom CMS', 'E-commerce Ready', '3 Months Support'], btnText: 'Get Started', popular: true },
-            { price: '$9,900', period: '/project', title: 'Enterprise', desc: 'For large-scale applications', features: ['Unlimited Pages', 'Custom Development', 'API Integrations', '12 Months Support'], btnText: 'Contact Sales', popular: false }
+            {
+                price: "Starting at ₹14,999",
+                period: "",
+                title: "Starter",
+                desc: "Ideal for startups and small businesses.",
+                features: [
+                    "Up to 5 Pages",
+                    "Responsive Design",
+                    "Basic SEO Setup",
+                    "1 Month Support"
+                ],
+                btnText: "Get Quote",
+                popular: false
+            },
+            {
+                price: "Starting at ₹34,999",
+                period: "",
+                title: "Professional",
+                desc: "Perfect for growing businesses.",
+                features: [
+                    "Up to 15 Pages",
+                    "Custom UI/UX",
+                    "CMS Integration",
+                    "3 Months Support"
+                ],
+                btnText: "Get Quote",
+                popular: true
+            },
+            {
+                price: "Custom Pricing",
+                period: "",
+                title: "Enterprise",
+                desc: "Tailored solutions for enterprise businesses.",
+                features: [
+                    "Unlimited Pages",
+                    "Custom Web Application",
+                    "API Integrations",
+                    "Priority Support"
+                ],
+                btnText: "Contact Us",
+                popular: false
+            }
         ],
         faq: [
-            { q: 'How long does it take to build a website?', a: 'Timeline varies based on project complexity. A typical website takes 4-8 weeks, while complex web applications may take 3-6 months.' },
-            { q: 'Do you offer maintenance after launch?', a: 'Yes! We offer ongoing maintenance packages including updates, security patches, backups, and technical support.' },
-            { q: 'Can you redesign my existing website?', a: 'Absolutely! We can redesign your current website to improve performance, design, and user experience while preserving your content.' },
-            { q: 'Do you provide hosting services?', a: 'Yes, we offer cloud hosting solutions with 99.99% uptime, automatic backups, and 24/7 monitoring through our trusted partners.' }
-        ],
+    {
+        q: "How long does it take to build a website?",
+        a: "The timeline depends on your project requirements. A standard business website typically takes 2–4 weeks, while custom web applications and eCommerce solutions may require 6–12 weeks or more."
+    },
+    {
+        q: "How much does a website cost?",
+        a: "Website pricing depends on the number of pages, design complexity, features, and integrations. Our web development services start from ₹14,999, with custom pricing available for larger projects."
+    },
+    {
+        q: "Do you provide website maintenance after launch?",
+        a: "Yes. We offer ongoing maintenance, security updates, performance optimization, backups, and technical support to keep your website running smoothly."
+    },
+    {
+        q: "Will my website be mobile-friendly and SEO optimized?",
+        a: "Absolutely. Every website we build is fully responsive, optimized for speed, and follows SEO best practices to improve visibility on search engines."
+    }
+],
         cta: { title: 'Ready to Build Your Dream Website?', desc: "Let's discuss how we can bring your vision to life with a custom web solution.", btnText: 'Start Your Project Today' }
     },
     seo: {
@@ -99,7 +150,7 @@ const serviceData = {
         overview: {
             image: '/seoImage.png',
             title: 'Data-Driven SEO That Delivers Results',
-            desc: 'Our SEO strategies are built on data, research, and proven techniques. We optimize your website to rank higher, attract more visitors, and convert them into loyal customers.',
+            desc: 'Our SEO strategies are built on in-depth research, data-driven insights, and proven optimization techniques designed to deliver long-term results. We optimize every aspect of your website—from technical SEO and on-page optimization to content strategy, keyword research, and high-quality link building—to improve search engine visibility and user experience. Our goal is to help your business rank higher on search engines, attract qualified organic traffic, and convert visitors into loyal customers. By continuously monitoring performance, analyzing search trends, and refining our strategies, we ensure your website stays competitive, drives consistent growth, and maximizes your return on investment. With a results-focused approach, we help your brand build lasting online authority, outperform competitors, and achieve sustainable business success.',
             list: [
                 'Comprehensive keyword research and strategy',
                 'On-page and technical SEO optimization',
@@ -130,16 +181,67 @@ const serviceData = {
             { icon: 'fas fa-mobile-alt', color: '#06b6d4', name: 'Mobile-First' }
         ],
         pricing: [
-            { price: '$1,200', period: '/month', title: 'Starter SEO', desc: 'Perfect for small businesses', features: ['5 Keywords Tracked', 'Monthly SEO Audit', 'Basic Reporting', 'Email Support'], btnText: 'Get Started', popular: false },
-            { price: '$2,500', period: '/month', title: 'Professional SEO', desc: 'For growing businesses', features: ['15 Keywords Tracked', 'Weekly SEO Audit', 'Content Strategy', 'Monthly Reporting'], btnText: 'Get Started', popular: true },
-            { price: '$4,900', period: '/month', title: 'Enterprise SEO', desc: 'For large-scale campaigns', features: ['Unlimited Keywords', 'Daily Monitoring', 'Advanced Link Building', 'Dedicated SEO Manager'], btnText: 'Contact Sales', popular: false }
+            {
+                price: "Starting at ₹8,999",
+                period: "/month",
+                title: "Starter SEO",
+                desc: "Perfect for local businesses.",
+                features: [
+                    "10 Keywords",
+                    "Website SEO Audit",
+                    "On-Page SEO",
+                    "Monthly Report"
+                ],
+                btnText: "Get Quote",
+                popular: false
+            },
+            {
+                price: "Starting at ₹18,999",
+                period: "/month",
+                title: "Professional SEO",
+                desc: "For businesses aiming for faster growth.",
+                features: [
+                    "30 Keywords",
+                    "Technical SEO",
+                    "Content Optimization",
+                    "Monthly Reporting"
+                ],
+                btnText: "Get Quote",
+                popular: true
+            },
+            {
+                price: "Custom Pricing",
+                period: "",
+                title: "Enterprise SEO",
+                desc: "Complete SEO solution for large websites.",
+                features: [
+                    "Unlimited Keywords",
+                    "Advanced Technical SEO",
+                    "Authority Link Building",
+                    "Dedicated SEO Manager"
+                ],
+                btnText: "Contact Us",
+                popular: false
+            }
         ],
         faq: [
-            { q: 'How long does SEO take to show results?', a: 'SEO is a long-term strategy. Typically, you can see initial results in 3-6 months, with significant improvements in 6-12 months.' },
-            { q: 'Do you guarantee #1 rankings?', a: 'No reputable SEO agency can guarantee #1 rankings. However, we guarantee to use ethical, white-hat strategies to improve your rankings and traffic.' },
-            { q: 'What is included in your SEO packages?', a: 'Our packages include keyword research, on-page optimization, technical SEO, content strategy, link building, and regular performance reporting.' },
-            { q: 'Do you work with local businesses?', a: 'Yes! We specialize in local SEO to help businesses attract customers in their area.' }
-        ],
+    {
+        q: "How long does SEO take to show results?",
+        a: "SEO is a long-term strategy. Most websites begin seeing measurable improvements within 3–6 months, depending on competition, website quality, and industry."
+    },
+    {
+        q: "Do you guarantee first-page Google rankings?",
+        a: "No ethical SEO agency can guarantee first-page rankings. We use proven white-hat SEO strategies to improve your rankings, organic traffic, and long-term online visibility."
+    },
+    {
+        q: "What is included in your SEO services?",
+        a: "Our SEO services include keyword research, technical SEO, on-page optimization, content optimization, performance tracking, and regular reporting."
+    },
+    {
+        q: "Do you provide Local SEO services?",
+        a: "Yes. We help local businesses improve their visibility on Google Search and Google Maps, making it easier for nearby customers to find your business."
+    }
+],
         cta: { title: 'Ready to Rank Higher on Google?', desc: "Let's create an SEO strategy that drives targeted traffic and grows your business.", btnText: 'Start Your SEO Journey' }
     },
     mobile: {
@@ -164,7 +266,7 @@ const serviceData = {
         overview: {
             image: '/mobileImage.png',
             title: 'Mobile Apps That Users Love',
-            desc: 'We create mobile applications that combine beautiful design with powerful functionality. Our focus is on delivering apps that users love to use and that achieve your business objectives.',
+            desc: 'We create innovative, high-performance mobile applications that seamlessly combine beautiful design with powerful functionality. Every app we build is designed to provide an intuitive, engaging, and smooth user experience while helping your business achieve its goals. From Android and iOS applications to cross-platform solutions, we develop secure, scalable, and feature-rich mobile apps tailored to your unique business requirements. By leveraging modern technologies, user-centric design principles, and robust development practices, we ensure your application performs flawlessly across devices and delivers long-term value. Our focus is on building mobile experiences that increase customer engagement, strengthen brand loyalty, streamline business processes, and drive sustainable business growth.',
             list: [
                 'Native iOS and Android development',
                 'Cross-platform solutions with Flutter and React Native',
@@ -197,16 +299,67 @@ const serviceData = {
             { icon: 'fab fa-apple', color: '#a5b4fc', name: 'iOS SDK' }
         ],
         pricing: [
-            { price: '$15,000', period: '/project', title: 'Basic App', desc: 'Simple app with core features', features: ['5 Screens', 'Basic Backend', 'App Store Submission', '1 Month Support'], btnText: 'Get Started', popular: false },
-            { price: '$35,000', period: '/project', title: 'Professional App', desc: 'Full-featured app with advanced capabilities', features: ['10+ Screens', 'Custom Backend', 'Push Notifications', '3 Months Support'], btnText: 'Get Started', popular: true },
-            { price: '$65,000+', period: '/project', title: 'Enterprise App', desc: 'Complex app with enterprise features', features: ['Unlimited Screens', 'AI/ML Integration', 'Real-time Sync', '12 Months Support'], btnText: 'Contact Sales', popular: false }
+            {
+                price: "Starting at ₹49,999",
+                period: "",
+                title: "Basic App",
+                desc: "Perfect for MVPs and startup apps.",
+                features: [
+                    "Up to 5 Screens",
+                    "Firebase Backend",
+                    "Android App",
+                    "1 Month Support"
+                ],
+                btnText: "Get Quote",
+                popular: false
+            },
+            {
+                price: "Starting at ₹1,49,999",
+                period: "",
+                title: "Professional App",
+                desc: "Feature-rich apps for growing businesses.",
+                features: [
+                    "15+ Screens",
+                    "Custom Backend",
+                    "Android & iOS",
+                    "3 Months Support"
+                ],
+                btnText: "Get Quote",
+                popular: true
+            },
+            {
+                price: "Custom Pricing",
+                period: "",
+                title: "Enterprise App",
+                desc: "Large-scale enterprise mobile applications.",
+                features: [
+                    "Unlimited Screens",
+                    "AI Integration",
+                    "Cloud Infrastructure",
+                    "Priority Support"
+                ],
+                btnText: "Contact Us",
+                popular: false
+            }
         ],
         faq: [
-            { q: 'How much does it cost to build a mobile app?', a: 'The cost varies based on complexity, features, and platforms. A basic app can start from $15,000, while complex enterprise apps can range from $50,000 to $150,000+.' },
-            { q: 'Do you build apps for both iOS and Android?', a: 'Yes! We build native apps for both platforms and cross-platform apps using Flutter and React Native.' },
-            { q: 'How long does it take to develop a mobile app?', a: 'Timeline varies based on complexity. A simple app takes 2-3 months, while complex apps can take 4-6 months or more.' },
-            { q: 'Do you help with app store submission?', a: 'Yes, we guide you through the entire App Store and Google Play Store submission process.' }
-        ],
+    {
+        q: "How much does it cost to develop a mobile app?",
+        a: "The cost depends on your app's features, design, platform, and complexity. Our mobile app development services start from ₹49,999, with custom pricing available for advanced applications."
+    },
+    {
+        q: "Do you develop apps for both Android and iOS?",
+        a: "Yes. We build native Android and iOS applications as well as cross-platform apps using Flutter and React Native."
+    },
+    {
+        q: "How long does mobile app development take?",
+        a: "A basic mobile app usually takes 6–10 weeks, while feature-rich or enterprise applications can take 3–6 months depending on the project scope."
+    },
+    {
+        q: "Do you publish apps on the Google Play Store and Apple App Store?",
+        a: "Yes. We assist with the complete app submission process, including store guidelines, optimization, testing, and deployment."
+    }
+],
         cta: { title: 'Ready to Build Your Mobile App?', desc: "Let's discuss your app idea and create a solution that users will love.", btnText: 'Start Your App Project' }
     }
 };
@@ -296,257 +449,289 @@ function ServiceDetail() {
         <>
             <BreadCrumb pageName={data?.name} />
 
-        <Hero
-    HeroTitlePrefix={data?.heroTitle}
-    HeroTitleSuffix={data?.heroTitleHighlight}
-    HeroDescription={data?.heroDesc}
-/>
+            <Hero
+                HeroTitlePrefix={data?.heroTitle}
+                HeroTitleSuffix={data?.heroTitleHighlight}
+                HeroDescription={data?.heroDesc}
+            />
 
-            <section className="service-detail-section">
+
+
+            {/* BENEFITS */}
+            <section className="benefits-section">
                 <div className="container">
-                    <div className="service-content-wrapper fade-in">
+                    <div className="text-center mb-4">
+                        <span className="section-badge">
+                            <i className="fa-solid fa-star  me-1"></i>
+                            Why Choose Us
+                        </span>
+                        <h2 className="section-title">Key Benefits</h2>
+                        <p>Everything you need to succeed online</p>
+                    </div>
 
-                        {/* BENEFITS */}
-                        <section className="benefits-section py-5">
-                            <div className="container">
-                                <div className="text-center mb-4">
-                                    <span className="section-badge">Why Choose Us</span>
-                                    <h2 className="section-title">Key Benefits</h2>
-                                    <p>Everything you need to succeed online</p>
-                                </div>
-
-                                <div className="row g-4">
-                                    {data?.benefits?.map((b, i) => (
-                                        <div className="col-md-4" key={b.title || i}>
-                                            <div className="benefit-card">
-                                                <span className="benefit-icon">
-                                                    <i
-                                                        className={`fas ${b.icon}`}
-                                                        style={{ color: b.color }}
-                                                    />
-                                                </span>
-                                                <h4>{b.title}</h4>
-                                                <p>{b.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
+                    <div className="row g-4">
+                        {data?.benefits?.map((b, i) => (
+                            <div className="col-md-4" key={b.title || i}>
+                                <div className="benefit-card">
+                                    <span className="benefit-icon">
+                                        <i
+                                            className={`fas ${b.icon}`}
+                                            style={{ color: b.color }}
+                                        />
+                                    </span>
+                                    <h4>{b.title}</h4>
+                                    <p>{b.desc}</p>
                                 </div>
                             </div>
-                        </section>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                        {/* OVERVIEW */}
-                        <section className="overview-section py-5">
-                            <div className="container">
-                                <div className="row g-5 align-items-center">
-                                    <div className="col-lg-6">
-                                        <div className="overview-image">
-                                            <img
-                                                src={data?.overview?.image}
-                                                alt="Service Overview"
-                                            />
-                                        </div>
-                                    </div>
+            {/* OVERVIEW */}
+            <section className="overview-section">
+                <div className=" section-header">
+                    <span className="section-badge">
+                        <i className="fa-solid fa-circle-info me-1"></i>
+                        Overview
+                    </span>
+                    <h2 className="section-title">{data?.overview?.title}</h2>
+                </div>
+                <div className="container">
+                    <div className="row align-items-center">
+                        <div className="col-lg-6">
+                            <div className="overview-image">
+                                <img
+                                    src={data?.overview?.image}
+                                    alt="Service Overview"
+                                />
+                            </div>
+                        </div>
 
-                                    <div className="col-lg-6">
-                                        <div className="overview-content">
-                                            <span className="section-badge">Overview</span>
-                                            <h2>{data?.overview?.title}</h2>
-                                            <p>{data?.overview?.desc}</p>
+                        <div className="col-lg-6">
 
-                                            <ul>
-                                                {data?.overview?.list?.map((item, i) => (
-                                                    <li key={i}>
-                                                        <i className="fas fa-check-circle"></i>{" "}
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
+                            <p>{data?.overview?.desc}</p>
+
+                            <ul>
+                                {data?.overview?.list?.map((item, i) => (
+                                    <li key={i}>
+                                        <i className="fas fa-check-circle"></i>{" "}
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* FEATURES */}
+            <section className="features-section">
+                <div className="container">
+                    <div className="text-center mb-4">
+                        <span className="section-badge">
+                            <i className="fa-solid fa-list-check me-1"></i>
+                            Features
+                        </span>
+                        <h2 className="section-title">What's Included</h2>
+                        <p className="text-secondary">Every project comes with these powerful features</p>
+                    </div>
+
+                    <div className="row g-4">
+                        {data?.features?.map((f, i) => (
+                            <div className="col-md-4" key={f.title || i}>
+                                <div className="feature-card">
+                                    <span className="feature-icon">
+                                        <i className={`fas ${f.icon}`} />
+                                    </span>
+                                    <h4>{f.title}</h4>
+                                    <p>{f.desc}</p>
                                 </div>
                             </div>
-                        </section>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                        {/* FEATURES */}
-                        <section className="features-section py-5">
-                            <div className="container">
-                                <div className="text-center mb-4">
-                                    <span className="section-badge">Features</span>
-                                    <h2 className="section-title">What's Included</h2>
-                                    <p>Every project comes with these powerful features</p>
-                                </div>
+            {/* PROCESS */}
+            <section className="process-section">
+                <div className="container">
+                    <div className="text-center mb-4">
+                        <span className="section-badge">
+                            <i className="fa-solid fa-diagram-project me-1"></i>
+                            Our Process
+                        </span>
+                        <h2 className="section-title">How We Work</h2>
+                        <p className="text-secondary">A transparent approach from start to finish</p>
+                    </div>
 
-                                <div className="row g-4">
-                                    {data?.features?.map((f, i) => (
-                                        <div className="col-md-4" key={f.title || i}>
-                                            <div className="feature-card">
-                                                <span className="feature-icon">
-                                                    <i className={`fas ${f.icon}`} />
-                                                </span>
-                                                <h4>{f.title}</h4>
-                                                <p>{f.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* PROCESS */}
-                        <section className="process-section py-5">
-                            <div className="container">
-                                <div className="text-center mb-4">
-                                    <span className="section-badge">Our Process</span>
-                                    <h2 className="section-title">How We Work</h2>
-                                    <p>A transparent approach from start to finish</p>
-                                </div>
-
-                                <div className="row g-4">
-                                    {data?.process?.map((p, i) => (
-                                        <div className="col-md-4" key={p.number || i}>
-                                            <div className="process-step">
-                                                <span className="step-number">{p.number}</span>
-                                                <div className="step-content">
-                                                    <h4>{p.title}</h4>
-                                                    <p>{p.desc}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-
-
-                        {/* PORTFOLIO */}
-                        <section className="portfolio-proof py-5">
-                            <div className="container">
-                                <div className="text-center mb-4">
-                                    <span className="section-badge">Portfolio</span>
-                                    <h2 className="section-title">Our Work</h2>
-                                    <p>See what we've built for our clients</p>
-                                </div>
-
-                                <div className="row g-4">
-                                    {portfolioFromProjects.map((p) => (
-                                        <div className="col-md-4" key={p.id}>
-                                            <div className="proof-card">
-
-                                                <div className="proof-image">
-                                                    <img src={p.image} alt={p.title} />
-
-                                                    <div
-                                                        className="proof-overlay"
-                                                        onClick={() => navigate(`/project-details/${p.id}`)}
-                                                    >
-                                                        <i className="fas fa-eye"></i>
-                                                    </div>
-                                                </div>
-
-                                                <div className="proof-body">
-                                                    <span className="proof-tag">{p.tag}</span>
-                                                    <h4>{p.title}</h4>
-                                                    <p>{p.desc}</p>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-
-
-                        {/* TECHNOLOGIES */}
-                        <section className="tech-section-service py-5">
-                            <div className="container text-center">
-                                <span className="section-badge">Tech Stack</span>
-                                <h2 className="section-title">Technologies We Use</h2>
-
-                                <div className="d-flex flex-wrap justify-content-center">
-                                    {data?.techs?.map((t, i) => (
-                                        <span className="tech-badge-service" key={t.name || i}>
-                                            <i className={t.icon} style={{ color: t.color }}></i>{" "}
-                                            {t.name}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* PRICING */}
-                        <section className="pricing-section py-5">
-                            <div className="container">
-                                <div className="text-center mb-4">
-                                    <span className="section-badge">Pricing</span>
-                                    <h2 className="section-title">Choose Your Plan</h2>
-                                </div>
-
-                                <div className="row g-4">
-                                    {data?.pricing?.map((p, i) => (
-                                        <div className="col-md-4" key={p.title || i}>
-                                            <div className={`pricing-card ${p.popular ? "popular" : ""}`}>
-                                                {p.popular && (
-                                                    <span className="popular-badge">Most Popular</span>
-                                                )}
-
-                                                <div className="price">
-                                                    {p.price}
-                                                    <span>{p.period}</span>
-                                                </div>
-
-                                                <h4>{p.title}</h4>
-                                                <p>{p.desc}</p>
-
-                                                <ul className="pricing-features">
-                                                    {p.features.map((f, j) => (
-                                                        <li key={j}>
-                                                            <i className="fas fa-check"></i> {f}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-
-                                                <button className={`btn-pricing ${p.popular ? "primary" : "outline"}`}>
-                                                    {p.btnText}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-
-                        {/* FAQ */}
-                        <section className="faq-section-service py-5">
-                            <div className="container">
-                                <div className="row justify-content-center">
-                                    <div className="col-lg-8">
-                                        <div className="accordion">
-                                            {data?.faq?.map((f, i) => (
-                                                <div className="accordion-item" key={i}>
-                                                    <button
-                                                        className={`accordion-button ${openFaq !== i ? "collapsed" : ""}`}
-                                                        onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
-                                                    >
-                                                        {f.q}
-                                                    </button>
-
-                                                    <div
-                                                        className={`accordion-collapse collapse ${openFaq === i ? "show" : ""
-                                                            }`}
-                                                    >
-                                                        <div className="accordion-body">{f.a}</div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
+                    <div className="row g-4">
+                        {data?.process?.map((p, i) => (
+                            <div className="col-md-4" key={p.number || i}>
+                                <div className="process-step">
+                                    <span className="step-number">{p.number}</span>
+                                    <div className="step-content">
+                                        <h4>{p.title}</h4>
+                                        <p>{p.desc}</p>
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                        {/* CTA */}
-                        {/* <div className="final-cta-service">
+
+            {/* PORTFOLIO */}
+            <section className="portfolio-proof">
+                <div className="container">
+                    <div className="text-center mb-4">
+                        <span className="section-badge">
+                            <i className="fa-solid fa-briefcase me-1"></i>
+                            Portfolio
+                        </span>
+                        <h2 className="section-title">Our Work</h2>
+                        <p className="text-secondary">See what we've built for our clients</p>
+                    </div>
+
+                    <div className="row g-4">
+                        {portfolioFromProjects.map((p) => (
+                            <div className="col-md-4" key={p.id}>
+                                <div className="proof-card">
+
+                                    <div className="proof-image">
+                                        <img src={p.image} alt={p.title} />
+
+                                        <div
+                                            className="proof-overlay"
+                                            onClick={() => navigate(`/project-details/${p.id}`)}
+                                        >
+                                            <i className="fas fa-eye"></i>
+                                        </div>
+                                    </div>
+
+                                    <div className="proof-body">
+                                        <span className="proof-tag">{p.tag}</span>
+                                        <h4>{p.title}</h4>
+                                        <p>{p.desc}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+
+            {/* TECHNOLOGIES */}
+            <section className="tech-section-service" style={{
+                backgroundImage:
+                    "linear-gradient(rgba(31, 40, 62, 0.189), rgba(47, 57, 84, 0.452)), url('/stats.png')",
+            }}>
+                <div className="container text-center">
+                    <span className="tech-section-badge">
+                        <i className="fa-solid fa-code me-1"></i>
+                        Tech Stack
+                    </span>
+                    <h2 className="tech-section-title">Technologies We Use</h2>
+
+                    <div className="d-flex flex-wrap justify-content-center">
+                        {data?.techs?.map((t, i) => (
+                            <span className="tech-badge-service" key={t.name || i}>
+                                <i className={t.icon} style={{ color: t.color }}></i>{" "}
+                                {t.name}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* PRICING */}
+            <section className="pricing-section">
+                <div className="container">
+                    <div className="text-center mb-4">
+                        <span className="section-badge">
+                            <i className="fa-solid fa-tags me-1"></i>
+                            Pricing
+                        </span>
+                        <h2 className="section-title">Choose Your Plan</h2>
+                    </div>
+
+                    <div className="row g-4">
+                        {data?.pricing?.map((p, i) => (
+                            <div className="col-md-4" key={p.title || i}>
+                                <div className={`pricing-card ${p.popular ? "popular" : ""}`}>
+                                    {p.popular && (
+                                        <span className="popular-badge">Most Popular</span>
+                                    )}
+
+                                    <div className="price">
+                                        {p.price}
+                                        <span>{p.period}</span>
+                                    </div>
+
+                                    <h4>{p.title}</h4>
+                                    <p>{p.desc}</p>
+
+                                    <ul className="pricing-features">
+                                        {p.features.map((f, j) => (
+                                            <li key={j}>
+                                                <i className="fas fa-check"></i> {f}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <button className={`btn-pricing ${p.popular ? "primary" : "outline"}`}>
+                                        {p.btnText}
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ */}
+            <section className="faq-section-service">
+                <div className="container">
+                    <div className="section-header">
+                        <span className="section-badge">
+                            <i className="fa-solid fa-circle-question me-1"></i>
+                            FAQ
+                        </span>
+                        <h2 className="section-title">Frequently Asked Questions</h2>
+
+                    </div>
+                    <div className="row justify-content-center">
+                        <div className="col-lg-8">
+                            <div className="accordion">
+                                {data?.faq?.map((f, i) => (
+                                    <div className="accordion-item" key={i}>
+                                        <button
+                                            className={`accordion-button ${openFaq !== i ? "collapsed" : ""}`}
+                                            onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
+                                        >
+                                            {f.q}
+                                        </button>
+
+                                        <div
+                                            className={`accordion-collapse collapse ${openFaq === i ? "show" : ""
+                                                }`}
+                                        >
+                                            <div className="accordion-body">{f.a}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA */}
+            {/* <div className="final-cta-service">
                             <div className="container">
                                 <h2>{data?.cta?.title}</h2>
                                 <p>{data?.cta?.desc}</p>
@@ -558,9 +743,7 @@ function ServiceDetail() {
                             </div>
                         </div> */}
 
-                    </div>
-                </div>
-            </section>
+
 
             <cta />
         </>

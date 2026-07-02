@@ -264,7 +264,7 @@
     /* ========== OUR STORY SECTION ========== #f0f0f0 */
     .story-advanced {
       padding: 60px 0;
-      background: #fbffef;  
+      background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%);
       position: relative;
       overflow: hidden;
     }

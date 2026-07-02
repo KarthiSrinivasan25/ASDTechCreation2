@@ -9,16 +9,177 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SEO from '../component/SEO';
 import Cta from '../component/Cta'
-
+import { useEffect } from "react";
 function Service() {
+
+
+    useEffect(() => {
+
+        const serviceTypesData = [{
+            id: 'business-website',
+            name: 'Business Website',
+            icon: 'fa-building',
+            category: 'website',
+            desc: 'Professional websites that establish your brand and attract customers.',
+            tag: 'Corporate'
+        }, {
+            id: 'ecommerce-website',
+            name: 'E-Commerce Website',
+            icon: 'fa-shopping-cart',
+            category: 'website',
+            desc: 'Powerful online stores with secure payments and seamless checkout.',
+            tag: 'Online Store'
+        }, {
+            id: 'portfolio-website',
+            name: 'Portfolio Website',
+            icon: 'fa-user',
+            category: 'website',
+            desc: 'Showcase your work and creative projects with stunning design.',
+            tag: 'Creative'
+        }, {
+            id: 'school-website',
+            name: 'School / College Website',
+            icon: 'fa-school',
+            category: 'website',
+            desc: 'Modern educational websites for schools, colleges, and universities.',
+            tag: 'Education'
+        }, {
+            id: 'hospital-website',
+            name: 'Hospital Website',
+            icon: 'fa-hospital',
+            category: 'website',
+            desc: 'Trustworthy healthcare websites with patient portals and booking.',
+            tag: 'Healthcare'
+        }, {
+            id: 'restaurant-website',
+            name: 'Restaurant Website',
+            icon: 'fa-utensils',
+            category: 'website',
+            desc: 'Beautiful restaurant sites with online ordering and reservations.',
+            tag: 'Food & Beverage'
+        }, {
+            id: 'realestate-website',
+            name: 'Real Estate Website',
+            icon: 'fa-house',
+            category: 'website',
+            desc: 'Property listing platforms with search filters and virtual tours.',
+            tag: 'Real Estate'
+        }, {
+            id: 'travel-website',
+            name: 'Travel Website',
+            icon: 'fa-plane',
+            category: 'website',
+            desc: 'Stunning travel booking and tour management platforms.',
+            tag: 'Travel & Tourism'
+        }, {
+            id: 'landing-page',
+            name: 'Landing Page',
+            icon: 'fa-landmark',
+            category: 'website',
+            desc: 'High-converting landing pages for campaigns and product launches.',
+            tag: 'Marketing'
+        }, {
+            id: 'custom-web-app',
+            name: 'Custom Web Application',
+            icon: 'fa-layer-group',
+            category: 'website',
+            desc: 'Tailored web apps with custom features for your business needs.',
+            tag: 'Enterprise'
+        }, {
+            id: 'native-mobile-app',
+            name: 'Native Mobile App',
+            icon: 'fa-mobile-screen',
+            category: 'mobile',
+            desc: 'High-performance native iOS and Android applications.',
+            tag: 'iOS & Android'
+        }, {
+            id: 'crossplatform-app',
+            name: 'Cross-Platform App',
+            icon: 'fa-tablet-screen',
+            category: 'mobile',
+            desc: 'Build once, deploy everywhere with Flutter and React Native.',
+            tag: 'Flutter & React Native'
+        }, {
+            id: 'ios-app',
+            name: 'iOS App Development',
+            icon: 'fa-app-store-ios',
+            category: 'mobile',
+            desc: 'Premium iOS apps with Swift and Apple\'s latest frameworks.',
+            tag: 'Swift'
+        }, {
+            id: 'android-app',
+            name: 'Android App Development',
+            icon: 'fa-google-play',
+            category: 'mobile',
+            desc: 'Feature-rich Android apps with Kotlin and Jetpack Compose.',
+            tag: 'Kotlin'
+        }];
+
+        // ================================================================
+        // RENDER SERVICE TYPES
+        // ================================================================
+        const grid = document.getElementById('serviceTypesGrid');
+
+        function renderServiceTypes(category = 'all') {
+            grid.innerHTML = '';
+            const filtered = serviceTypesData.filter(item =>
+                category === 'all' || item.category === category
+            );
+
+            filtered.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'service-type-card';
+                card.dataset.category = item.category;
+                card.innerHTML = `
+                            <span class="card-number">${String(index + 1).padStart(2, '0')}</span>
+                            <span class="card-icon"><i class="fas ${item.icon}"></i></span>
+                            <h4>${item.name}</h4>
+                            <p>${item.desc}</p>
+                            <span class="card-tag">${item.tag}</span>
+                        `;
+                grid.appendChild(card);
+            });
+
+            // Re-apply animation
+            document.querySelectorAll('.service-type-card').forEach((card, i) => {
+                card.style.animation = 'none';
+                setTimeout(() => {
+                    card.style.animation = `cardFadeIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) backwards`;
+                    card.style.animationDelay = `${i * 0.04}s`;
+                }, 10);
+            });
+        }
+
+        // ================================================================
+        // CATEGORY TABS
+        // ================================================================
+        const tabs = document.querySelectorAll('.category-tab');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                const category = this.dataset.category;
+                renderServiceTypes(category);
+            });
+        });
+
+    
+        renderServiceTypes('all');
+    
+
+    }, []);
+
+
     return (
 
         <>
-        <SEO
-  title="Our Services | ASDTech Creation"
-  description="Explore our professional services including website development, mobile app development, SEO services, eCommerce website development, and custom software solutions."
-  keywords="Website Development Services, Mobile App Development Services, SEO Services, eCommerce Development, Software Development Services"
-/>
+            <SEO
+                title="Our Services | ASDTech Creation"
+                description="Explore our professional services including website development, mobile app development, SEO services, eCommerce website development, and custom software solutions."
+                keywords="Website Development Services, Mobile App Development Services, SEO Services, eCommerce Development, Software Development Services"
+            />
 
 
 
@@ -75,18 +236,46 @@ function Service() {
                 </div>
             </section>
 
-            <section className="services-preview">
+
+            <section className="service-types-section">
         <div className="container">
-          <div className="section-header">
-            <span className="section-badge"><i className="fas fa-cogs me-1"></i> What We Offer</span>
-            <h2 className="section-title">Web & Mobile App Development Services</h2>
-            <p className="text-secondary">All-in-one web and mobile development for modern businesses.</p>
-          </div>
-          <div className="row g-4">
-            <ServicesCards />
-          </div>
+            <div className="text-center mb-5">
+                <span className="section-badge"><i className="fas fa-layer-group me-1"></i> What We Build</span>
+                <h2 className="section-title">Website & Mobile App <span >Types</span></h2>
+                <p className="text-secondary" >
+                    We build custom websites and mobile applications tailored to your industry and business needs.
+                </p>
+            </div>
+
+           
+            <div className="category-tabs" id="categoryTabs">
+                <button className="category-tab active" data-category="all"><i className="fas fa-th-large"></i> All</button>
+                <button className="category-tab" data-category="website"><i className="fas fa-globe"></i> Websites</button>
+                <button className="category-tab" data-category="mobile"><i className="fas fa-mobile-screen"></i> Mobile Apps</button>
+            </div>
+
+            
+            <div className="service-types-grid" id="serviceTypesGrid"></div>
+
+           
+
+           
+            
         </div>
-      </section>
+    </section>
+
+            <section className="services-preview">
+                <div className="container">
+                    <div className="section-header">
+                        <span className="section-badge"><i className="fas fa-cogs me-1"></i> What We Offer</span>
+                        <h2 className="section-title">Web & Mobile App Development Services</h2>
+                        <p className="text-secondary">All-in-one web and mobile development for modern businesses.</p>
+                    </div>
+                    <div className="row g-4">
+                        <ServicesCards />
+                    </div>
+                </div>
+            </section>
 
 
             <section className="portfolio-preview">
@@ -102,10 +291,10 @@ function Service() {
                     </div>
 
                     <div className="view-all-link">
-            <Link to="/portfolio" className="view-all-btn">
-              View All Projects <i className="fas fa-arrow-right"></i>
-            </Link>
-          </div>
+                        <Link to="/portfolio" className="view-all-btn">
+                            View All Projects <i className="fas fa-arrow-right"></i>
+                        </Link>
+                    </div>
                 </div>
             </section>
 
@@ -137,13 +326,13 @@ function Service() {
             </section>
 
             <Cta
-  badgeTitle="Let's Build Together"
-  prefix="Ready to Grow"
-  highlight="Your Business"
-  suffix="with Our Services?"
-  description="From custom websites and mobile apps to SEO and digital solutions, ASDTech Creation delivers innovative, scalable, and result-driven services tailored to your business goals. Let's turn your ideas into reality."
-  button2="Get Free Consultation"
-/>
+                badgeTitle="Let's Build Together"
+                prefix="Ready to Grow"
+                highlight="Your Business"
+                suffix="with Our Services?"
+                description="From custom websites and mobile apps to SEO and digital solutions, ASDTech Creation delivers innovative, scalable, and result-driven services tailored to your business goals. Let's turn your ideas into reality."
+                button2="Get Free Consultation"
+            />
 
         </>
 

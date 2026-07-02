@@ -1,18 +1,16 @@
   /* ================================================================
            SERVICE DETAIL PAGE — DYNAMIC CONTENT
         ================================================================ */
-  .service-detail-section {
-      padding: 60px 0;
-      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-      position: relative;
-  }
-
-
-
+ 
 
 
 
   /* ===== 2. BENEFITS ===== */
+  .benefits-section{
+     background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%);
+     padding: 60px 0;
+      position: relative;
+  }
   .benefit-card {
       text-align: center;
       padding: 2rem 1.5rem;
@@ -51,6 +49,11 @@
   }
 
   /* ===== 3. OVERVIEW ===== */
+  .overview-section{
+     background: white;
+     padding: 60px 0;
+      position: relative;
+  }
   .overview-section .overview-image {
       border-radius: 24px;
       overflow: hidden;
@@ -59,28 +62,24 @@
 
   .overview-section .overview-image img {
       width: 100%;
-      height: 400px;
+      height: 500px;
       object-fit: cover;
   }
 
-  .overview-section .overview-content h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #0f172a;
-      margin-bottom: 0.5rem;
-  }
+ 
 
-  .overview-section .overview-content p {
+  .overview-section  p {
       color: #475569;
       line-height: 1.8;
+      text-align: justify;
   }
 
-  .overview-section .overview-content ul {
+  .overview-section  ul {
       list-style: none;
       padding: 0;
   }
 
-  .overview-section .overview-content ul li {
+  .overview-section  ul li {
       padding: 0.4rem 0;
       display: flex;
       align-items: center;
@@ -88,12 +87,19 @@
       color: #475569;
   }
 
-  .overview-section .overview-content ul li i {
+  .overview-section  ul li i {
       color: #4361ee;
       font-size: 1rem;
   }
 
   /* ===== 4. FEATURES ===== */
+
+  .features-section{
+     background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%);
+     padding: 60px 0;
+      position: relative;
+  }
+
   .feature-card {
       padding: 1.8rem;
       border-radius: 24px;
@@ -130,6 +136,11 @@
   }
 
   /* ===== 5. PROCESS ===== */
+  .process-section{
+     background: white;
+     padding: 60px 0;
+      position: relative;
+  }
   .process-step {
       display: flex;
       gap: 1.5rem;
@@ -137,7 +148,7 @@
       padding: 2rem;
       background: #ffffff;
       border-radius: 28px;
-      border: 1px solid rgba(67, 97, 238, 0.08);
+      border: 1px solid rgba(67, 98, 238, 0.397);
       box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.05);
       height: 100%;
       position: relative;
@@ -167,7 +178,7 @@
 
   .process-step:hover {
       transform: translateY(-8px);
-      box-shadow: 0 24px 40px -12px rgba(67, 97, 238, 0.2);
+      box-shadow: 0 24px 40px -12px rgba(67, 98, 238, 0.329);
       border-color: rgba(67, 97, 238, 0.2);
   }
 
@@ -176,7 +187,7 @@
       font-size: 2.5rem;
       font-weight: 800;
       color: #4361ee;
-      opacity: 0.2;
+      opacity: 0.7;
       min-width: 50px;
       line-height: 1;
   }
@@ -195,7 +206,11 @@
   }
 
   /* ===== PORTFOLIO ===== */
-
+.portfolio-proof{
+     background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%);
+     padding: 60px 0;
+      position: relative;
+}
   .proof-card {
       border-radius: 24px;
       overflow: hidden;
@@ -293,23 +308,51 @@
   }
 
   /* ===== 7. TECHNOLOGIES ===== */
+  .tech-section-badge {
+      display: inline-block;
+      background: rgba(160, 165, 189, 0.925);
+      color: #4361ee;
+      font-weight: 600;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-section-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: white;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+  .tech-section-service{
+    background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+     padding: 60px 0;
+  }
   .tech-badge-service {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 0.7rem 1.2rem;
-      background: #ffffff;
+      background-color: #ffffff28;
       border-radius: 40px;
-      border: 1px solid rgba(67, 97, 238, 0.06);
+      border: 1px solid rgba(67, 238, 90, 0.06);
       font-weight: 500;
       font-size: 0.85rem;
-      color: #0f172a;
+      color: white;
       transition: all 0.3s;
       margin: 0.3rem;
   }
 
   .tech-badge-service:hover {
       border-color: #4361ee;
+      background-color: white;
+      color: #4361ee;
       transform: translateY(-2px);
       box-shadow: 0 8px 16px -8px rgba(67, 97, 238, 0.08);
   }
@@ -319,8 +362,13 @@
   }
 
   /* ===== 8. PRICING ===== */
+  .pricing-section{
+    background: white;
+     padding: 60px 0;
+      position: relative;
+  }
   .pricing-card {
-      background: #ffffff;
+      background: #f8f9fc;
       border-radius: 24px;
       padding: 2rem 1.5rem;
       border: 1px solid rgba(67, 97, 238, 0.06);
@@ -384,7 +432,7 @@
   }
 
   .pricing-card .pricing-features li i {
-      color: #4cc9f0;
+      color: green;
       font-size: 0.8rem;
   }
 
@@ -420,6 +468,12 @@
   }
 
   /* ===== 9. FAQ ===== */
+  .faq-section-service{
+      background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%);
+     padding: 60px 0;
+      position: relative;
+
+  }
   .faq-section-service .accordion-item {
       border: 1px solid rgba(67, 97, 238, 0.08);
       border-radius: 16px !important;

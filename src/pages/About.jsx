@@ -116,7 +116,7 @@ function About() {
               </div>
               <div className="col-md-10">
                 <p className="fw-bold">"We don't just build apps — we build digital experiences that users love. Every line of code we write is a step toward transforming ideas into impactful solutions."</p>
-                <small className="text-muted">— Swetha Nagarajan, Founder & CEO</small>
+                {/* <small className="text-muted">— Swetha Nagarajan, Founder & CEO</small> */}
               </div>
             </div>
           </div>
@@ -171,8 +171,8 @@ function About() {
         </div>
       </section>
 
-
-      <OurTeam />
+{/* 
+      <OurTeam /> */}
 
       <Cta badgeTitle="Let’s Build Together" prefix="Have a" highlight="Project" suffix="in Mind?"  
             description="We turn your ideas into fast, modern, and scalable websites that help your business grow online."

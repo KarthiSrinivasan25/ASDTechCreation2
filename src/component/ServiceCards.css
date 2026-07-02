@@ -1,6 +1,6 @@
 .services-preview {
   padding: 60px 0;
-  background: #eef2ff;
+  background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%);
 }
 
 .section-header {
@@ -152,3 +152,5 @@
   color: #fff;
   box-shadow: 0 10px 25px rgba(13, 110, 253, 0.3);
 }
+
+
