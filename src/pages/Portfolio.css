@@ -773,3 +773,57 @@
             color: #4361ee;
             opacity: 0.3;
         }
+
+
+        @media (max-width: 768px) {
+    .success-story-hero {
+        max-width: 92%;
+        padding: 1.8rem 1.5rem;
+        border-radius: 24px;
+    }
+
+    .success-story-hero p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .success-story-hero .deco-quote {
+        font-size: 3rem;
+    }
+
+    .success-story-hero .hero-quote {
+        font-size: 0.85rem;
+        padding: 0.8rem 1rem;
+    }
+
+     .floating-particles2 {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-success-section {
+        padding: 40px 0;
+    }
+
+    .success-story-hero {
+        padding: 1.4rem 1rem;
+        border-radius: 18px;
+    }
+
+    .success-story-hero p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .success-story-hero .deco-quote {
+        display: none; /* cleaner mobile UI */
+    }
+
+    .success-story-hero .hero-glow {
+        width: 250px;
+        height: 100px;
+    }
+}
+
+

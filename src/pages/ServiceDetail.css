@@ -488,13 +488,13 @@
 /* Active slide - default accent */
 .swiper-slide-active .pricing-card {
   border: 2px solid #4361ee;
-  box-shadow: 0 20px 40px rgba(67, 97, 238, 0.25);
+  /* box-shadow: 0 20px 40px rgba(67, 97, 238, 0.25); */
 }
 
 /* Active slide AND popular - stronger highlight */
 .swiper-slide-active .pricing-card.popular {
   border: 2px solid salmon;
-  box-shadow: 0 20px 40px rgb(240, 179, 172);
+  /* box-shadow: 0 20px 40px rgb(240, 179, 172); */
 }
   /* ===== 9. FAQ ===== */
   .faq-section-service{

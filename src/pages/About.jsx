@@ -17,21 +17,22 @@ import asd from '../assets/asd_logo.jpg'
 import OurTeam from "../component/OurTeam";
 import Cta from "../component/Cta";
 import SEO from '../component/SEO';
-
+import { useState } from "react";
 
 function About() {
+  const [showVideo, setShowVideo] = useState(false);
   return (
 
 
     <>
 
-<SEO
-  title="About Us | ASDTech Creation"
-  description="Learn about ASDTech Creation, our mission, vision, and expertise in website development, mobile app development, eCommerce solutions, and SEO services."
-  keywords="About ASDTech Creation, Web Development Company, Mobile App Development Company, SEO Company"
-/>
+      <SEO
+        title="About Us | ASDTech Creation"
+        description="Learn about ASDTech Creation, our mission, vision, and expertise in website development, mobile app development, eCommerce solutions, and SEO services."
+        keywords="About ASDTech Creation, Web Development Company, Mobile App Development Company, SEO Company"
+      />
 
-      <BreadCrumb pageName="About"/>
+      <BreadCrumb pageName="About" />
 
       <section className="hero-ring">
         <div className="container">
@@ -49,8 +50,13 @@ function About() {
                   <div className="hero-stat"><div className="hero-stat-number">98%</div><div className="hero-stat-label">Client Retention</div></div>
                 </div>
                 <div className="hero-buttons">
-                  <a href="contact.html" className="btn-hero-primary"><i className="fas fa-paper-plane"></i> Start Project</a>
-                  <a href="#" className="btn-hero-secondary"><i className="fas fa-play-circle"></i> Watch Demo</a>
+                  {/* <a href="contact.html" className="btn-hero-primary"><i className="fas fa-paper-plane"></i> Start Project</a> */}
+                  <button
+                    className="btn-hero-secondary"
+                    onClick={() => setShowVideo(true)}
+                  >
+                    <i className="fas fa-play-circle"></i> Watch Demo
+                  </button>
                 </div>
               </div>
             </div>
@@ -91,7 +97,26 @@ function About() {
         </div>
       </section>
 
+      {showVideo && (
+        <div className="glass-modal" onClick={() => setShowVideo(false)}>
 
+          <div className="glass-content" onClick={(e) => e.stopPropagation()}>
+
+            <button className="glass-close" onClick={() => setShowVideo(false)}>
+              ✕
+            </button>
+
+            <iframe
+              src="/ASDvideo.mp4"
+              title="Demo Video"
+              frameBorder="0"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            />
+
+          </div>
+        </div>
+      )}
 
 
       <section className="story-advanced">
@@ -130,21 +155,21 @@ function About() {
 
 
           <div class="mv-unique">
-        <div class="mv-split">
-          <div class="mv-item">
-            <div class="mv-icon-large"><i class="fas fa-bullseye"></i></div>
-            <h3>Our Mission</h3>
-            <p>To design and develop innovative, scalable web and mobile applications that help businesses grow, improve user experiences, and achieve measurable digital success.</p>
-            <div class="mv-tagline"><i class="fas fa-arrow-right me-1"></i> What drives us forward</div>
+            <div class="mv-split">
+              <div class="mv-item">
+                <div class="mv-icon-large"><i class="fas fa-bullseye"></i></div>
+                <h3>Our Mission</h3>
+                <p>To design and develop innovative, scalable web and mobile applications that help businesses grow, improve user experiences, and achieve measurable digital success.</p>
+                <div class="mv-tagline"><i class="fas fa-arrow-right me-1"></i> What drives us forward</div>
+              </div>
+              <div class="mv-item">
+                <div class="mv-icon-large"><i class="fas fa-eye"></i></div>
+                <h3>Our Vision</h3>
+                <p>To be a globally recognized leader in web and mobile app development, known for delivering high-quality solutions, continuous innovation, and exceptional client satisfaction.</p>
+                <div class="mv-tagline"><i class="fas fa-globe me-1"></i> Where we're headed</div>
+              </div>
+            </div>
           </div>
-          <div class="mv-item">
-            <div class="mv-icon-large"><i class="fas fa-eye"></i></div>
-            <h3>Our Vision</h3>
-            <p>To be a globally recognized leader in web and mobile app development, known for delivering high-quality solutions, continuous innovation, and exceptional client satisfaction.</p>
-            <div class="mv-tagline"><i class="fas fa-globe me-1"></i> Where we're headed</div>
-          </div>
-        </div>
-      </div>
 
           <div className="values-grid">
             <div className="value-card">
@@ -171,12 +196,12 @@ function About() {
         </div>
       </section>
 
-{/* 
+      {/* 
       <OurTeam /> */}
 
-      <Cta badgeTitle="Let’s Build Together" prefix="Have a" highlight="Project" suffix="in Mind?"  
-            description="We turn your ideas into fast, modern, and scalable websites that help your business grow online."
-            button2="Schedule a Free Consultation" />
+      <Cta badgeTitle="Let’s Build Together" prefix="Have a" highlight="Project" suffix="in Mind?"
+        description="We turn your ideas into fast, modern, and scalable websites that help your business grow online."
+        button2="Schedule a Free Consultation" />
     </>
 
 
