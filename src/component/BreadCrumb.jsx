@@ -1,4 +1,5 @@
 import './BreadCrumb.css'
+import { Link } from "react-router-dom";
 
 function BreadCrumb(props) {
   return (
@@ -9,11 +10,11 @@ function BreadCrumb(props) {
         <div className="breadcrumb-advanced-wrapper">
           <div className="breadcrumb-advanced">
             <div className="breadcrumb-item">
-              <a href="index.html">
-                <div className="breadcrumb-home-icon">
-                  <i className="fas fa-home"></i>
-                </div>
-              </a>
+              <Link to="/">
+  <div className="breadcrumb-home-icon">
+    <i className="fas fa-home"></i>
+  </div>
+</Link>
             </div>
             <span className="breadcrumb-separator"><i className="fas fa-chevron-right"></i></span>
             <div className="breadcrumb-item">

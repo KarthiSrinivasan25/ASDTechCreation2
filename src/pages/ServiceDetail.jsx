@@ -5,6 +5,11 @@ import Hero from '../component/Hero';
 import { useNavigate } from "react-router-dom";
 import './ServiceDetail.css';
 import projects from '../api_js/script'; // adjust path if needed
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+
 
 import './ServiceDetail.css';
 const serviceData = {
@@ -30,7 +35,7 @@ const serviceData = {
         overview: {
             image: '/webImage.png',
             title: 'Custom Web Solutions That Drive Results',
-            desc: 'We build modern, high-performance websites and web applications that seamlessly combine stunning design with powerful functionality. Every project is carefully crafted to deliver an exceptional user experience, ensuring your visitors stay engaged while achieving your business goals. From responsive business websites and eCommerce platforms to custom web applications and enterprise solutions, we develop scalable, secure, and fast-loading digital products tailored to your unique requirements. By leveraging the latest technologies, clean coding standards, and user-centric design principles, we create solutions that not only look impressive but also perform flawlessly across all devices. Our focus is to help your business establish a strong online presence, improve customer engagement, streamline operations, and drive sustainable growth through innovative web solutions.',
+            desc: 'We build modern, high-performance websites and web applications that combine great design with powerful functionality. From business websites and eCommerce platforms to custom web apps, we deliver fast, responsive, and scalable solutions tailored to your needs. Our focus is to create seamless user experiences that help your business grow, improve engagement, and build a strong online presence.',
             list: [
                 'Custom design tailored to your brand',
                 'SEO-optimized for better search rankings',
@@ -109,23 +114,23 @@ const serviceData = {
             }
         ],
         faq: [
-    {
-        q: "How long does it take to build a website?",
-        a: "The timeline depends on your project requirements. A standard business website typically takes 2–4 weeks, while custom web applications and eCommerce solutions may require 6–12 weeks or more."
-    },
-    {
-        q: "How much does a website cost?",
-        a: "Website pricing depends on the number of pages, design complexity, features, and integrations. Our web development services start from ₹14,999, with custom pricing available for larger projects."
-    },
-    {
-        q: "Do you provide website maintenance after launch?",
-        a: "Yes. We offer ongoing maintenance, security updates, performance optimization, backups, and technical support to keep your website running smoothly."
-    },
-    {
-        q: "Will my website be mobile-friendly and SEO optimized?",
-        a: "Absolutely. Every website we build is fully responsive, optimized for speed, and follows SEO best practices to improve visibility on search engines."
-    }
-],
+            {
+                q: "How long does it take to build a website?",
+                a: "The timeline depends on your project requirements. A standard business website typically takes 2–4 weeks, while custom web applications and eCommerce solutions may require 6–12 weeks or more."
+            },
+            {
+                q: "How much does a website cost?",
+                a: "Website pricing depends on the number of pages, design complexity, features, and integrations. Our web development services start from ₹14,999, with custom pricing available for larger projects."
+            },
+            {
+                q: "Do you provide website maintenance after launch?",
+                a: "Yes. We offer ongoing maintenance, security updates, performance optimization, backups, and technical support to keep your website running smoothly."
+            },
+            {
+                q: "Will my website be mobile-friendly and SEO optimized?",
+                a: "Absolutely. Every website we build is fully responsive, optimized for speed, and follows SEO best practices to improve visibility on search engines."
+            }
+        ],
         cta: { title: 'Ready to Build Your Dream Website?', desc: "Let's discuss how we can bring your vision to life with a custom web solution.", btnText: 'Start Your Project Today' }
     },
     seo: {
@@ -150,7 +155,7 @@ const serviceData = {
         overview: {
             image: '/seoImage.png',
             title: 'Data-Driven SEO That Delivers Results',
-            desc: 'Our SEO strategies are built on in-depth research, data-driven insights, and proven optimization techniques designed to deliver long-term results. We optimize every aspect of your website—from technical SEO and on-page optimization to content strategy, keyword research, and high-quality link building—to improve search engine visibility and user experience. Our goal is to help your business rank higher on search engines, attract qualified organic traffic, and convert visitors into loyal customers. By continuously monitoring performance, analyzing search trends, and refining our strategies, we ensure your website stays competitive, drives consistent growth, and maximizes your return on investment. With a results-focused approach, we help your brand build lasting online authority, outperform competitors, and achieve sustainable business success.',
+            desc: 'Our SEO strategies are data-driven and focused on long-term growth. We optimize your website through technical SEO, on-page improvements, keyword research, content strategy, and quality link building. Our goal is to improve your search rankings, increase organic traffic, and convert visitors into customers. By continuously analyzing performance and refining strategies, we help your business stay competitive and achieve sustainable online growth.',
             list: [
                 'Comprehensive keyword research and strategy',
                 'On-page and technical SEO optimization',
@@ -225,23 +230,23 @@ const serviceData = {
             }
         ],
         faq: [
-    {
-        q: "How long does SEO take to show results?",
-        a: "SEO is a long-term strategy. Most websites begin seeing measurable improvements within 3–6 months, depending on competition, website quality, and industry."
-    },
-    {
-        q: "Do you guarantee first-page Google rankings?",
-        a: "No ethical SEO agency can guarantee first-page rankings. We use proven white-hat SEO strategies to improve your rankings, organic traffic, and long-term online visibility."
-    },
-    {
-        q: "What is included in your SEO services?",
-        a: "Our SEO services include keyword research, technical SEO, on-page optimization, content optimization, performance tracking, and regular reporting."
-    },
-    {
-        q: "Do you provide Local SEO services?",
-        a: "Yes. We help local businesses improve their visibility on Google Search and Google Maps, making it easier for nearby customers to find your business."
-    }
-],
+            {
+                q: "How long does SEO take to show results?",
+                a: "SEO is a long-term strategy. Most websites begin seeing measurable improvements within 3–6 months, depending on competition, website quality, and industry."
+            },
+            {
+                q: "Do you guarantee first-page Google rankings?",
+                a: "No ethical SEO agency can guarantee first-page rankings. We use proven white-hat SEO strategies to improve your rankings, organic traffic, and long-term online visibility."
+            },
+            {
+                q: "What is included in your SEO services?",
+                a: "Our SEO services include keyword research, technical SEO, on-page optimization, content optimization, performance tracking, and regular reporting."
+            },
+            {
+                q: "Do you provide Local SEO services?",
+                a: "Yes. We help local businesses improve their visibility on Google Search and Google Maps, making it easier for nearby customers to find your business."
+            }
+        ],
         cta: { title: 'Ready to Rank Higher on Google?', desc: "Let's create an SEO strategy that drives targeted traffic and grows your business.", btnText: 'Start Your SEO Journey' }
     },
     mobile: {
@@ -250,7 +255,7 @@ const serviceData = {
         icon: 'fa-mobile-alt',
         heroTag: 'Mobile App Development',
         heroTagIcon: 'fa-mobile-alt',
-        heroTitle: 'Build World-Class ',
+        heroTitle: 'Build World-className ',
         heroTitleHighlight: 'Mobile Applications',
         heroDesc: 'We design and develop native and cross-platform mobile apps that deliver exceptional user experiences and drive business growth.',
         heroStats: [
@@ -266,7 +271,7 @@ const serviceData = {
         overview: {
             image: '/mobileImage.png',
             title: 'Mobile Apps That Users Love',
-            desc: 'We create innovative, high-performance mobile applications that seamlessly combine beautiful design with powerful functionality. Every app we build is designed to provide an intuitive, engaging, and smooth user experience while helping your business achieve its goals. From Android and iOS applications to cross-platform solutions, we develop secure, scalable, and feature-rich mobile apps tailored to your unique business requirements. By leveraging modern technologies, user-centric design principles, and robust development practices, we ensure your application performs flawlessly across devices and delivers long-term value. Our focus is on building mobile experiences that increase customer engagement, strengthen brand loyalty, streamline business processes, and drive sustainable business growth.',
+            desc: 'We build high-performance mobile applications that combine great design with powerful functionality. From Android and iOS to cross-platform apps, we create secure, scalable, and user-friendly solutions tailored to your business needs. Our focus is to deliver smooth mobile experiences that boost engagement, strengthen your brand, and support long-term business growth.',
             list: [
                 'Native iOS and Android development',
                 'Cross-platform solutions with Flutter and React Native',
@@ -343,23 +348,23 @@ const serviceData = {
             }
         ],
         faq: [
-    {
-        q: "How much does it cost to develop a mobile app?",
-        a: "The cost depends on your app's features, design, platform, and complexity. Our mobile app development services start from ₹49,999, with custom pricing available for advanced applications."
-    },
-    {
-        q: "Do you develop apps for both Android and iOS?",
-        a: "Yes. We build native Android and iOS applications as well as cross-platform apps using Flutter and React Native."
-    },
-    {
-        q: "How long does mobile app development take?",
-        a: "A basic mobile app usually takes 6–10 weeks, while feature-rich or enterprise applications can take 3–6 months depending on the project scope."
-    },
-    {
-        q: "Do you publish apps on the Google Play Store and Apple App Store?",
-        a: "Yes. We assist with the complete app submission process, including store guidelines, optimization, testing, and deployment."
-    }
-],
+            {
+                q: "How much does it cost to develop a mobile app?",
+                a: "The cost depends on your app's features, design, platform, and complexity. Our mobile app development services start from ₹49,999, with custom pricing available for advanced applications."
+            },
+            {
+                q: "Do you develop apps for both Android and iOS?",
+                a: "Yes. We build native Android and iOS applications as well as cross-platform apps using Flutter and React Native."
+            },
+            {
+                q: "How long does mobile app development take?",
+                a: "A basic mobile app usually takes 6–10 weeks, while feature-rich or enterprise applications can take 3–6 months depending on the project scope."
+            },
+            {
+                q: "Do you publish apps on the Google Play Store and Apple App Store?",
+                a: "Yes. We assist with the complete app submission process, including store guidelines, optimization, testing, and deployment."
+            }
+        ],
         cta: { title: 'Ready to Build Your Mobile App?', desc: "Let's discuss your app idea and create a solution that users will love.", btnText: 'Start Your App Project' }
     }
 };
@@ -457,6 +462,9 @@ function ServiceDetail() {
 
 
 
+
+
+
             {/* BENEFITS */}
             <section className="benefits-section">
                 <div className="container">
@@ -498,8 +506,8 @@ function ServiceDetail() {
                     <h2 className="section-title">{data?.overview?.title}</h2>
                 </div>
                 <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-6">
+                    <div className="row align-items-center g-4">
+                        <div className="col-lg-6 ">
                             <div className="overview-image">
                                 <img
                                     src={data?.overview?.image}
@@ -592,38 +600,57 @@ function ServiceDetail() {
                             Portfolio
                         </span>
                         <h2 className="section-title">Our Work</h2>
-                        <p className="text-secondary">See what we've built for our clients</p>
+                        <p className="text-secondary">
+                            See what we've built for our clients
+                        </p>
                     </div>
 
-                    <div className="row g-4">
-                        {portfolioFromProjects.map((p) => (
-                            <div className="col-md-4" key={p.id}>
-                                <div className="proof-card">
+                    {portfolioFromProjects && portfolioFromProjects.length > 0 ? (
+                        <div className="row g-4">
+                            {portfolioFromProjects.map((p) => (
+                                <div className="col-md-4" key={p.id}>
+                                    <div className="proof-card">
+                                        <div className="proof-image">
+                                            <img src={p.image} alt={p.title} />
 
-                                    <div className="proof-image">
-                                        <img src={p.image} alt={p.title} />
+                                            <div
+                                                className="proof-overlay"
+                                                onClick={() => navigate(`/project-details/${p.id}`)}
+                                            >
+                                                <i className="fas fa-eye"></i>
+                                            </div>
+                                        </div>
 
-                                        <div
-                                            className="proof-overlay"
-                                            onClick={() => navigate(`/project-details/${p.id}`)}
-                                        >
-                                            <i className="fas fa-eye"></i>
+                                        <div className="proof-body">
+                                            <span className="proof-tag">{p.tag}</span>
+                                            <h4>{p.title}</h4>
+                                            <p>{p.desc}</p>
                                         </div>
                                     </div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <div className="proof-card text-center py-5">
+                                    <i
+                                        className="fa-solid fa-hourglass-half mb-3"
+                                        style={{ fontSize: "3rem", color: "#0d6efd" }}
+                                    ></i>
 
-                                    <div className="proof-body">
-                                        <span className="proof-tag">{p.tag}</span>
-                                        <h4>{p.title}</h4>
-                                        <p>{p.desc}</p>
-                                    </div>
+                                    <h3>Projects Coming Soon</h3>
 
+                                    <p className="text-secondary mb-0">
+                                        We're currently working on exciting projects. Check back soon to
+                                        explore our latest work.
+                                    </p>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    )}
                 </div>
             </section>
-
 
             {/* TECHNOLOGIES */}
             <section className="tech-section-service" style={{
@@ -659,10 +686,33 @@ function ServiceDetail() {
                         <h2 className="section-title">Choose Your Plan</h2>
                     </div>
 
-                    <div className="row g-4">
+                    <Swiper
+                        modules={[EffectCoverflow, Pagination, Autoplay]}
+                        spaceBetween={30}
+                        centeredSlides={true}
+                        loop={data?.pricing?.length > 3}   // only loop if there's enough content
+                        slidesPerView={3}
+                        speed={900}
+                        autoplay={{ delay: 2000, disableOnInteraction: false }}
+                        pagination={{ clickable: true }}
+                        effect={"coverflow"}
+                        coverflowEffect={{
+                            rotate: 0,
+                            stretch: 0,
+                            depth: 120,
+                            modifier: 2,
+                            slideShadows: false,
+                        }}
+                        breakpoints={{
+                            320: { slidesPerView: 1 },
+                            768: { slidesPerView: 2 },
+                            1024: { slidesPerView: 3 },
+                        }}
+                    >
                         {data?.pricing?.map((p, i) => (
-                            <div className="col-md-4" key={p.title || i}>
+                            <SwiperSlide key={p.title || i}>
                                 <div className={`pricing-card ${p.popular ? "popular" : ""}`}>
+
                                     {p.popular && (
                                         <span className="popular-badge">Most Popular</span>
                                     )}
@@ -683,13 +733,13 @@ function ServiceDetail() {
                                         ))}
                                     </ul>
 
-                                    <button className={`btn-pricing ${p.popular ? "primary" : "outline"}`}>
-                                        {p.btnText}
-                                    </button>
+                                    {/* <button className={`btn-pricing ${p.popular ? "primary" : "outline"}`}>
+                            {p.btnText}
+                        </button> */}
                                 </div>
-                            </div>
+                            </SwiperSlide>
                         ))}
-                    </div>
+                    </Swiper>
                 </div>
             </section>
 
@@ -745,7 +795,7 @@ function ServiceDetail() {
 
 
 
-            <cta />
+        
         </>
     );
 

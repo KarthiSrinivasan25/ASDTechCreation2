@@ -83,7 +83,7 @@ function Lightbox({ project, onClose }) {
 
   return (
 
-    
+
     <div className="lb-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={`${project.title} gallery`}>
       <div className="lb-panel" onClick={(e) => e.stopPropagation()}>
 
@@ -188,11 +188,11 @@ function Portfolio() {
 
   return (
     <>
-    <SEO
-  title="Portfolio | ASDTech Creation"
-  description="View our portfolio showcasing successful website development, mobile applications, eCommerce projects, and digital solutions delivered to our clients."
-  keywords="ASDTech Portfolio, Website Projects, Mobile App Projects, eCommerce Projects"
-/>
+      <SEO
+        title="Portfolio | ASDTech Creation"
+        description="View our portfolio showcasing successful website development, mobile applications, eCommerce projects, and digital solutions delivered to our clients."
+        keywords="ASDTech Portfolio, Website Projects, Mobile App Projects, eCommerce Projects"
+      />
 
 
       <BreadCrumb pageName="Portfolio" />
@@ -202,6 +202,68 @@ function Portfolio() {
         HeroTitleSuffix="Meets Code"
         HeroDescription="We design and build digital products that users love. Explore our finest work — from immersive web apps to mobile-first experiences."
       />
+
+
+      <section className="portfolio-success-section">
+        <div className="floating-particles2">
+          <div className="particle">
+            <img src="/web.png" alt="Web Dev" />
+          </div>
+
+          <div className="particle">
+            <img src="/android.png" alt="Android" />
+          </div>
+
+          <div className="particle">
+            <img src="/ecommerce.png" alt="Ecommerce" />
+          </div>
+
+          <div className="particle">
+            <img src="/seo.png" alt="SEO" />
+          </div>
+
+          <div className="particle">
+            <img src="/code.png" alt="Development" />
+          </div>
+        </div>
+
+        <div className="container">
+
+
+          <div className="text-center mb-4">
+            <span className="section-badge"><i className="fas fa-star me-1"></i> Our Portfolio</span>
+            <h2 className="section-title">Crafting Digital <span  >Success Stories</span></h2>
+          </div>
+
+
+          <div className="success-story-hero">
+            <div className="para-bg-animation">
+              <div className="gradient-orb orb-1"></div>
+              <div className="gradient-orb orb-2"></div>
+              <div className="gradient-orb orb-3"></div>
+            </div>
+            <div className="shimmer-line"></div>
+
+            <div className="hero-glow"></div>
+            <span className="deco-quote left">"</span>
+            <span className="deco-quote right">"</span>
+
+
+            <p>
+              Our portfolio showcases the <span className="highlight-text">passion, creativity, and technical expertise</span> we bring to every project. From <span className="animated-underline">modern business websites</span> and <span className="animated-underline">e-commerce platforms</span> to <span className="animated-underline">custom web applications</span> and <span className="animated-underline">mobile solutions</span>, each project reflects our commitment to delivering <span className="highlight-text">high-quality digital experiences</span>. We work closely with our clients to understand their goals, solve <span className="animated-underline">real business challenges</span>, and build solutions that are <span className="highlight-text">scalable, user-friendly, and results-driven</span>. Every project is a testament to our dedication to <span className="animated-underline">innovation</span>, <span className="animated-underline">performance</span>, and creating <span className="highlight-text">lasting value for our clients</span>.
+            </p>
+
+
+
+            <div className="hero-quote">
+              <i className="fas fa-quote-left me-2"></i>
+              We believe in building long-term partnerships with our clients. Our success is measured by the
+              success of the businesses we serve.
+              <i className="fas fa-quote-right ms-2"></i>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* PROJECT GRID */}
       <section className="portfolio-preview">
@@ -228,9 +290,9 @@ function Portfolio() {
         <Lightbox project={selectedProject} onClose={() => setSelectedProject(null)} />
       )}
 
-      <GallerySection />
+     
       <TechnologiesSection />
-
+ <GallerySection />
       <StatsCompact
         badge="Measurable Impact"
         title="Results That Speak for Themselves"

@@ -48,9 +48,9 @@ function Home() {
                     Custom web applications, enterprise platforms, and scalable digital ecosystems built with modern frameworks.
                   </p>
 
-                  <a href="#" className="carousel-btn">
-                    Explore Services <i className="fas fa-arrow-right ms-2"></i>
-                  </a>
+                 <Link to="/service" className="carousel-btn">
+  Explore Services <i className="fas fa-arrow-right ms-2"></i>
+</Link>
                 </div>
               </div>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function HelpCenter() {
   return (
@@ -279,12 +280,9 @@ function HelpCenter() {
                 mobile app, and SEO requirements.
               </p>
 
-              <a
-                href="/contact"
-                className="btn btn-light btn-lg px-4"
-              >
-                Contact Us
-              </a>
+              <Link to="/contact" className="btn btn-light btn-lg">
+  Contact Us
+</Link>
             </div>
           </div>
 

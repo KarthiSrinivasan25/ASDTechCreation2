@@ -62,17 +62,24 @@
 
   .overview-section .overview-image img {
       width: 100%;
-      height: 500px;
+      height: 350px;
       object-fit: cover;
   }
 
  
 
-  .overview-section  p {
-      color: #475569;
-      line-height: 1.8;
-      text-align: justify;
-  }
+  .overview-section p {
+    color: #475569;
+    line-height: 1.8;
+    text-align: justify;
+
+    padding: 18px 22px;
+    background: #ffffff;
+    border-left: 5px solid #4361ee;
+    border-radius: 10px;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
 
   .overview-section  ul {
       list-style: none;
@@ -466,7 +473,29 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
   }
+.swiper {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  overflow: hidden;
+}
 
+.swiper-slide {
+  height: auto;
+  overflow: visible;
+  transition: 0.4s ease; /* keep transition, drop the manual transform/opacity */
+}
+
+/* Active slide - default accent */
+.swiper-slide-active .pricing-card {
+  border: 2px solid #4361ee;
+  box-shadow: 0 20px 40px rgba(67, 97, 238, 0.25);
+}
+
+/* Active slide AND popular - stronger highlight */
+.swiper-slide-active .pricing-card.popular {
+  border: 2px solid salmon;
+  box-shadow: 0 20px 40px rgb(240, 179, 172);
+}
   /* ===== 9. FAQ ===== */
   .faq-section-service{
       background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%);
@@ -776,3 +805,8 @@
           gap: 0.5rem;
       }
   }
+
+
+
+
+  

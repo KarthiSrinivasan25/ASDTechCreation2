@@ -493,3 +493,283 @@
     font-size: 12px;
   }
 }
+
+
+
+/* ================================================================
+           PORTFOLIO — ADVANCED PARAGRAPH WITH ANIMATED BACKGROUND
+        ================================================================ */
+        .portfolio-success-section {
+           background: linear-gradient(180deg, #ffdaeb 0%, #fffade 100%);
+     padding: 60px 0;
+      position: relative;
+            overflow: hidden;
+        }
+
+        
+        .floating-particles2 {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* CONTAINER */
+.floating-particles2 {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* PARTICLE BOX */
+.floating-particles2 .particle {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.15);
+
+    animation: floatAdvanced 14s ease-in-out infinite;
+}
+
+/* IMAGE STYLE */
+.floating-particles2 .particle img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 10px rgba(0,0,0,0.25));
+}
+
+/* HOVER EFFECT */
+.floating-particles2 .particle:hover {
+    transform: scale(1.2);
+}
+
+/* POSITIONS */
+.floating-particles2 .particle:nth-child(1) { top: 10%; left: 8%; animation-delay: 0s; }
+.floating-particles2 .particle:nth-child(2) { top: 25%; right: 10%; animation-delay: -3s; }
+.floating-particles2 .particle:nth-child(3) { bottom: 20%; left: 12%; animation-delay: -6s; }
+.floating-particles2 .particle:nth-child(4) { bottom: 30%; right: 18%; animation-delay: -9s; }
+.floating-particles2 .particle:nth-child(5) { top: 55%; left: 45%; animation-delay: -12s; }
+
+/* FLOAT ANIMATION */
+@keyframes floatAdvanced {
+    0% { transform: translateY(0px) translateX(0px); }
+    25% { transform: translateY(-35px) translateX(25px); }
+    50% { transform: translateY(30px) translateX(-25px); }
+    75% { transform: translateY(-20px) translateX(40px); }
+    100% { transform: translateY(0px) translateX(0px); }
+}
+        
+
+        /* ================================================================
+           ADVANCED PARAGRAPH WITH ANIMATED BACKGROUND
+        ================================================================ */
+        .success-story-hero {
+            text-align: center;
+            max-width: 860px;
+            margin: 0 auto 0;
+            position: relative;
+            z-index: 2;
+            padding: 2.8rem 2.8rem;
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 48px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+        }
+
+        /* Animated gradient background for the paragraph */
+        .success-story-hero .para-bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            border-radius: 32px;
+        }
+        .success-story-hero .para-bg-animation .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: orbPulse 8s ease-in-out infinite alternate;
+        }
+        .success-story-hero .para-bg-animation .gradient-orb.orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.15), transparent 70%);
+            top: -80px;
+            right: -60px;
+            animation-delay: 0s;
+        }
+        .success-story-hero .para-bg-animation .gradient-orb.orb-2 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(76, 201, 240, 0.12), transparent 70%);
+            bottom: -60px;
+            left: -50px;
+            animation-delay: -3s;
+        }
+        .success-story-hero .para-bg-animation .gradient-orb.orb-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(247, 37, 133, 0.06), transparent 70%);
+            top: 40%;
+            left: 30%;
+            animation-delay: -5s;
+        }
+
+        @keyframes orbPulse {
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2) translate(20px, -20px);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(0.9) translate(-20px, 20px);
+                opacity: 0.3;
+            }
+        }
+
+        /* Animated shimmer line */
+        .success-story-hero .shimmer-line {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(67, 97, 238, 0.15), rgba(76, 201, 240, 0.15), transparent);
+            animation: shimmerSlide 4s ease-in-out infinite;
+            z-index: 1;
+        }
+        @keyframes shimmerSlide {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .success-story-hero .deco-quote {
+            font-size: 4.5rem;
+            line-height: 0.5;
+            color: #4361ee;
+            opacity: 0.06;
+            font-family: 'Georgia', serif;
+            position: absolute;
+            z-index: 1;
+        }
+        .success-story-hero .deco-quote.left {
+            top: 15px;
+            left: 25px;
+        }
+        .success-story-hero .deco-quote.right {
+            bottom: 15px;
+            right: 25px;
+            transform: rotate(180deg);
+        }
+
+        .success-story-hero .hero-glow {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.03), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .success-story-hero p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: #1e293b;
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+        }
+        .success-story-hero p strong {
+            color: #4361ee;
+            font-weight: 700;
+            position: relative;
+        }
+        .success-story-hero p strong::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4361ee, #4cc9f0);
+            border-radius: 2px;
+            opacity: 0.4;
+        }
+        .success-story-hero .highlight-text {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.08), rgba(76, 201, 240, 0.05));
+            padding: 0.1rem 0.6rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #4361ee;
+            border: 1px solid rgba(67, 97, 238, 0.04);
+            position: relative;
+            z-index: 1;
+        }
+
+        .success-story-hero .animated-underline {
+            position: relative;
+            display: inline-block;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .success-story-hero .animated-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4361ee, #4cc9f0);
+            transition: width 0.6s ease;
+        }
+        .success-story-hero .animated-underline:hover::after {
+            width: 100%;
+        }
+
+        .success-story-hero .hero-quote {
+            font-size: 0.95rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 1.2rem;
+            padding: 1rem 1.8rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            border: 1px solid rgba(67, 97, 238, 0.04);
+            position: relative;
+            z-index: 1;
+        }
+        .success-story-hero .hero-quote i {
+            color: #4361ee;
+            opacity: 0.3;
+        }

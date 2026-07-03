@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function TermsConditions() {
   return (
@@ -265,12 +266,9 @@ function TermsConditions() {
                 Email: <strong>asdtechcreation@gmail.com</strong>
               </p>
 
-              <a
-                href="/contact"
-                className="btn btn-light btn-lg"
-              >
-                Contact Us
-              </a>
+              <Link to="/contact" className="btn btn-light btn-lg">
+  Contact Us
+</Link>
             </div>
           </div>
 

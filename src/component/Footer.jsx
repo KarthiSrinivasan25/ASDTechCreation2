@@ -129,7 +129,7 @@ function Footer() {
 
               <div className="contact-info-item">
                 <i className="fas fa-phone-alt"></i>
-                <span>+91 12345 67890</span>
+                <span>+91 93631 84093</span>
               </div>
             </div>
 

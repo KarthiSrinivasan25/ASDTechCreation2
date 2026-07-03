@@ -44,8 +44,8 @@ function About() {
                 </h1>
                 <p className="hero-desc">ASDTech Creaion is a forward-thinking web development company dedicated to crafting innovative, high-performance digital solutions that help businesses thrive in the modern world.</p>
                 <div className="hero-stats">
-                  <div className="hero-stat"><div className="hero-stat-number">5+</div><div className="hero-stat-label">Years of Excellence</div></div>
-                  <div className="hero-stat"><div className="hero-stat-number">250+</div><div className="hero-stat-label">Projects Delivered</div></div>
+                  <div className="hero-stat"><div className="hero-stat-number">1+</div><div className="hero-stat-label">Years of Excellence</div></div>
+                  <div className="hero-stat"><div className="hero-stat-number">4+</div><div className="hero-stat-label">Projects Delivered</div></div>
                   <div className="hero-stat"><div className="hero-stat-number">98%</div><div className="hero-stat-label">Client Retention</div></div>
                 </div>
                 <div className="hero-buttons">
