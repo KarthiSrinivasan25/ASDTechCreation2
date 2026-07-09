@@ -22,6 +22,10 @@ export default async function handler(req, res) {
     const firstName = nameParts[0];
     const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : firstName;
 
+    // DEBUG: log the domain being used (not sensitive, safe to log)
+    console.log('DEBUG - SF_MY_DOMAIN_URL:', process.env.SF_MY_DOMAIN_URL);
+    console.log('DEBUG - Token URL:', `${process.env.SF_MY_DOMAIN_URL}/services/oauth2/token`);
+
     // Step 1: Get access token via OAuth 2.0 Client Credentials Flow
     const tokenRes = await fetch(
       `${process.env.SF_MY_DOMAIN_URL}/services/oauth2/token`,
@@ -36,7 +40,21 @@ export default async function handler(req, res) {
       }
     );
 
-    const tokenData = await tokenRes.json();
+    // DEBUG: check if response is actually JSON before parsing
+    const rawText = await tokenRes.text();
+    console.log('DEBUG - Token response status:', tokenRes.status);
+    console.log('DEBUG - Token raw response (first 200 chars):', rawText.substring(0, 200));
+
+    let tokenData;
+    try {
+      tokenData = JSON.parse(rawText);
+    } catch (parseErr) {
+      console.error('DEBUG - Response was not JSON, likely wrong domain URL');
+      return res.status(500).json({
+        success: false,
+        error: 'Salesforce returned an unexpected response. Check SF_MY_DOMAIN_URL.'
+      });
+    }
 
     if (!tokenRes.ok) {
       console.error('Salesforce token error:', tokenData);
