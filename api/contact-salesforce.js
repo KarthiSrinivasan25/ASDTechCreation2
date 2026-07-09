@@ -65,7 +65,8 @@ export default async function handler(req, res) {
     }
 
     const { access_token, instance_url } = tokenData;
-
+console.log("Instance URL:", instance_url);
+console.log("Access Token Available:", !!access_token);
     // Step 2: Create the Lead
     const leadData = {
       FirstName: firstName,
@@ -89,15 +90,30 @@ export default async function handler(req, res) {
       }
     );
 
-    const leadResult = await leadRes.json();
+    const leadText = await leadRes.text();
 
-    if (!leadRes.ok) {
-      console.error('Salesforce lead creation error:', leadResult);
-      return res.status(500).json({
-        success: false,
-        error: 'Failed to create lead in Salesforce.'
-      });
-    }
+console.log("Lead Status:", leadRes.status);
+console.log("Lead Response:", leadText);
+
+let leadResult;
+
+try {
+  leadResult = JSON.parse(leadText);
+} catch (e) {
+  console.error("Lead API returned HTML instead of JSON");
+  return res.status(500).json({
+    success: false,
+    error: leadText
+  });
+}
+
+if (!leadRes.ok) {
+  console.error('Salesforce lead creation error:', leadResult);
+  return res.status(500).json({
+    success: false,
+    error: 'Failed to create lead in Salesforce.'
+  });
+}
 
     return res.status(200).json({ success: true, id: leadResult.id });
   } catch (err) {
