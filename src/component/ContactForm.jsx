@@ -5,6 +5,8 @@ function ContactForm() {
   const [inputCaptcha, setInputCaptcha] = useState("");
   const [captchaError, setCaptchaError] = useState(false);
   const [successMsg, setSuccessMsg] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -28,7 +30,7 @@ function ContactForm() {
     generateCaptcha();
   }, []);
 
-   useEffect(() => {
+  useEffect(() => {
     if (successMsg) {
       alert("Thank you! We will get back to you within 24 hours.");
     }
@@ -40,8 +42,9 @@ function ContactForm() {
   };
 
   // Submit form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError("");
 
     if (inputCaptcha !== captcha) {
       setCaptchaError(true);
@@ -55,26 +58,42 @@ function ContactForm() {
     }
 
     setCaptchaError(false);
-    setSuccessMsg(true);
+    setIsSubmitting(true);
 
-    // Reset form
-    setForm({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    });
-    setInputCaptcha("");
-    generateCaptcha();
+    try {
+      const res = await fetch("/api/contact-salesforce", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    // Hide success message after 5 sec
-    setTimeout(() => setSuccessMsg(false), 5000);
+      const data = await res.json();
 
-    setSuccessMsg(true);
+      if (data.success) {
+        setSuccessMsg(true);
+
+        // Reset form
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          message: "",
+        });
+        setInputCaptcha("");
+        generateCaptcha();
+
+        // Hide success message after 5 sec
+        setTimeout(() => setSuccessMsg(false), 5000);
+      } else {
+        setSubmitError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setSubmitError("Network error. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-
-   
 
   return (
     <div className="col-lg-7">
@@ -137,8 +156,7 @@ function ContactForm() {
                   <option value="mobile">Mobile App Development</option>
                   <option value="uiux">UI/UX Design</option>
                   <option value="ecommerce">E-Commerce Solutions</option>
-                  <option value="cloud">Cloud Solutions</option>
-                  <option value="marketing">Digital Marketing</option>
+                  <option value="seo">seo</option>
                 </select>
               </div>
             </div>
@@ -180,8 +198,8 @@ function ContactForm() {
               🔄
             </div>
 
-            <button type="submit" className="btn-submit-premium">
-              Send Message
+            <button type="submit" className="btn-submit-premium" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </div>
 
@@ -192,13 +210,16 @@ function ContactForm() {
             </div>
           )}
 
+          {submitError && (
+            <div className="captcha-error">
+              {submitError}
+            </div>
+          )}
 
-          {/* Success */}
-        
         </form>
       </div>
     </div>
   );
 }
 
-export default ContactForm
+export default ContactForm;
