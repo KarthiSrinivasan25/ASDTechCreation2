@@ -72,7 +72,7 @@ export default async function handler(req, res) {
     // ==========================
 
     const enquiryData = {
-      Customer__Name__c: name,
+      Customer_Name__c: name,
       Email__c: email,
       Phone__c: phone || "",
       Service__c: service || "",
