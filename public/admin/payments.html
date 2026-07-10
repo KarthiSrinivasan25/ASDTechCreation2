@@ -248,7 +248,7 @@
 
         function loadPayments() {
 
-            fetch("api/payments/get_payments.php")
+            fetch("https://karthikeyanportfolio.helioho.st/api/payments/get_payments.php")
 
                 .then(res => res.json())
 
@@ -424,7 +424,7 @@ No Payments Found
 
                     if (result.isConfirmed) {
 
-                        fetch("api/delete_payment.php?id=" + id)
+                        fetch("https://karthikeyanportfolio.helioho.st/api/delete_payment.php?id=" + id)
 
                             .then(res => res.json())
 

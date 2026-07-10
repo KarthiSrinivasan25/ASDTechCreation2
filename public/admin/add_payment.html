@@ -379,7 +379,7 @@ ${client.client_name}
 
                 let client = this.value;
 
-                fetch("api/payments/get_client_invoices.php?client_id=" + client)
+                fetch("https://karthikeyanportfolio.helioho.st/api/payments/get_client_invoices.php?client_id=" + client)
 
                     .then(res => res.json())
 
@@ -451,7 +451,7 @@ ${inv.invoice_number}
 
                 e.preventDefault();
 
-                fetch("api/payments/save_payment.php", {
+                fetch("https://karthikeyanportfolio.helioho.st/api/payments/save_payment.php", {
 
                     method: "POST",
 

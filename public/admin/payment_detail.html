@@ -215,7 +215,7 @@
 
         const id = urlParams.get("id");
 
-        fetch("api/payments/get_payment.php?id=" + id)
+        fetch("https://karthikeyanportfolio.helioho.st/api/payments/get_payment.php?id=" + id)
 
             .then(res => res.json())
 
@@ -279,7 +279,7 @@ Edit
 
 </a>
 
-<a href="api/payments/generate_receipt_pdf.php?id=${d.id}"
+<a href="https://karthikeyanportfolio.helioho.st/api/payments/generate_receipt_pdf.php?id=${d.id}"
    target="_blank"
    class="btn btn-danger me-2">
     <i class="bi bi-file-earmark-pdf"></i>
@@ -544,7 +544,7 @@ document.getElementById("sendReceipt").addEventListener("click", function () {
         }
     });
  
-    fetch("api/payments/send_receipt_email.php", {
+    fetch("https://karthikeyanportfolio.helioho.st/api/payments/send_receipt_email.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: d.id })

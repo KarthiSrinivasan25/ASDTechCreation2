@@ -167,7 +167,7 @@
 
         function loadClients() {
 
-            fetch("api/get_clients.php")
+            fetch("https://karthikeyanportfolio.helioho.st/api/get_clients.php")
                 .then(res => res.json())
                 .then(res => {
 
@@ -252,7 +252,7 @@
 
                 if (result.isConfirmed) {
 
-                    fetch("api/delete_client.php?id=" + id)
+                    fetch("https://karthikeyanportfolio.helioho.st/api/delete_client.php?id=" + id)
                         .then(res => res.json())
                         .then(res => {
 

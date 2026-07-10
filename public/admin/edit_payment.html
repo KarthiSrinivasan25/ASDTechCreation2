@@ -297,7 +297,7 @@ Update Payment
 
 const id=new URLSearchParams(window.location.search).get("id");
 
-fetch("api/payments/get_payment.php?id="+id)
+fetch("https://karthikeyanportfolio.helioho.st/api/payments/get_payment.php?id="+id)
 
 .then(res=>res.json())
 
@@ -337,7 +337,7 @@ document.getElementById("editPaymentForm")
 
 e.preventDefault();
 
-fetch("api/payments/update_payment.php",{
+fetch("https://karthikeyanportfolio.helioho.st/api/payments/update_payment.php",{
 
 method:"POST",
 

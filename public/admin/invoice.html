@@ -183,7 +183,7 @@
 
         function loadInvoices() {
 
-            fetch("api/invoice/get_invoices.php")
+            fetch("https://karthikeyanportfolio.helioho.st/api/invoice/get_invoices.php")
 
                 .then(res => res.json())
 
@@ -301,7 +301,7 @@ onclick="deleteInvoice(${inv.id})">
 
                 if (result.isConfirmed) {
 
-                    fetch("api/invoice/delete_invoice.php?id=" + id)
+                    fetch("https://karthikeyanportfolio.helioho.st/api/invoice/delete_invoice.php?id=" + id)
 
                         .then(res => res.json())
 

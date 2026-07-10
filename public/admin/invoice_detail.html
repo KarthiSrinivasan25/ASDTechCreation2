@@ -215,7 +215,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
 
-        fetch("api/invoice/get_invoice.php?id=" + id)
+        fetch("https://karthikeyanportfolio.helioho.st/api/invoice/get_invoice.php?id=" + id)
             .then(res => res.json())
             .then(res => {
 
@@ -304,7 +304,7 @@ Edit
 
 </a>
 
-<a href="api/invoice/generate_invoice_pdf.php?id=${inv.id}"
+<a href="https://karthikeyanportfolio.helioho.st/api/invoice/generate_invoice_pdf.php?id=${inv.id}"
    target="_blank"
    class="btn btn-warning text-white me-2">
     <i class="bi bi-file-earmark-pdf"></i>
@@ -694,7 +694,7 @@ document.getElementById("sendInvoice").addEventListener("click", function () {
         }
     });
  
-    fetch("api/invoice/send_invoice_email.php", {
+    fetch("https://karthikeyanportfolio.helioho.st/api/invoice/send_invoice_email.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: inv.id })

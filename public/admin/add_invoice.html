@@ -365,7 +365,7 @@
 
         function loadClients() {
 
-            fetch("api/get_clients.php")
+            fetch("https://karthikeyanportfolio.helioho.st/api/get_clients.php")
                 .then(res => res.json())
                 .then(res => {
 
@@ -582,7 +582,7 @@ class="btn btn-danger btn-sm removeRow">
 
                 e.preventDefault();
 
-                fetch("api/invoice/save_invoice.php", {
+                fetch("https://karthikeyanportfolio.helioho.st/api/invoice/save_invoice.php", {
 
                     method: "POST",
 
