@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ASD TechCreation professional admin dashboard template">
+    <title>Client | ASD TechCreation</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="admin-shell">
+        <div class="sidebar-backdrop" data-sidebar-close></div>
+
+        <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <a class="brand-mark" href="index.html" aria-label="ASD TechCreation dashboard">
+                    <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                    <span class="brand-copy">
+                        <span class="brand-title">ASD TechCreation</span>
+                    </span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="index.html">
+                    <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a class="nav-link active" href="client.html">
+                    <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+                    <span class="nav-text">Clients</span>
+                </a>
+                <a class="nav-link" href="invoice.html">
+          <span class="nav-icon"><i class="bi bi-receipt"></i></span>
+          <span class="nav-text">Invoice</span>
+        </a>
+
+         <a class="nav-link" href="payments.html">
+                    <span class="nav-icon"><i class="bi bi-credit-card-2-front"></i></span>
+                    <span class="nav-text">Payments</span>
+                </a>
+            </nav>
+
+        </aside>
+
+        <div class="admin-main">
+            <nav class="navbar admin-navbar navbar-expand bg-white">
+                <div class="container-fluid px-3 px-lg-4">
+                    <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="adminSidebar"
+                        aria-expanded="true" aria-label="Toggle sidebar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <form class="d-none d-md-flex ms-3 flex-grow-1" role="search">
+                        <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+
+                    <div class="navbar-actions ms-auto">
+                        <button class="icon-button theme-toggle" type="button" data-theme-toggle
+                            aria-label="Switch color theme" title="Switch color theme">
+                            <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown">
+                            <button class="icon-button" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                aria-label="Notifications">
+                                <span class="notification-dot"></span>
+                                <i class="bi bi-bell" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end notification-menu">
+                                <div class="dropdown-header fw-bold text-body">Notifications</div>
+
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                                <span class="profile-name d-none d-sm-inline">Admin</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="dashboard-content">
+                <div class="container-fluid px-3 px-lg-4 py-4">
+                    <div class="page-heading">
+                        <div class="page-heading-copy">
+
+                            <div>
+                                <p class="eyebrow mb-1">Client</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <section class="panel">
+                        <div class="panel-header"  style="border-bottom: 2px dashed #6c757d;">
+                            <h2 class="h5 mb-3 section-title">
+                                <span>Clients</span>
+                            </h2>
+
+                            <div class="row align-items-center mb-3">
+                                <div class="col-md-6">
+                                    <input class="form-control form-control-sm table-search" type="search"
+                                        placeholder="Search clients" data-table-search="ordersTable"
+                                        aria-label="Search clients">
+                                </div>
+
+                                <div class="col-md-6 text-md-end mt-2 mt-md-0">
+                                    <a href="add_client.html" class="btn btn-primary btn-sm">
+                                        <i class="bi bi-plus-circle me-1"></i>
+                                        Add Client
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-middle mb-0" id="ordersTable">
+
+                                <thead>
+                                    <tr>
+                                        <th>Client</th>
+                                        <th>Company</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th>Amount</th>
+                                        <th class="text-end">Action</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="clientTableBody">
+                                    <!-- API DATA WILL LOAD HERE -->
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </main>
+
+
+        </div>
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            loadClients();
+        });
+
+        function loadClients() {
+
+            fetch("api/get_clients.php")
+                .then(res => res.json())
+                .then(res => {
+
+                    let html = "";
+
+                    if (res.status === "success") {
+
+                        res.data.forEach(row => {
+
+                            let statusBadge = "";
+
+                            if (row.status === "Active") {
+                                statusBadge = `<span class="badge text-bg-success">Active</span>`;
+                            } else if (row.status === "Completed") {
+                                statusBadge = `<span class="badge text-bg-info">Completed</span>`;
+                            } else {
+                                statusBadge = `<span class="badge text-bg-warning">On Hold</span>`;
+                            }
+
+                            html += `
+                <tr>
+
+                    <td class="fw-semibold">${row.client_name}</td>
+
+                    <td>
+                        <div class="table-media">
+                            <span>${row.company_name}</span>
+                        </div>
+                    </td>
+
+                    <td>${row.phone}</td>
+
+                    <td>${row.email}</td>
+
+                    <td>${statusBadge}</td>
+
+                    <td>₹${Number(row.project_value).toLocaleString()}</td>
+
+                    <td class="text-end">
+
+                       <button class="btn btn-light btn-sm"
+    onclick="window.location.href='client_details.html?id=${row.id}'">
+    View
+</button>
+
+                        <a href="edit_client.html?id=${row.id}"
+                           class="btn btn-primary btn-sm">
+                           Edit
+                        </a>
+
+                        <button class="btn btn-danger btn-sm"
+                            onclick="deleteClient(${row.id})">
+                            Delete
+                        </button>
+
+                    </td>
+
+                </tr>
+                `;
+                        });
+
+                    } else {
+                        html = `<tr><td colspan="7" class="text-center">No data found</td></tr>`;
+                    }
+
+                    document.getElementById("clientTableBody").innerHTML = html;
+                });
+        }
+
+
+        function deleteClient(id) {
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This client will be permanently deleted!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    fetch("api/delete_client.php?id=" + id)
+                        .then(res => res.json())
+                        .then(res => {
+
+                            if (res.status === "success") {
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Deleted!',
+                                    text: 'Client has been deleted successfully',
+                                    timer: 1500,
+                                    showConfirmButton: false
+                                });
+
+                                loadClients(); // refresh table
+
+                            } else {
+
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error!',
+                                    text: res.message || 'Delete failed'
+                                });
+
+                            }
+
+                        })
+                        .catch(() => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Server Error',
+                                text: 'Please try again later'
+                            });
+                        });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

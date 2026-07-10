@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ASD TechCreation professional admin dashboard template">
+  <title>Client Details | ASD TechCreation</title>
+
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .client-profile{
+    border:0;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.profile-header{
+    background:linear-gradient(135deg,#eb7425,#e55146);
+    color:#fff;
+    padding:35px;
+}
+
+.client-avatar{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#fff;
+    color:#2563eb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    font-weight:700;
+}
+
+.info-card{
+    border:none;
+    border-radius:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    height:100%;
+}
+
+.info-card .card-header{
+    background:#f8fafc;
+    border-bottom:1px solid #eee;
+    font-weight:600;
+    color: salmon;
+}
+
+.info-item{
+    margin-bottom:18px;
+}
+
+.info-item small{
+    color:#6c757d;
+    display:block;
+    margin-bottom:4px;
+}
+
+.info-item div{
+    font-weight:600;
+}
+
+.detail-box{
+    background:#f8fafc;
+    border-radius:12px;
+    padding:18px;
+    min-height:120px;
+}
+  </style>
+</head>
+
+<body>
+  <div class="admin-shell">
+    <div class="sidebar-backdrop" data-sidebar-close></div>
+
+    <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
+      <div class="sidebar-header">
+        <a class="brand-mark" href="index.html" aria-label="ASD TechCreation dashboard">
+          <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+          <span class="brand-copy">
+            <span class="brand-title">ASD TechCreation</span>
+          </span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="nav-link" href="index.html">
+          <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a class="nav-link active" href="client.html">
+          <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+          <span class="nav-text">Clients</span>
+        </a>
+        <a class="nav-link" href="invoice.html">
+          <span class="nav-icon"><i class="bi bi-receipt"></i></span>
+          <span class="nav-text">Invoice</span>
+        </a>
+         <a class="nav-link" href="payments.html">
+                    <span class="nav-icon"><i class="bi bi-credit-card-2-front"></i></span>
+                    <span class="nav-text">Payments</span>
+                </a>
+      </nav>
+      
+    </aside>
+
+    <div class="admin-main">
+      <nav class="navbar admin-navbar navbar-expand bg-white">
+        <div class="container-fluid px-3 px-lg-4">
+          <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="adminSidebar" aria-expanded="true" aria-label="Toggle sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <form class="d-none d-md-flex ms-3 flex-grow-1" role="search">
+            <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search">
+          </form>
+
+          <div class="navbar-actions ms-auto">
+            <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme">
+              <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
+            </button>
+            <div class="dropdown">
+              <button class="icon-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notifications">
+                <span class="notification-dot"></span>
+                <i class="bi bi-bell" aria-hidden="true"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end notification-menu">
+                <div class="dropdown-header fw-bold text-body">Notifications</div>
+              
+              </div>
+            </div>
+
+            <div class="dropdown">
+              <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                <span class="profile-name d-none d-sm-inline">Admin</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main class="dashboard-content">
+        <div class="container-fluid px-3 px-lg-4 py-4">
+          <div class="page-heading">
+            <div class="page-heading-copy">
+              
+              <div>
+                <p class="eyebrow mb-1">Clent Details</p>
+                
+              </div>
+            </div>
+            
+          </div>
+
+          <section class="panel ">
+            <div id="clientCard" class="card shadow-sm border-0">
+      <div class="card-body text-center py-5">
+        Loading client details...
+      </div>
+    </div>
+          </section>
+        </div>
+      </main>
+
+      
+    </div>
+  </div>
+
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
+
+fetch("api/get_client.php?id=" + id)
+.then(res => res.json())
+.then(res => {
+
+    if (res.status === "success") {
+
+        const d = res.data;
+
+        let statusBadge = "";
+
+        if (d.status === "Active") {
+            statusBadge = `<span class="badge text-bg-success">Active</span>`;
+        } else if (d.status === "Completed") {
+            statusBadge = `<span class="badge text-bg-info">Completed</span>`;
+        } else {
+            statusBadge = `<span class="badge text-bg-warning">On Hold</span>`;
+        }
+
+        document.getElementById("clientCard").innerHTML = `
+
+<div class="client-profile">
+
+<div class="profile-header">
+
+<div class="d-flex justify-content-between align-items-center">
+
+<div class="d-flex align-items-center">
+
+<div class="client-avatar">
+${d.client_name.charAt(0).toUpperCase()}
+</div>
+
+<div class="ms-4">
+
+<h3 class="mb-1">${d.client_name}</h3>
+
+<p class="mb-2 opacity-75">
+${d.company_name}
+</p>
+
+${statusBadge}
+
+</div>
+
+</div>
+
+<div>
+
+<a href="edit_client.html?id=${d.id}" class="btn btn-light me-2">
+<i class="bi bi-pencil"></i> Edit
+</a>
+
+<a href="client.html" class="btn btn-outline-light">
+<i class="bi bi-arrow-left"></i> Back
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card-body p-4">
+
+<div class="row g-4">
+
+<div class="col-lg-6">
+
+<div class="card info-card">
+
+<div class="card-header">
+<i class="bi bi-person-lines-fill me-2"></i>
+Contact Information
+</div>
+
+<div class="card-body">
+
+<div class="info-item">
+<small>Email</small>
+<div>${d.email}</div>
+</div>
+
+<div class="info-item">
+<small>Phone</small>
+<div>${d.phone}</div>
+</div>
+
+<div class="info-item">
+<small>GST Number</small>
+<div>${d.gst_number}</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card info-card">
+
+<div class="card-header">
+<i class="bi bi-kanban-fill me-2"></i>
+Project Information
+</div>
+
+<div class="card-body">
+
+<div class="info-item">
+<small>Project Name</small>
+<div>${d.project_name}</div>
+</div>
+
+<div class="info-item">
+<small>Service</small>
+<div>${d.service}</div>
+</div>
+
+<div class="info-item">
+<small>Project Value</small>
+<div class="text-success fw-bold">
+₹ ${Number(d.project_value).toLocaleString()}
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card info-card">
+
+<div class="card-header">
+<i class="bi bi-geo-alt-fill me-2"></i>
+Address
+</div>
+
+<div class="card-body">
+
+<div class="detail-box">
+${d.address}
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card info-card">
+
+<div class="card-header">
+<i class="bi bi-journal-text me-2"></i>
+Notes
+</div>
+
+<div class="card-body">
+
+<div class="detail-box">
+${d.notes}
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+    } else {
+        document.getElementById("clientCard").innerHTML = `
+            <div class="card-body text-danger text-center">
+                Client not found
+            </div>
+        `;
+    }
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ASD TechCreation professional admin dashboard template">
+    <title>Payments | ASD TechCreation</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="admin-shell">
+        <div class="sidebar-backdrop" data-sidebar-close></div>
+
+        <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <a class="brand-mark" href="index.html" aria-label="ASD TechCreation dashboard">
+                    <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                    <span class="brand-copy">
+                        <span class="brand-title">ASD TechCreation</span>
+                    </span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="index.html">
+                    <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a class="nav-link " href="client.html">
+                    <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+                    <span class="nav-text">Clients</span>
+                </a>
+                <a class="nav-link" href="invoice.html">
+                    <span class="nav-icon"><i class="bi bi-receipt"></i></span>
+                    <span class="nav-text">Invoice</span>
+                </a>
+
+                <a class="nav-link active" href="payments.html">
+                    <span class="nav-icon"><i class="bi bi-credit-card-2-front"></i></span>
+                    <span class="nav-text">Payments</span>
+                </a>
+            </nav>
+
+        </aside>
+
+        <div class="admin-main">
+            <nav class="navbar admin-navbar navbar-expand bg-white">
+                <div class="container-fluid px-3 px-lg-4">
+                    <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="adminSidebar"
+                        aria-expanded="true" aria-label="Toggle sidebar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <form class="d-none d-md-flex ms-3 flex-grow-1" role="search">
+                        <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+
+                    <div class="navbar-actions ms-auto">
+                        <button class="icon-button theme-toggle" type="button" data-theme-toggle
+                            aria-label="Switch color theme" title="Switch color theme">
+                            <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown">
+                            <button class="icon-button" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                aria-label="Notifications">
+                                <span class="notification-dot"></span>
+                                <i class="bi bi-bell" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end notification-menu">
+                                <div class="dropdown-header fw-bold text-body">Notifications</div>
+
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                                <span class="profile-name d-none d-sm-inline">Admin</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="dashboard-content">
+
+                <div class="container-fluid px-3 px-lg-4 py-4">
+
+                    <div class="page-heading">
+
+                        <div class="page-heading-copy">
+
+                            <p class="eyebrow mb-1">Payments</p>
+
+                        </div>
+
+                    </div>
+
+                    <section class="row g-3">
+
+                        <div class="col-12">
+
+                            <div class="card shadow-sm border-0">
+
+                                <div class="card-header text-white d-flex justify-content-between align-items-center"
+                                    style="background:linear-gradient(135deg,#eb7425,#e55146);">
+
+                                    <h5 class="mb-0">
+
+                                        Payment Management
+
+                                    </h5>
+
+                                    <a href="add_payment.html" class="btn btn-light btn-sm">
+
+                                        <i class="bi bi-plus-circle"></i>
+
+                                        Add Payment
+
+                                    </a>
+
+                                </div>
+
+                                <div class="card-body">
+
+                                    <div class="row mb-3">
+
+                                        <div class="col-md-4">
+
+                                            <input type="text" id="searchPayment" class="form-control"
+                                                placeholder="Search Client / Receipt / Invoice">
+
+                                        </div>
+
+                                        <div class="col-md-3">
+
+                                            <select id="methodFilter" class="form-select">
+
+                                                <option value="">All Methods</option>
+
+                                                <option>Cash</option>
+
+                                                <option>UPI</option>
+
+                                                <option>Bank Transfer</option>
+
+                                                <option>Card</option>
+
+                                            </select>
+
+                                        </div>
+
+                                        <div class="col-md-3">
+
+                                            <input type="date" id="dateFilter" class="form-control">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="table-responsive">
+
+                                        <table class="table table-bordered table-hover align-middle">
+
+                                            <thead class="table-light">
+
+                                                <tr>
+
+                                                    <th>#</th>
+
+                                                    <th>Receipt No</th>
+
+                                                    <th>Client</th>
+
+                                                    <th>Invoice</th>
+
+                                                    <th>Date</th>
+
+                                                    <th>Method</th>
+
+                                                    <th>Paid</th>
+
+                                                    <th width="180">
+
+                                                        Action
+
+                                                    </th>
+
+                                                </tr>
+
+                                            </thead>
+
+                                            <tbody id="paymentTable">
+
+                                                <tr>
+
+                                                    <td colspan="8" class="text-center">
+
+                                                        Loading...
+
+                                                    </td>
+
+                                                </tr>
+
+                                            </tbody>
+
+                                        </table>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </main>
+
+        </div>
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+
+        let payments = [];
+
+        loadPayments();
+
+        function loadPayments() {
+
+            fetch("api/payments/get_payments.php")
+
+                .then(res => res.json())
+
+                .then(res => {
+
+                    payments = res.data;
+
+                    renderTable();
+
+                });
+
+        }
+
+        function renderTable() {
+
+            let search = document.getElementById("searchPayment").value.toLowerCase();
+
+            let method = document.getElementById("methodFilter").value;
+
+            let date = document.getElementById("dateFilter").value;
+
+            let html = "";
+
+            let i = 1;
+
+            payments.forEach(pay => {
+
+                if (search != "") {
+
+                    let txt = (
+
+                        pay.client_name +
+
+                        pay.receipt_number +
+
+                        pay.invoice_number
+
+                    ).toLowerCase();
+
+                    if (!txt.includes(search)) return;
+
+                }
+
+                if (method != "" && pay.payment_method != method) return;
+
+                if (date != "" && pay.payment_date != date) return;
+
+                html += `
+
+<tr>
+
+<td>${i++}</td>
+
+<td>
+
+<b>${pay.receipt_number}</b>
+
+</td>
+
+<td>
+
+${pay.client_name}
+
+</td>
+
+<td>
+
+${pay.invoice_number}
+
+</td>
+
+<td>
+
+${pay.payment_date}
+
+</td>
+
+<td>
+
+${pay.payment_method}
+
+</td>
+
+<td class="text-success fw-bold">
+
+₹ ${Number(pay.amount_paid).toLocaleString()}
+
+</td>
+
+<td>
+
+<a
+href="payment_detail.html?id=${pay.id}"
+class="btn btn-info btn-sm">
+
+<i class="bi bi-eye"></i>
+
+</a>
+
+<a
+href="edit_payment.html?id=${pay.id}"
+class="btn btn-warning btn-sm">
+
+<i class="bi bi-pencil"></i>
+
+</a>
+
+<button
+
+class="btn btn-danger btn-sm"
+
+onclick="deletePayment(${pay.id})">
+
+<i class="bi bi-trash"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+            });
+
+            if (html == "") {
+
+                html = `
+
+<tr>
+
+<td colspan="8"
+
+class="text-center">
+
+No Payments Found
+
+</td>
+
+</tr>
+
+`;
+
+            }
+
+            document.getElementById("paymentTable").innerHTML = html;
+
+        }
+
+        document.getElementById("searchPayment").onkeyup = renderTable;
+
+        document.getElementById("methodFilter").onchange = renderTable;
+
+        document.getElementById("dateFilter").onchange = renderTable;
+
+        function deletePayment(id) {
+
+            Swal.fire({
+
+                title: "Delete Payment?",
+
+                text: "This cannot be undone.",
+
+                icon: "warning",
+
+                showCancelButton: true,
+
+                confirmButtonText: "Delete"
+
+            })
+
+                .then((result) => {
+
+                    if (result.isConfirmed) {
+
+                        fetch("api/delete_payment.php?id=" + id)
+
+                            .then(res => res.json())
+
+                            .then(res => {
+
+                                if (res.status == "success") {
+
+                                    Swal.fire({
+
+                                        icon: "success",
+
+                                        title: "Deleted",
+
+                                        text: res.message,
+
+                                        timer: 1500,
+
+                                        showConfirmButton: false
+
+                                    });
+
+                                    loadPayments();
+
+                                } else {
+
+                                    Swal.fire({
+
+                                        icon: "error",
+
+                                        title: "Error",
+
+                                        text: res.message
+
+                                    });
+
+                                }
+
+                            });
+
+                    }
+
+                });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

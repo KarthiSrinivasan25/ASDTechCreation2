@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ASD TechCreation professional admin dashboard template">
+    <title>Edit Payment | ASD TechCreation</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="admin-shell">
+        <div class="sidebar-backdrop" data-sidebar-close></div>
+
+        <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <a class="brand-mark" href="index.html" aria-label="ASD TechCreation dashboard">
+                    <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                    <span class="brand-copy">
+                        <span class="brand-title">ASD TechCreation</span>
+                    </span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="index.html">
+                    <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a class="nav-link" href="client.html">
+                    <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+                    <span class="nav-text">Clients</span>
+                </a>
+                <a class="nav-link active" href="invoice.html">
+          <span class="nav-icon"><i class="bi bi-receipt"></i></span>
+          <span class="nav-text">Invoice</span>
+        </a>
+
+         <a class="nav-link active" href="payments.html">
+                    <span class="nav-icon"><i class="bi bi-credit-card-2-front"></i></span>
+                    <span class="nav-text">Payments</span>
+                </a>
+            </nav>
+
+        </aside>
+
+        <div class="admin-main">
+            <nav class="navbar admin-navbar navbar-expand bg-white">
+                <div class="container-fluid px-3 px-lg-4">
+                    <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="adminSidebar"
+                        aria-expanded="true" aria-label="Toggle sidebar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <form class="d-none d-md-flex ms-3 flex-grow-1" role="search">
+                        <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+
+                    <div class="navbar-actions ms-auto">
+                        <button class="icon-button theme-toggle" type="button" data-theme-toggle
+                            aria-label="Switch color theme" title="Switch color theme">
+                            <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown">
+                            <button class="icon-button" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                aria-label="Notifications">
+                                <span class="notification-dot"></span>
+                                <i class="bi bi-bell" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end notification-menu">
+                                <div class="dropdown-header fw-bold text-body">Notifications</div>
+
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                                <span class="profile-name d-none d-sm-inline">Admin</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="dashboard-content">
+                <div class="container-fluid px-3 px-lg-4 py-4">
+                    <div class="page-heading">
+                        <div class="page-heading-copy">
+
+                            <div>
+                                <p class="eyebrow mb-1">Edit Invoice</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <section class="row g-3">
+                        <div class="col-12 ">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-header text-white" style="background: linear-gradient(135deg, #eb7425, #e55146);
+">
+                                    <h5 class="mb-0">Edit Payment</h5>
+                                </div>
+
+                                <div class="card-body">
+                                   <form id="editPaymentForm" class="row g-3">
+
+<input type="hidden" id="id" name="id">
+
+<input type="hidden" id="client_id" name="client_id">
+
+<input type="hidden" id="invoice_id" name="invoice_id">
+
+<div class="col-md-6">
+
+<label class="form-label">Receipt Number</label>
+
+<input
+type="text"
+id="receipt_number"
+class="form-control"
+readonly>
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">Client</label>
+
+<input
+type="text"
+id="client_name"
+class="form-control"
+readonly>
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">Invoice Number</label>
+
+<input
+type="text"
+id="invoice_number"
+class="form-control"
+readonly>
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">Payment Date</label>
+
+<input
+type="date"
+id="payment_date"
+name="payment_date"
+class="form-control"
+required>
+
+</div>
+
+<div class="col-md-4">
+
+<label class="form-label">Invoice Total</label>
+
+<input
+type="number"
+id="total_amount"
+class="form-control"
+readonly>
+
+</div>
+
+<div class="col-md-4">
+
+<label class="form-label">Current Paid</label>
+
+<input
+type="number"
+id="paid_amount"
+class="form-control"
+readonly>
+
+</div>
+
+<div class="col-md-4">
+
+<label class="form-label">Balance</label>
+
+<input
+type="number"
+id="balance_amount"
+class="form-control"
+readonly>
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">Amount Paid</label>
+
+<input
+type="number"
+id="amount_paid"
+name="amount_paid"
+class="form-control"
+required>
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">Payment Method</label>
+
+<select
+id="payment_method"
+name="payment_method"
+class="form-select">
+
+<option>Cash</option>
+<option>UPI</option>
+<option>Bank Transfer</option>
+<option>Card</option>
+
+</select>
+
+</div>
+
+<div class="col-md-12">
+
+<label class="form-label">Transaction ID</label>
+
+<input
+type="text"
+id="transaction_id"
+name="transaction_id"
+class="form-control">
+
+</div>
+
+<div class="col-md-12">
+
+<label class="form-label">Notes</label>
+
+<textarea
+id="notes"
+name="notes"
+rows="4"
+class="form-control"></textarea>
+
+</div>
+
+<div class="col-12">
+
+<button class="btn btn-primary">
+
+<i class="bi bi-save"></i>
+
+Update Payment
+
+</button>
+
+</div>
+
+</form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </main>
+
+
+        </div>
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+const id=new URLSearchParams(window.location.search).get("id");
+
+fetch("api/payments/get_payment.php?id="+id)
+
+.then(res=>res.json())
+
+.then(res=>{
+
+if(res.status!="success") return;
+
+const d=res.data;
+
+document.getElementById("id").value=d.id;
+document.getElementById("client_id").value=d.client_id;
+document.getElementById("invoice_id").value=d.invoice_id;
+
+document.getElementById("receipt_number").value=d.receipt_number;
+document.getElementById("client_name").value=d.client_name;
+document.getElementById("invoice_number").value=d.invoice_number;
+
+document.getElementById("payment_date").value=d.payment_date;
+
+document.getElementById("total_amount").value=d.total_amount;
+document.getElementById("paid_amount").value=d.paid_amount;
+document.getElementById("balance_amount").value=d.balance_amount;
+
+document.getElementById("amount_paid").value=d.amount_paid;
+
+document.getElementById("payment_method").value=d.payment_method;
+
+document.getElementById("transaction_id").value=d.transaction_id;
+
+document.getElementById("notes").value=d.notes;
+
+});
+
+document.getElementById("editPaymentForm")
+
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+fetch("api/payments/update_payment.php",{
+
+method:"POST",
+
+body:new FormData(this)
+
+})
+
+.then(res=>res.json())
+
+.then(res=>{
+
+if(res.status=="success"){
+
+Swal.fire({
+
+icon:"success",
+
+title:"Updated",
+
+text:res.message,
+
+timer:1500,
+
+showConfirmButton:false
+
+}).then(()=>{
+
+window.location="payments.html";
+
+});
+
+}else{
+
+Swal.fire({
+
+icon:"error",
+
+title:"Error",
+
+text:res.message
+
+});
+
+}
+
+});
+
+});
+
+</script>
+
+    
+</body>
+
+</html>

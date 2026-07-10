@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ASD TechCreation professional admin dashboard template">
+    <title>Add Invoice | ASD TechCreation</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="admin-shell">
+        <div class="sidebar-backdrop" data-sidebar-close></div>
+
+        <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <a class="brand-mark" href="index.html" aria-label="ASD TechCreation dashboard">
+                    <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                    <span class="brand-copy">
+                        <span class="brand-title">ASD TechCreation</span>
+                    </span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="index.html">
+                    <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a class="nav-link" href="client.html">
+                    <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+                    <span class="nav-text">Clients</span>
+                </a>
+                <a class="nav-link active" href="invoice.html">
+                    <span class="nav-icon"><i class="bi bi-receipt"></i></span>
+                    <span class="nav-text">Invoice</span>
+                </a>
+                <a class="nav-link" href="payments.html">
+                    <span class="nav-icon"><i class="bi bi-credit-card-2-front"></i></span>
+                    <span class="nav-text">Payments</span>
+                </a>
+            </nav>
+
+        </aside>
+
+        <div class="admin-main">
+            <nav class="navbar admin-navbar navbar-expand bg-white">
+                <div class="container-fluid px-3 px-lg-4">
+                    <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="adminSidebar"
+                        aria-expanded="true" aria-label="Toggle sidebar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <form class="d-none d-md-flex ms-3 flex-grow-1" role="search">
+                        <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+
+                    <div class="navbar-actions ms-auto">
+                        <button class="icon-button theme-toggle" type="button" data-theme-toggle
+                            aria-label="Switch color theme" title="Switch color theme">
+                            <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown">
+                            <button class="icon-button" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                aria-label="Notifications">
+                                <span class="notification-dot"></span>
+                                <i class="bi bi-bell" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end notification-menu">
+                                <div class="dropdown-header fw-bold text-body">Notifications</div>
+
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                                <span class="profile-name d-none d-sm-inline">Admin</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="dashboard-content">
+                <div class="container-fluid px-3 px-lg-4 py-4">
+                    <div class="page-heading">
+                        <div class="page-heading-copy">
+
+                            <div>
+                                <p class="eyebrow mb-1">Add Invoice</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <section class="row g-3">
+                        <div class="col-12 ">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-header text-white d-flex justify-content-between align-items-center"
+                                    style=" background:linear-gradient(135deg,#eb7425,#e55146);">
+
+                                    <h5 class="mb-0">Add New Invoice</h5>
+
+                                    <a href="invoice.html" class="btn btn-light btn-sm">
+                                        <i class="bi bi-arrow-left"></i> Back
+                                    </a>
+
+                                </div>
+
+
+                                <div class="card-body">
+                                    <form id="invoiceForm" class="row g-3">
+
+                                        <!-- Client -->
+                                        <div class="col-md-6">
+                                            <label class="form-label">Client</label>
+                                            <select name="client_id" id="client_id" class="form-select" required>
+                                                <option value="">Select Client</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Invoice Number -->
+                                        <div class="col-md-3">
+                                            <label class="form-label">Invoice No</label>
+                                            <input type="text" class="form-control" id="invoice_number"
+                                                name="invoice_number" readonly>
+                                        </div>
+
+                                        <!-- Invoice Date -->
+                                        <div class="col-md-3">
+                                            <label class="form-label">Invoice Date</label>
+                                            <input type="date" class="form-control" id="invoice_date"
+                                                name="invoice_date" required>
+                                        </div>
+
+                                        <!-- Due Date -->
+                                        <div class="col-md-3">
+                                            <label class="form-label">Due Date</label>
+                                            <input type="date" class="form-control" id="due_date" name="due_date"
+                                                required>
+                                        </div>
+
+                                        <!-- Invoice Items -->
+                                        <div class="col-12">
+
+                                            <div class="table-responsive">
+
+                                                <table class="table table-bordered align-middle" id="itemsTable">
+
+                                                    <thead class="table-light">
+
+                                                        <tr>
+                                                            <th style="width:25%">Item</th>
+                                                            <th>Description</th>
+                                                            <th width="90">Qty</th>
+                                                            <th width="130">Price</th>
+                                                            <th width="130">Total</th>
+                                                            <th width="70">Action</th>
+                                                        </tr>
+
+                                                    </thead>
+
+                                                    <tbody id="invoiceItems">
+
+                                                        <tr>
+
+                                                            <td>
+                                                                <input type="text" name="item_name[]"
+                                                                    class="form-control" required>
+                                                            </td>
+
+                                                            <td>
+                                                                <input type="text" name="description[]"
+                                                                    class="form-control">
+                                                            </td>
+
+                                                            <td>
+                                                                <input type="number" class="form-control qty"
+                                                                    name="quantity[]" value="1" min="1">
+                                                            </td>
+
+                                                            <td>
+                                                                <input type="number" class="form-control price"
+                                                                    name="unit_price[]" value="0" min="0">
+                                                            </td>
+
+                                                            <td>
+                                                                <input type="number" class="form-control total"
+                                                                    name="total[]" value="0" readonly>
+                                                            </td>
+
+                                                            <td class="text-center">
+
+                                                                <button type="button"
+                                                                    class="btn btn-danger btn-sm removeRow">
+
+                                                                    <i class="bi bi-trash"></i>
+
+                                                                </button>
+
+                                                            </td>
+
+                                                        </tr>
+
+                                                    </tbody>
+
+                                                </table>
+
+                                            </div>
+
+                                            <button type="button" class="btn btn-success btn-sm" id="addRow">
+
+                                                <i class="bi bi-plus-circle"></i>
+
+                                                Add Item
+
+                                            </button>
+
+                                        </div>
+
+                                        <!-- Summary -->
+
+                                        <div class="col-md-3">
+                                            <label class="form-label">Subtotal</label>
+                                            <input type="number" id="subtotal" name="subtotal" class="form-control"
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="form-label">GST (%)</label>
+                                            <input type="number" id="gst_percent" name="gst_percent"
+                                                class="form-control" value="18">
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="form-label">GST Amount</label>
+                                            <input type="number" id="gst_amount" name="gst_amount" class="form-control"
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="form-label">Discount</label>
+                                            <input type="number" id="discount" name="discount" class="form-control"
+                                                value="0">
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="form-label">Grand Total</label>
+                                            <input type="number" id="total_amount" name="total_amount"
+                                                class="form-control" readonly>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="form-label">Paid Amount</label>
+                                            <input type="number" id="paid_amount" name="paid_amount"
+                                                class="form-control" value="0">
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="form-label">Balance</label>
+                                            <input type="number" id="balance_amount" name="balance_amount"
+                                                class="form-control" readonly>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="form-label">Status</label>
+
+                                            <select class="form-select" id="status" name="status">
+
+                                                <option value="Pending">Pending</option>
+                                                <option value="Partial">Partial</option>
+                                                <option value="Paid">Paid</option>
+
+                                            </select>
+
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <label class="form-label">Authorized Signatory</label>
+                                            <select class="form-select" id="signatory" name="signatory" required>
+                                                <option value="Swetha">Swetha</option>
+                                                <option value="Karthikeyan">Karthikeyan</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Notes -->
+
+                                        <div class="col-12">
+                                            <label class="form-label">Notes</label>
+                                            <textarea class="form-control" rows="4" name="notes"></textarea>
+                                        </div>
+
+                                        <!-- Buttons -->
+
+                                        <div class="col-12">
+
+                                            <button class="btn btn-primary px-4">
+
+                                                <i class="bi bi-save"></i>
+
+                                                Save Invoice
+
+                                            </button>
+
+                                            <button type="reset" class="btn btn-secondary px-4">
+
+                                                Reset
+
+                                            </button>
+
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </main>
+
+
+        </div>
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            loadClients();
+
+            // Today's date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById("invoice_date").value = today;
+            document.getElementById("due_date").value = today;
+
+            // Invoice Number
+            document.getElementById("invoice_number").value =
+                "INV-" + Date.now();
+
+            calculateTotals();
+
+        });
+
+
+        // =========================
+        // LOAD CLIENTS
+        // =========================
+
+        function loadClients() {
+
+            fetch("api/get_clients.php")
+                .then(res => res.json())
+                .then(res => {
+
+                    let html = '<option value="">Select Client</option>';
+
+                    res.data.forEach(client => {
+
+                        html += `
+                <option value="${client.id}">
+                    ${client.client_name} - ${client.company_name}
+                </option>
+                `;
+
+                    });
+
+                    document.getElementById("client_id").innerHTML = html;
+
+                });
+
+        }
+
+
+
+        // =========================
+        // ADD ROW
+        // =========================
+
+        document.getElementById("addRow").addEventListener("click", function () {
+
+            let row = `
+
+<tr>
+
+<td>
+<input type="text"
+name="item_name[]"
+class="form-control"
+required>
+</td>
+
+<td>
+<input type="text"
+name="description[]"
+class="form-control">
+</td>
+
+<td>
+<input type="number"
+name="quantity[]"
+class="form-control qty"
+value="1"
+min="1">
+</td>
+
+<td>
+<input type="number"
+name="unit_price[]"
+class="form-control price"
+value="0"
+min="0">
+</td>
+
+<td>
+<input type="number"
+name="total[]"
+class="form-control total"
+readonly>
+</td>
+
+<td class="text-center">
+
+<button type="button"
+class="btn btn-danger btn-sm removeRow">
+
+<i class="bi bi-trash"></i>
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+            document
+                .getElementById("invoiceItems")
+                .insertAdjacentHTML("beforeend", row);
+
+        });
+
+
+
+        // =========================
+        // REMOVE ROW
+        // =========================
+
+        document.addEventListener("click", function (e) {
+
+            if (e.target.closest(".removeRow")) {
+
+                if (document.querySelectorAll("#invoiceItems tr").length > 1) {
+
+                    e.target.closest("tr").remove();
+
+                    calculateTotals();
+
+                }
+
+            }
+
+        });
+
+
+
+
+        // =========================
+        // CALCULATE
+        // =========================
+
+        document.addEventListener("input", function (e) {
+
+            if (
+                e.target.classList.contains("qty") ||
+                e.target.classList.contains("price") ||
+                e.target.id === "gst_percent" ||
+                e.target.id === "discount" ||
+                e.target.id === "paid_amount"
+            ) {
+
+                calculateTotals();
+
+            }
+
+        });
+
+
+
+        function calculateTotals() {
+
+            let subtotal = 0;
+
+            document.querySelectorAll("#invoiceItems tr").forEach(row => {
+
+                let qty =
+                    parseFloat(row.querySelector(".qty").value) || 0;
+
+                let price =
+                    parseFloat(row.querySelector(".price").value) || 0;
+
+                let total = qty * price;
+
+                row.querySelector(".total").value = total.toFixed(2);
+
+                subtotal += total;
+
+            });
+
+            document.getElementById("subtotal").value =
+                subtotal.toFixed(2);
+
+            let gstPercent =
+                parseFloat(document.getElementById("gst_percent").value) || 0;
+
+            let gstAmount =
+                subtotal * gstPercent / 100;
+
+            document.getElementById("gst_amount").value =
+                gstAmount.toFixed(2);
+
+            let discount =
+                parseFloat(document.getElementById("discount").value) || 0;
+
+            let grand =
+                subtotal + gstAmount - discount;
+
+            document.getElementById("total_amount").value =
+                grand.toFixed(2);
+
+            let paid =
+                parseFloat(document.getElementById("paid_amount").value) || 0;
+
+            let balance = grand - paid;
+
+            document.getElementById("balance_amount").value =
+                balance.toFixed(2);
+
+            // Status Auto
+
+            let status = "Pending";
+
+            if (paid >= grand && grand > 0) {
+
+                status = "Paid";
+
+            } else if (paid > 0) {
+
+                status = "Partial";
+
+            }
+
+            document.getElementById("status").value = status;
+
+        }
+
+
+
+        // =========================
+        // SAVE
+        // =========================
+
+        document
+            .getElementById("invoiceForm")
+            .addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+                fetch("api/invoice/save_invoice.php", {
+
+                    method: "POST",
+
+                    body: new FormData(this)
+
+                })
+
+                    .then(res => res.json())
+
+                    .then(res => {
+
+                        if (res.status == "success") {
+
+                            Swal.fire({
+
+                                icon: "success",
+
+                                title: "Success",
+
+                                text: res.message,
+
+                                timer: 1800,
+
+                                showConfirmButton: false
+
+                            }).then(() => {
+
+                                window.location = "invoice.html";
+
+                            });
+
+                        } else {
+
+                            Swal.fire({
+
+                                icon: "error",
+
+                                title: "Error",
+
+                                text: res.message
+
+                            });
+
+                        }
+
+                    });
+
+            });
+    </script>
+</body>
+
+</html>

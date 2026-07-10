@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ASD TechCreation professional admin dashboard template">
+    <title>Payments Details | ASD TechCreation</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .invoice-profile {
+            border: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+        }
+
+        .invoice-header {
+            background: linear-gradient(135deg, #eb7425, #e55146);
+            color: #fff;
+            padding: 35px;
+        }
+
+        .company-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #eb7425;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .info-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .08);
+            height: 100%;
+        }
+
+        .info-card .card-header {
+            background: #f8fafc;
+            color: #eb7425;
+            font-weight: 600;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+        }
+
+        .info-item small {
+            display: block;
+            color: #777;
+            margin-bottom: 4px;
+        }
+
+        .info-item div {
+            font-weight: 600;
+        }
+
+        .total-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .invoice-table th {
+            background: #f8fafc;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .summary-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .summary-row strong {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-shell">
+        <div class="sidebar-backdrop" data-sidebar-close></div>
+
+        <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <a class="brand-mark" href="index.html" aria-label="ASD TechCreation dashboard">
+                    <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                    <span class="brand-copy">
+                        <span class="brand-title">ASD TechCreation</span>
+                    </span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="index.html">
+                    <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a class="nav-link" href="client.html">
+                    <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+                    <span class="nav-text">Clients</span>
+                </a>
+                <a class="nav-link " href="invoice.html">
+                    <span class="nav-icon"><i class="bi bi-receipt"></i></span>
+                    <span class="nav-text">Invoice</span>
+
+                     <a class="nav-link active" href="payments.html">
+                    <span class="nav-icon"><i class="bi bi-credit-card-2-front"></i></span>
+                    <span class="nav-text">Payments</span>
+                </a>
+                </a>
+            </nav>
+
+        </aside>
+
+        <div class="admin-main">
+            <nav class="navbar admin-navbar navbar-expand bg-white">
+                <div class="container-fluid px-3 px-lg-4">
+                    <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="adminSidebar"
+                        aria-expanded="true" aria-label="Toggle sidebar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <form class="d-none d-md-flex ms-3 flex-grow-1" role="search">
+                        <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+
+                    <div class="navbar-actions ms-auto">
+                        <button class="icon-button theme-toggle" type="button" data-theme-toggle
+                            aria-label="Switch color theme" title="Switch color theme">
+                            <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown">
+                            <button class="icon-button" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                aria-label="Notifications">
+                                <span class="notification-dot"></span>
+                                <i class="bi bi-bell" aria-hidden="true"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end notification-menu">
+                                <div class="dropdown-header fw-bold text-body">Notifications</div>
+
+                            </div>
+                        </div>
+
+                        <div class="dropdown">
+                            <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                                <span class="profile-name d-none d-sm-inline">Admin</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="dashboard-content">
+                <div class="container-fluid px-3 px-lg-4 py-4">
+                    <div class="page-heading">
+                        <div class="page-heading-copy">
+
+                            <div>
+                                <p class="eyebrow mb-1">Payment Detail</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <section class="panel">
+
+                        <div id="paymentCard" class="card shadow-sm border-0">
+
+                            <div class="card-body text-center py-5">
+
+                                Loading Payment Details...
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+            </main>
+
+
+        </div>
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const id = urlParams.get("id");
+
+        fetch("api/payments/get_payment.php?id=" + id)
+
+            .then(res => res.json())
+
+            .then(res => {
+
+                if (res.status != "success") {
+
+                    document.getElementById("paymentCard").innerHTML = `
+
+<div class="card-body text-center text-danger">
+
+Payment not found
+
+</div>
+
+`;
+
+                    return;
+
+                }
+
+                const d = res.data;
+
+                document.getElementById("paymentCard").innerHTML = `
+
+<div class="client-profile">
+
+<div class="profile-header">
+
+<div class="d-flex justify-content-between align-items-center">
+
+<div>
+
+<h3 class="mb-1">
+
+Receipt
+
+${d.receipt_number}
+
+</h3>
+
+<p class="mb-0">
+
+Payment Date :
+
+${d.payment_date}
+
+</p>
+
+</div>
+
+<div>
+
+<a href="edit_payment.html?id=${d.id}"
+
+class="btn btn-light me-2">
+
+<i class="bi bi-pencil"></i>
+
+Edit
+
+</a>
+
+<a href="api/payments/generate_receipt_pdf.php?id=${d.id}"
+   target="_blank"
+   class="btn btn-danger me-2">
+    <i class="bi bi-file-earmark-pdf"></i>
+    Download Receipt
+</a>
+
+<button class="btn btn-success" id="sendReceipt">
+    <i class="bi bi-envelope-fill"></i>
+    Send Receipt
+</button>
+
+
+<a
+
+href="payments.html"
+
+class="btn btn-outline-light">
+
+<i class="bi bi-arrow-left"></i>
+
+Back
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card-body">
+
+<div class="row g-4">
+
+<div class="col-lg-6">
+
+<div class="card info-card">
+
+<div class="card-header">
+
+<i class="bi bi-person"></i>
+
+Client Information
+
+</div>
+
+<div class="card-body">
+
+<div class="info-item">
+
+<small>Client Name</small>
+
+<div>${d.client_name}</div>
+
+</div>
+
+<div class="info-item">
+
+<small>Company</small>
+
+<div>${d.company_name}</div>
+
+</div>
+
+<div class="info-item">
+
+<small>Email</small>
+
+<div>${d.email}</div>
+
+</div>
+
+<div class="info-item">
+
+<small>Phone</small>
+
+<div>${d.phone}</div>
+
+</div>
+
+<div class="info-item">
+
+<small>GST</small>
+
+<div>${d.gst_number}</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card info-card">
+
+<div class="card-header">
+
+<i class="bi bi-receipt"></i>
+
+Invoice Information
+
+</div>
+
+<div class="card-body">
+
+<div class="info-item">
+
+<small>Invoice No</small>
+
+<div>${d.invoice_number}</div>
+
+</div>
+
+<div class="info-item">
+
+<small>Invoice Date</small>
+
+<div>${d.invoice_date}</div>
+
+</div>
+
+<div class="info-item">
+
+<small>Due Date</small>
+
+<div>${d.due_date}</div>
+
+</div>
+
+<div class="info-item">
+
+<small>Total Amount</small>
+
+<div class="text-primary">
+
+₹ ${Number(d.total_amount).toLocaleString()}
+
+</div>
+
+</div>
+
+<div class="info-item">
+
+<small>Balance</small>
+
+<div class="text-danger">
+
+₹ ${Number(d.balance_amount).toLocaleString()}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card info-card">
+
+<div class="card-header">
+
+<i class="bi bi-cash-stack"></i>
+
+Payment Details
+
+</div>
+
+<div class="card-body">
+
+<div class="info-item">
+
+<small>Amount Paid</small>
+
+<div class="text-success fs-4 fw-bold">
+
+₹ ${Number(d.amount_paid).toLocaleString()}
+
+</div>
+
+</div>
+
+<div class="info-item">
+
+<small>Payment Method</small>
+
+<div>${d.payment_method}</div>
+
+</div>
+
+<div class="info-item">
+
+<small>Transaction ID</small>
+
+<div>${d.transaction_id}</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="card info-card">
+
+<div class="card-header">
+
+<i class="bi bi-journal-text"></i>
+
+Notes
+
+</div>
+
+<div class="card-body">
+
+<div class="detail-box">
+
+${d.notes || "No Notes"}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+
+
+document.getElementById("sendReceipt").addEventListener("click", function () {
+    const btn = this;
+    const originalHtml = btn.innerHTML;
+ 
+    btn.disabled = true;
+    btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending...';
+ 
+    // Show a non-dismissible loading dialog while the request is in flight
+    Swal.fire({
+        title: "Sending Receipt...",
+        text: "Please wait while we email the Receipt to the client.",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+ 
+    fetch("api/payments/send_receipt_email.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: d.id })
+    })
+        .then(res => res.json())
+        .then(res => {
+            if (res.status === "success") {
+                Swal.fire({
+                    icon: "success",
+                    title: "Receipt Sent!",
+                    text: res.message,
+                    confirmButtonColor: "#eb7425"
+                });
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Failed to Send",
+                    text: res.message || "Something went wrong. Please try again.",
+                    confirmButtonColor: "#eb7425"
+                });
+            }
+        })
+        .catch(() => {
+            Swal.fire({
+                icon: "error",
+                title: "Network Error",
+                text: "Could not reach the server. Please check your connection and try again.",
+                confirmButtonColor: "#eb7425"
+            });
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+        });
+});
+
+            });
+
+    </script>
+</body>
+
+</html>
