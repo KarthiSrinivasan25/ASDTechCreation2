@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // Point this at wherever send-mail.php is deployed, e.g. "/api/send-mail.php"
-const MAIL_ENDPOINT = "/send-mail.php";
+const MAIL_ENDPOINT = "https://karthikeyanportfolio.helioho.st/api/send-mail.php";
 
 function ContactForm() {
   const [captcha, setCaptcha] = useState("");
