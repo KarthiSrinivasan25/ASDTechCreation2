@@ -74,7 +74,7 @@
 //     setSuccessMsg(true);
 //   };
 
-   
+
 
 //   return (
 //     <div className="col-lg-7">
@@ -194,7 +194,7 @@
 
 
 //           {/* Success */}
-        
+
 //         </form>
 //       </div>
 //     </div>
@@ -359,11 +359,11 @@ function ContactForm() {
                   onChange={handleChange}
                 >
                   <option value="">Select Service</option>
-                  <option value="web">Web Development</option>
-                  <option value="mobile">Mobile App Development</option>
-                  <option value="uiux">UI/UX Design</option>
-                  <option value="ecommerce">E-Commerce Solutions</option>
-                  <option value="seo">seo</option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="Mobile App Development">Mobile App Development</option>
+                  <option value="UI/UX Design">UI/UX Design</option>
+                  <option value="E-Commerce Website">E-Commerce Solutions</option>
+                  <option value="SEO">SEO</option>
                 </select>
               </div>
             </div>
