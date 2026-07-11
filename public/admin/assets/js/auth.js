@@ -29,7 +29,7 @@
             localStorage.removeItem("admin_name");
             localStorage.removeItem("admin_email");
 
-            window.location.href = "login.html";
+            window.location.href = "https://asd-tech-creation2.vercel.app/admin/login.html";
             return;
 
         }
@@ -47,7 +47,7 @@
 
         localStorage.clear();
 
-        window.location.href = "../../index.html";
+        window.location.href = "https://asd-tech-creation2.vercel.app/admin/index.html";
 
     }
 

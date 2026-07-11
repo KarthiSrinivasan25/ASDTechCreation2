@@ -42,7 +42,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
                 `<div class="alert alert-success">${result.message}</div>`;
 
             setTimeout(() => {
-                window.location.href = "../../index.html";
+                window.location.href = "https://asd-tech-creation2.vercel.app/admin/index.html";
             }, 1000);
 
         } else {

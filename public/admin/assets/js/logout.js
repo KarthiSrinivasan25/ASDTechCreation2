@@ -24,5 +24,5 @@ async function logout() {
     localStorage.removeItem("admin_email");
 
     // Redirect
-    window.location.href = "login.html";
+    window.location.href = "https://asd-tech-creation2.vercel.app/admin/login.html";
 }
