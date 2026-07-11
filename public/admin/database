@@ -1,121 +1,121 @@
-CREATE DATABASE asd_techcreation;
+-- CREATE DATABASE asd_techcreation;
 
-CREATE TABLE clients (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    client_name VARCHAR(150) NOT NULL,
-    company_name VARCHAR(150),
-    email VARCHAR(150),
-    phone VARCHAR(30),
-    address TEXT,
-    gst_number VARCHAR(50),
-    project_name VARCHAR(150),
-    service VARCHAR(150),
-    project_value DECIMAL(12,2),
-    status ENUM('Active', 'Completed', 'On Hold') DEFAULT 'Active',
-    notes TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-
-CREATE TABLE invoices (
-
-    id INT AUTO_INCREMENT PRIMARY KEY,
-
-    client_id INT NOT NULL,
-
-    invoice_number VARCHAR(50) UNIQUE NOT NULL,
-
-    invoice_date DATE NOT NULL,
-
-    due_date DATE NOT NULL,
-
-    subtotal DECIMAL(12,2) DEFAULT 0,
-
-    gst_percent DECIMAL(5,2) DEFAULT 0,
-
-    gst_amount DECIMAL(12,2) DEFAULT 0,
-
-    discount DECIMAL(12,2) DEFAULT 0,
-
-    total_amount DECIMAL(12,2) DEFAULT 0,
-
-    paid_amount DECIMAL(12,2) DEFAULT 0,
-
-    balance_amount DECIMAL(12,2) DEFAULT 0,
-
-    status ENUM('Pending','Partial','Paid') DEFAULT 'Pending',
-
-    notes TEXT,
-
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
-    FOREIGN KEY (client_id)
-    REFERENCES clients(id)
-    ON DELETE CASCADE
-
-);
+-- CREATE TABLE clients (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     client_name VARCHAR(150) NOT NULL,
+--     company_name VARCHAR(150),
+--     email VARCHAR(150),
+--     phone VARCHAR(30),
+--     address TEXT,
+--     gst_number VARCHAR(50),
+--     project_name VARCHAR(150),
+--     service VARCHAR(150),
+--     project_value DECIMAL(12,2),
+--     status ENUM('Active', 'Completed', 'On Hold') DEFAULT 'Active',
+--     notes TEXT,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- );
 
 
-CREATE TABLE invoice_items (
+-- CREATE TABLE invoices (
 
-    id INT AUTO_INCREMENT PRIMARY KEY,
+--     id INT AUTO_INCREMENT PRIMARY KEY,
 
-    invoice_id INT NOT NULL,
+--     client_id INT NOT NULL,
 
-    item_name VARCHAR(200) NOT NULL,
+--     invoice_number VARCHAR(50) UNIQUE NOT NULL,
 
-    description TEXT,
+--     invoice_date DATE NOT NULL,
 
-    quantity INT DEFAULT 1,
+--     due_date DATE NOT NULL,
 
-    unit_price DECIMAL(12,2) DEFAULT 0,
+--     subtotal DECIMAL(12,2) DEFAULT 0,
 
-    total DECIMAL(12,2) DEFAULT 0,
+--     gst_percent DECIMAL(5,2) DEFAULT 0,
 
-    FOREIGN KEY (invoice_id)
-    REFERENCES invoices(id)
-    ON DELETE CASCADE
+--     gst_amount DECIMAL(12,2) DEFAULT 0,
 
-);
+--     discount DECIMAL(12,2) DEFAULT 0,
 
+--     total_amount DECIMAL(12,2) DEFAULT 0,
 
-CREATE TABLE payments (
+--     paid_amount DECIMAL(12,2) DEFAULT 0,
 
-    id INT AUTO_INCREMENT PRIMARY KEY,
+--     balance_amount DECIMAL(12,2) DEFAULT 0,
 
-    client_id INT NOT NULL,
+--     status ENUM('Pending','Partial','Paid') DEFAULT 'Pending',
 
-    invoice_id INT NOT NULL,
+--     notes TEXT,
 
-    receipt_number VARCHAR(50),
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-    payment_date DATE NOT NULL,
+--     FOREIGN KEY (client_id)
+--     REFERENCES clients(id)
+--     ON DELETE CASCADE
 
-    amount_paid DECIMAL(12,2) NOT NULL,
-
-    payment_method ENUM(
-        'Cash',
-        'UPI',
-        'Bank Transfer',
-        'Card'
-    ) DEFAULT 'UPI',
-
-    transaction_id VARCHAR(150),
-
-    notes TEXT,
-
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
-    FOREIGN KEY (client_id)
-    REFERENCES clients(id)
-    ON DELETE CASCADE,
-
-    FOREIGN KEY (invoice_id)
-    REFERENCES invoices(id)
-    ON DELETE CASCADE
-
-);
+-- );
 
 
-ALTER TABLE invoices
-ADD COLUMN signatory VARCHAR(50) DEFAULT 'Person 1';
+-- CREATE TABLE invoice_items (
+
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+
+--     invoice_id INT NOT NULL,
+
+--     item_name VARCHAR(200) NOT NULL,
+
+--     description TEXT,
+
+--     quantity INT DEFAULT 1,
+
+--     unit_price DECIMAL(12,2) DEFAULT 0,
+
+--     total DECIMAL(12,2) DEFAULT 0,
+
+--     FOREIGN KEY (invoice_id)
+--     REFERENCES invoices(id)
+--     ON DELETE CASCADE
+
+-- );
+
+
+-- CREATE TABLE payments (
+
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+
+--     client_id INT NOT NULL,
+
+--     invoice_id INT NOT NULL,
+
+--     receipt_number VARCHAR(50),
+
+--     payment_date DATE NOT NULL,
+
+--     amount_paid DECIMAL(12,2) NOT NULL,
+
+--     payment_method ENUM(
+--         'Cash',
+--         'UPI',
+--         'Bank Transfer',
+--         'Card'
+--     ) DEFAULT 'UPI',
+
+--     transaction_id VARCHAR(150),
+
+--     notes TEXT,
+
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+--     FOREIGN KEY (client_id)
+--     REFERENCES clients(id)
+--     ON DELETE CASCADE,
+
+--     FOREIGN KEY (invoice_id)
+--     REFERENCES invoices(id)
+--     ON DELETE CASCADE
+
+-- );
+
+
+-- ALTER TABLE invoices
+-- ADD COLUMN signatory VARCHAR(50) DEFAULT 'Person 1';
