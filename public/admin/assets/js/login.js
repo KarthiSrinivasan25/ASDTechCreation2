@@ -5,6 +5,14 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     const email = document.getElementById("loginEmail").value.trim();
     const password = document.getElementById("loginPassword").value.trim();
 
+    const message = document.getElementById("message");
+    const loginBtn = document.getElementById("loginBtn");
+
+    message.innerHTML = "";
+
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Signing In...';
+
     try {
 
         const response = await fetch("https://karthikeyanportfolio.helioho.st/api/login.php", {
@@ -18,31 +26,44 @@ document.getElementById("loginForm").addEventListener("submit", async function (
             })
         });
 
+        if (!response.ok) {
+            throw new Error("Server Error");
+        }
+
         const result = await response.json();
 
         if (result.status) {
 
-            // Save token
             localStorage.setItem("admin_token", result.token);
-
-            // Save admin details (optional)
             localStorage.setItem("admin_name", result.admin.name);
             localStorage.setItem("admin_email", result.admin.email);
 
-            alert(result.message);
+            message.innerHTML =
+                `<div class="alert alert-success">${result.message}</div>`;
 
-            window.location.href = "../../index.html";
+            setTimeout(() => {
+                window.location.href = "../../index.html";
+            }, 1000);
 
         } else {
 
-            alert(result.message);
+            message.innerHTML =
+                `<div class="alert alert-danger">${result.message}</div>`;
+
+            loginBtn.disabled = false;
+            loginBtn.innerHTML = '<i class="bi bi-box-arrow-in-right"></i> Sign In';
 
         }
 
     } catch (error) {
 
         console.error(error);
-        alert("Unable to connect to the server.");
+
+        message.innerHTML =
+            `<div class="alert alert-danger">Unable to connect to the server.</div>`;
+
+        loginBtn.disabled = false;
+        loginBtn.innerHTML = '<i class="bi bi-box-arrow-in-right"></i> Sign In';
 
     }
 

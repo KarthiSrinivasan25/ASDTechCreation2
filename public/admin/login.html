@@ -66,10 +66,10 @@
                     required>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">
-                <i class="bi bi-box-arrow-in-right"></i>
-                Sign In
-            </button>
+            <button id="loginBtn" type="submit" class="btn btn-primary w-100">
+    <i class="bi bi-box-arrow-in-right"></i>
+    Sign In
+</button>
 
         </form>
 
@@ -78,7 +78,14 @@
 </main>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
-   <script src="assets/js/logout.js"></script>
+   <script>
+const token = localStorage.getItem("admin_token");
+
+if (token) {
+    window.location.href = "dashboard.html";
+}
+</script>
+<script src="assets/js/login.js"></script>
 
 
 </body>
