@@ -4,7 +4,7 @@
 
     // No token -> Login
     if (!token) {
-        window.location.href = "login.html";
+        window.location.href = "https://asd-tech-creation2.vercel.app/admin/login.html";
         return;
     }
 
