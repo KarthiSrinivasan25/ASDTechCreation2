@@ -11,15 +11,14 @@
     try {
 
         const response = await fetch("https://karthikeyanportfolio.helioho.st/api/verify.php", {
-
-            method: "POST",
-
-            headers: {
-                "Authorization": "Bearer " + token,
-                "Content-Type": "application/json"
-            }
-
-        });
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        token: token
+    })
+});
 
         const result = await response.json();
 
