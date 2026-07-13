@@ -103,17 +103,19 @@
                         <div class="card shadow-sm">
 
 
-                            <div class="card-header d-flex justify-content-between">
+                            <div class="card-header d-flex justify-content-between align-items-center">
 
-                                <h5>
-                                    Company Profile
-                                </h5>
+                                <h5 class="mb-0">Company Profile</h5>
 
+                                <div class="d-flex gap-2">
+                                    <a href="signature.html" class="btn btn-light btn-sm">
+                                        Signature
+                                    </a>
 
-                                <button class="btn btn-primary" onclick="saveProfile()">
-                                    Save Profile
-                                </button>
-
+                                    <button class="btn btn-primary btn-sm" onclick="saveProfile()">
+                                        Save Profile
+                                    </button>
+                                </div>
 
                             </div>
 
@@ -289,10 +291,41 @@
                                     <div class="col-md-6">
 
                                         <label>
-                                            Signatory Name
+                                            Signature 1
                                         </label>
 
-                                        <input type="text" id="signatory" class="form-control">
+                                        <select id="signature_1_id" class="form-control">
+
+                                            <option value="">
+                                                Select Signature
+                                            </option>
+
+                                        </select>
+
+
+                                        <img id="signature1_preview" class="mt-2" width="150">
+
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Signature 2
+                                        </label>
+
+                                        <select id="signature_2_id" class="form-control">
+
+                                            <option value="">
+                                                Select Signature
+                                            </option>
+
+                                        </select>
+
+
+                                        <img id="signature2_preview" class="mt-2" width="150">
 
                                     </div>
 
@@ -393,10 +426,6 @@
 
                                     </div>
 
-
-
-
-
                                     <div class="col-md-6">
 
                                         <label>
@@ -432,11 +461,39 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
 
+        let signatures = [];
 
-        document.addEventListener("DOMContentLoaded", () => {
+
+        document.addEventListener("DOMContentLoaded", async () => {
+
+            await loadSignatures();
+
+            await loadCompanyProfile();
 
 
-            loadCompanyProfile();
+            document
+                .getElementById("signature_1_id")
+                .addEventListener("change", function () {
+
+                    showSignatureImage(
+                        "signature1_preview",
+                        this.value
+                    );
+
+                });
+
+
+
+            document
+                .getElementById("signature_2_id")
+                .addEventListener("change", function () {
+
+                    showSignatureImage(
+                        "signature2_preview",
+                        this.value
+                    );
+
+                });
 
 
         });
@@ -445,47 +502,196 @@
 
 
 
+        // Load Signature Dropdown
 
-        function loadCompanyProfile() {
-
-
-            fetch("https://karthikeyanportfolio.helioho.st/api/company_profile/company-profile-get.php")
+        async function loadSignatures() {
 
 
-                .then(res => res.json())
+            try {
 
 
-                .then(data => {
+                let response = await fetch(
+                    "https://karthikeyanportfolio.helioho.st/api/signatures/get-signatures.php"
+                );
 
 
-                    if (data.status) {
-
-
-                        let c = data.data;
+                let data = await response.json();
 
 
 
-                        Object.keys(c).forEach(key => {
+                if (data.status) {
 
 
-                            let field = document.getElementById(key);
+                    signatures = data.data;
 
 
-                            if (field) {
 
-                                field.value = c[key];
+                    let html = `
+                <option value="">
+                    Select Signature
+                </option>
+            `;
 
-                            }
 
 
-                        });
+                    signatures.forEach(item => {
 
+
+                        html += `
+
+                <option value="${item.id}">
+                    ${item.name}
+                </option>
+
+                `;
+
+
+                    });
+
+
+
+                    document
+                        .getElementById("signature_1_id")
+                        .innerHTML = html;
+
+
+
+                    document
+                        .getElementById("signature_2_id")
+                        .innerHTML = html;
+
+
+
+                }
+
+
+
+            }
+            catch (error) {
+
+                console.log(
+                    "Signature Load Error:",
+                    error
+                );
+
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+        // Load Company Profile
+
+        async function loadCompanyProfile() {
+
+
+            try {
+
+
+                let response = await fetch(
+
+                    "https://karthikeyanportfolio.helioho.st/api/company_profile/company-profile-get.php"
+
+                );
+
+
+                let data = await response.json();
+
+
+
+                if (data.status) {
+
+
+
+                    let c = data.data;
+
+
+
+                    Object.keys(c).forEach(key => {
+
+
+                        let element =
+                            document.getElementById(key);
+
+
+
+                        if (element) {
+
+                            element.value = c[key];
+
+                        }
+
+
+                    });
+
+
+
+
+
+                    if (c.signature_1_id) {
+
+
+                        document
+                            .getElementById("signature_1_id")
+                            .value = c.signature_1_id;
+
+
+
+                        showSignatureImage(
+                            "signature1_preview",
+                            c.signature_1_id
+                        );
 
 
                     }
 
 
-                });
+
+
+
+
+                    if (c.signature_2_id) {
+
+
+                        document
+                            .getElementById("signature_2_id")
+                            .value = c.signature_2_id;
+
+
+
+                        showSignatureImage(
+                            "signature2_preview",
+                            c.signature_2_id
+                        );
+
+
+                    }
+
+
+
+
+
+                }
+
+
+
+            }
+            catch (error) {
+
+
+                console.log(
+                    "Company Profile Error:",
+                    error
+                );
+
+
+            }
 
 
 
@@ -498,10 +704,59 @@
 
 
 
+
+        // Show Signature Image
+
+        function showSignatureImage(element, id) {
+
+
+
+            let signature = signatures.find(
+                item => item.id == id
+            );
+
+
+
+            if (signature) {
+
+
+
+                document
+                    .getElementById(element)
+                    .src = signature.image_url;
+
+
+
+            }
+            else {
+
+
+                document
+                    .getElementById(element)
+                    .src = "";
+
+            }
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+        // Save Profile
+
         function saveProfile() {
 
 
+
             let data = {
+
 
 
                 company_name:
@@ -576,8 +831,14 @@
                     document.getElementById("invoice_due_days").value,
 
 
-                signatory:
-                    document.getElementById("signatory").value
+
+                signature_1_id:
+                    document.getElementById("signature_1_id").value,
+
+
+
+                signature_2_id:
+                    document.getElementById("signature_2_id").value
 
 
 
@@ -586,41 +847,44 @@
 
 
 
-
-            fetch("https://karthikeyanportfolio.helioho.st/api/company_profile/company-profile-save.php", {
-
-
-                method: "POST",
-
-                headers: {
-
-                    "Content-Type": "application/json"
-
-                },
+            fetch(
+                "https://karthikeyanportfolio.helioho.st/api/company_profile/company-profile-save.php",
+                {
 
 
-                body: JSON.stringify(data)
+                    method: "POST",
 
 
+                    headers: {
 
-            })
+                        "Content-Type": "application/json"
 
+                    },
+
+
+                    body: JSON.stringify(data)
+
+
+                })
 
                 .then(res => res.json())
-
 
                 .then(result => {
 
 
-                    alert(result.message);
+                    Swal.fire({
+
+                        icon: result.status ? "success" : "error",
+
+                        title: result.message
+
+                    });
 
 
                 });
 
 
-
         }
-
 
 
     </script>

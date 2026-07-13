@@ -161,8 +161,11 @@
 
                                             </label>
 
-                                            <input type="text" id="receipt_number" name="receipt_number"
-                                                class="form-control" readonly>
+                                            <input type="text" 
+id="receipt_number"
+class="form-control"
+value="Auto Generated"
+readonly>
 
                                         </div>
 
@@ -329,8 +332,7 @@
             new Date().toISOString().split("T")[0];
 
         // Receipt Number
-        document.getElementById("receipt_number").value =
-            "RCPT-" + Date.now();
+       
 
         // Load Clients
 

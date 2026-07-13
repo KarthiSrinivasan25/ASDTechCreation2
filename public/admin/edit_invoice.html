@@ -87,7 +87,7 @@
                 </div>
             </nav>
 
-            <main class="dashboard-content">
+                        <main class="dashboard-content">
                 <div class="container-fluid px-3 px-lg-4 py-4">
                     <div class="page-heading">
                         <div class="page-heading-copy">
@@ -285,10 +285,20 @@
 
                                         <div class="col-md-3">
     <label class="form-label">Authorized Signatory</label>
-    <select class="form-select" id="signatory" name="signatory" required>
-        <option value="Swetha">Swetha</option>
-        <option value="Karthikeyan">Karthikeyan</option>
+
+    <select class="form-select" id="signature_id" name="signature_id" required>
+        <option value="">Select Signature</option>
     </select>
+</div>
+
+<div class="col-md-3">
+    <label class="form-label">Signature Preview</label>
+
+    <div class="border rounded p-2 text-center">
+        <img id="signaturePreview"
+             src=""
+             style="max-height:80px;display:none;">
+    </div>
 </div>
 
                                         <!-- Notes -->
@@ -330,104 +340,323 @@
     <script src="assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
+      <script>
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const invoiceId = urlParams.get("id");
+const urlParams = new URLSearchParams(window.location.search);
+const invoiceId = urlParams.get("id");
 
-        //=========================
-        // LOAD CLIENTS
-        //=========================
+let signatures = [];
 
-        function loadClients(selectedId = "") {
 
-            fetch("https://karthikeyanportfolio.helioho.st/api/get_clients.php")
-                .then(res => res.json())
-                .then(res => {
+// =========================
+// PAGE LOAD
+// =========================
 
-                    let html = '<option value="">Select Client</option>';
+document.addEventListener("DOMContentLoaded", function(){
 
-                    res.data.forEach(client => {
+    loadInvoice();
 
-                        html += `
-            <option value="${client.id}"
-                ${client.id == selectedId ? "selected" : ""}>
+});
 
-                ${client.client_name} - ${client.company_name}
 
-            </option>`;
 
-                    });
+// =========================
+// LOAD SIGNATURES
+// =========================
 
-                    document.getElementById("client_id").innerHTML = html;
+function loadSignatures(selectedId = ""){
 
-                });
+
+    fetch("https://karthikeyanportfolio.helioho.st/api/signatures/get-signatures.php")
+
+    .then(res => res.json())
+
+    .then(data => {
+
+
+        if(data.status){
+
+
+            signatures = data.data;
+
+
+            let html = `
+            <option value="">
+                Select Signature
+            </option>
+            `;
+
+
+            signatures.forEach(item=>{
+
+
+                html += `
+
+                <option value="${item.id}">
+                    ${item.name}
+                </option>
+
+                `;
+
+
+            });
+
+
+
+            document.getElementById("signature_id").innerHTML = html;
+
+
+
+            if(selectedId){
+
+
+                document.getElementById("signature_id").value = selectedId;
+
+
+                showSignature(selectedId);
+
+
+            }
+
 
         }
 
 
+    });
 
-        //=========================
-        // LOAD INVOICE
-        //=========================
 
-        fetch("https://karthikeyanportfolio.helioho.st/api/invoice/get_invoice.php?id=" + invoiceId)
+}
 
-            .then(res => res.json())
 
-            .then(res => {
 
-                if (res.status != "success") {
 
-                    Swal.fire("Error", "Invoice not found", "error");
+// =========================
+// SIGNATURE PREVIEW
+// =========================
 
-                    return;
+function showSignature(id){
 
-                }
 
-                const inv = res.invoice;
+    let sign = signatures.find(
+        x => x.id == id
+    );
 
-                document.getElementById("invoice_id").value = inv.id;
 
-                document.getElementById("invoice_number").value = inv.invoice_number;
+    if(sign){
 
-                document.getElementById("invoice_date").value = inv.invoice_date;
 
-                document.getElementById("due_date").value = inv.due_date;
+        document.getElementById("signaturePreview").src =
+        sign.image_url;
 
-                document.getElementById("subtotal").value = inv.subtotal;
 
-                document.getElementById("gst_percent").value = inv.gst_percent;
+        document.getElementById("signaturePreview").style.display =
+        "block";
 
-                document.getElementById("gst_amount").value = inv.gst_amount;
 
-                document.getElementById("discount").value = inv.discount;
+    }
+    else{
 
-                document.getElementById("total_amount").value = inv.total_amount;
 
-                document.getElementById("paid_amount").value = inv.paid_amount;
+        document.getElementById("signaturePreview").style.display =
+        "none";
 
-                document.getElementById("balance_amount").value = inv.balance_amount;
 
-                document.getElementById("status").value = inv.status;
+    }
 
-                document.getElementById("notes").value = inv.notes;
 
-                document.getElementById("signatory").value = inv.signatory;
+}
 
-                loadClients(inv.client_id);
 
-                let rows = "";
 
-                res.items.forEach(item => {
 
-                    rows += `
+document.addEventListener("change",function(e){
+
+
+    if(e.target.id=="signature_id"){
+
+
+        showSignature(e.target.value);
+
+
+    }
+
+
+});
+
+
+
+
+
+// =========================
+// LOAD CLIENTS
+// =========================
+
+function loadClients(selectedId=""){
+
+
+fetch("https://karthikeyanportfolio.helioho.st/api/get_clients.php")
+
+.then(res=>res.json())
+
+.then(res=>{
+
+
+let html =
+`
+<option value="">
+Select Client
+</option>
+`;
+
+
+
+res.data.forEach(client=>{
+
+
+html += `
+
+<option value="${client.id}"
+${client.id==selectedId?"selected":""}>
+
+${client.client_name} - ${client.company_name}
+
+</option>
+
+`;
+
+
+});
+
+
+
+document.getElementById("client_id").innerHTML = html;
+
+
+
+});
+
+
+}
+
+
+
+
+
+// =========================
+// LOAD INVOICE
+// =========================
+
+
+function loadInvoice(){
+
+
+fetch("https://karthikeyanportfolio.helioho.st/api/invoice/get_invoice.php?id="+invoiceId)
+
+
+.then(res=>res.json())
+
+
+.then(res=>{
+
+
+if(res.status!="success"){
+
+
+Swal.fire(
+"Error",
+"Invoice not found",
+"error"
+);
+
+
+return;
+
+
+}
+
+
+
+let inv = res.invoice;
+
+
+
+document.getElementById("invoice_id").value =
+inv.id;
+
+
+document.getElementById("invoice_number").value =
+inv.invoice_number;
+
+
+document.getElementById("invoice_date").value =
+inv.invoice_date;
+
+
+document.getElementById("due_date").value =
+inv.due_date;
+
+
+document.getElementById("subtotal").value =
+inv.subtotal;
+
+
+document.getElementById("gst_percent").value =
+inv.gst_percent;
+
+
+document.getElementById("gst_amount").value =
+inv.gst_amount;
+
+
+document.getElementById("discount").value =
+inv.discount;
+
+
+document.getElementById("total_amount").value =
+inv.total_amount;
+
+
+document.getElementById("paid_amount").value =
+inv.paid_amount;
+
+
+document.getElementById("balance_amount").value =
+inv.balance_amount;
+
+
+document.getElementById("status").value =
+inv.status;
+
+
+document.getElementById("notes").value =
+inv.notes;
+
+
+
+loadClients(inv.client_id);
+
+
+loadSignatures(inv.signature_id);
+
+
+
+
+// ITEMS
+
+
+let rows="";
+
+
+res.items.forEach(item=>{
+
+
+rows += `
 
 <tr>
 
 <td>
 
-<input
+<input 
 type="text"
 name="item_name[]"
 class="form-control"
@@ -435,6 +664,7 @@ value="${item.item_name}"
 required>
 
 </td>
+
 
 <td>
 
@@ -446,6 +676,8 @@ value="${item.description}">
 
 </td>
 
+
+
 <td>
 
 <input
@@ -456,6 +688,8 @@ value="${item.quantity}">
 
 </td>
 
+
+
 <td>
 
 <input
@@ -465,6 +699,8 @@ class="form-control price"
 value="${item.unit_price}">
 
 </td>
+
+
 
 <td>
 
@@ -477,6 +713,8 @@ readonly>
 
 </td>
 
+
+
 <td>
 
 <button
@@ -489,30 +727,48 @@ class="btn btn-danger btn-sm removeRow">
 
 </td>
 
+
 </tr>
 
 `;
 
-                });
 
-                document.getElementById("invoiceItems").innerHTML = rows;
-
-                calculateTotals();
-
-            });
+});
 
 
 
-        //=========================
-        // ADD ROW
-        //=========================
+document.getElementById("invoiceItems").innerHTML =
+rows;
 
-        document.getElementById("addRow").onclick = function () {
 
-            document.getElementById("invoiceItems")
-                .insertAdjacentHTML("beforeend", `
+
+calculateTotals();
+
+
+
+});
+
+
+}
+
+
+
+
+
+// =========================
+// ADD ROW
+// =========================
+
+
+document.getElementById("addRow").onclick=function(){
+
+
+document.getElementById("invoiceItems")
+.insertAdjacentHTML("beforeend",`
+
 
 <tr>
+
 
 <td>
 
@@ -524,6 +780,7 @@ required>
 
 </td>
 
+
 <td>
 
 <input
@@ -532,6 +789,7 @@ name="description[]"
 class="form-control">
 
 </td>
+
 
 <td>
 
@@ -543,6 +801,7 @@ value="1">
 
 </td>
 
+
 <td>
 
 <input
@@ -552,6 +811,7 @@ class="form-control price"
 value="0">
 
 </td>
+
 
 <td>
 
@@ -563,6 +823,7 @@ readonly>
 
 </td>
 
+
 <td>
 
 <button
@@ -573,186 +834,286 @@ class="btn btn-danger btn-sm removeRow">
 
 </button>
 
+
 </td>
+
 
 </tr>
 
+
 `);
 
-        };
 
+};
 
 
-        //=========================
-        // REMOVE ROW
-        //=========================
 
-        document.addEventListener("click", function (e) {
 
-            if (e.target.closest(".removeRow")) {
 
-                if (document.querySelectorAll("#invoiceItems tr").length > 1) {
 
-                    e.target.closest("tr").remove();
+// =========================
+// REMOVE ROW
+// =========================
 
-                    calculateTotals();
 
-                }
+document.addEventListener("click",function(e){
 
-            }
 
-        });
+if(e.target.closest(".removeRow")){
 
 
+if(document.querySelectorAll("#invoiceItems tr").length>1){
 
-        //=========================
-        // AUTO CALCULATE
-        //=========================
 
-        document.addEventListener("input", function (e) {
+e.target.closest("tr").remove();
 
-            if (
 
-                e.target.classList.contains("qty") ||
+calculateTotals();
 
-                e.target.classList.contains("price") ||
 
-                e.target.id == "gst_percent" ||
+}
 
-                e.target.id == "discount" ||
 
-                e.target.id == "paid_amount"
+}
 
-            ) {
 
-                calculateTotals();
+});
 
-            }
 
-        });
 
 
 
-        function calculateTotals() {
 
-            let subtotal = 0;
 
-            document.querySelectorAll("#invoiceItems tr")
-                .forEach(row => {
+// =========================
+// CALCULATION
+// =========================
 
-                    let qty = parseFloat(row.querySelector(".qty").value) || 0;
 
-                    let price = parseFloat(row.querySelector(".price").value) || 0;
+document.addEventListener("input",function(e){
 
-                    let total = qty * price;
 
-                    row.querySelector(".total").value = total.toFixed(2);
+if(
 
-                    subtotal += total;
+e.target.classList.contains("qty") ||
 
-                });
+e.target.classList.contains("price") ||
 
-            document.getElementById("subtotal").value = subtotal.toFixed(2);
+e.target.id=="gst_percent" ||
 
-            let gst = parseFloat(document.getElementById("gst_percent").value) || 0;
+e.target.id=="discount" ||
 
-            let gstAmount = subtotal * gst / 100;
+e.target.id=="paid_amount"
 
-            document.getElementById("gst_amount").value = gstAmount.toFixed(2);
+){
 
-            let discount = parseFloat(document.getElementById("discount").value) || 0;
 
-            let grand = subtotal + gstAmount - discount;
+calculateTotals();
 
-            document.getElementById("total_amount").value = grand.toFixed(2);
 
-            let paid = parseFloat(document.getElementById("paid_amount").value) || 0;
+}
 
-            let balance = grand - paid;
 
-            document.getElementById("balance_amount").value = balance.toFixed(2);
+});
 
-            if (paid >= grand && grand > 0) {
 
-                document.getElementById("status").value = "Paid";
 
-            }
-            else if (paid > 0) {
 
-                document.getElementById("status").value = "Partial";
+function calculateTotals(){
 
-            }
-            else {
 
-                document.getElementById("status").value = "Pending";
+let subtotal=0;
 
-            }
 
-        }
 
+document.querySelectorAll("#invoiceItems tr")
+.forEach(row=>{
 
 
-        //=========================
-        // UPDATE
-        //=========================
+let qty =
+parseFloat(row.querySelector(".qty").value)||0;
 
-        document.getElementById("invoiceForm")
 
-            .addEventListener("submit", function (e) {
+let price =
+parseFloat(row.querySelector(".price").value)||0;
 
-                e.preventDefault();
 
-                fetch("https://karthikeyanportfolio.helioho.st/api/invoice/update_invoice.php", {
+let total = qty*price;
 
-                    method: "POST",
 
-                    body: new FormData(this)
 
-                })
+row.querySelector(".total").value =
+total.toFixed(2);
 
-                    .then(res => res.json())
 
-                    .then(res => {
 
-                        if (res.status == "success") {
+subtotal += total;
 
-                            Swal.fire({
 
-                                icon: "success",
 
-                                title: "Updated",
+});
 
-                                text: res.message,
 
-                                timer: 1500,
 
-                                showConfirmButton: false
+document.getElementById("subtotal").value =
+subtotal.toFixed(2);
 
-                            }).then(() => {
 
-                                window.location = "invoice.html";
 
-                            });
+let gst =
+parseFloat(document.getElementById("gst_percent").value)||0;
 
-                        } else {
 
-                            Swal.fire({
 
-                                icon: "error",
+let gstAmount =
+subtotal*gst/100;
 
-                                title: "Error",
 
-                                text: res.message
 
-                            });
+document.getElementById("gst_amount").value =
+gstAmount.toFixed(2);
 
-                        }
 
-                    });
 
-            });
+let discount =
+parseFloat(document.getElementById("discount").value)||0;
 
-    </script>
+
+
+let grand =
+subtotal+gstAmount-discount;
+
+
+
+document.getElementById("total_amount").value =
+grand.toFixed(2);
+
+
+
+let paid =
+parseFloat(document.getElementById("paid_amount").value)||0;
+
+
+
+let balance =
+grand-paid;
+
+
+
+document.getElementById("balance_amount").value =
+balance.toFixed(2);
+
+
+
+if(paid>=grand && grand>0){
+
+document.getElementById("status").value="Paid";
+
+}
+else if(paid>0){
+
+document.getElementById("status").value="Partial";
+
+}
+else{
+
+document.getElementById("status").value="Pending";
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+// =========================
+// UPDATE INVOICE
+// =========================
+
+
+document.getElementById("invoiceForm")
+.addEventListener("submit",function(e){
+
+
+e.preventDefault();
+
+
+
+fetch("https://karthikeyanportfolio.helioho.st/api/invoice/update_invoice.php",{
+
+
+method:"POST",
+
+
+body:new FormData(this)
+
+
+})
+
+
+.then(res=>res.json())
+
+
+.then(res=>{
+
+
+if(res.status=="success"){
+
+
+Swal.fire({
+
+icon:"success",
+
+title:"Updated",
+
+text:res.message,
+
+timer:1500,
+
+showConfirmButton:false
+
+})
+
+.then(()=>{
+
+
+window.location="invoice.html";
+
+
+});
+
+
+}
+else{
+
+
+Swal.fire(
+
+"Error",
+
+res.message,
+
+"error"
+
+);
+
+
+}
+
+
+});
+
+
+});
+
+
+
+</script>
 
       <script src="assets/js/login.js"></script>
   <script src="assets/js/auth.js"></script>

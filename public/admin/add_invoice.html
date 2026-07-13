@@ -282,9 +282,9 @@
 
                                         <div class="col-md-3">
                                             <label class="form-label">Authorized Signatory</label>
+
                                             <select class="form-select" id="signatory" name="signatory" required>
-                                                <option value="Swetha">Swetha</option>
-                                                <option value="Karthikeyan">Karthikeyan</option>
+                                                <option value="">Select Signatory</option>
                                             </select>
                                         </div>
 
@@ -324,7 +324,6 @@
                 </div>
             </main>
 
-
         </div>
     </div>
 
@@ -332,23 +331,68 @@
     <script src="assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
+     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
-            loadClients();
+    loadClients();
+    loadSignatories();
 
-            // Today's date
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById("invoice_date").value = today;
-            document.getElementById("due_date").value = today;
+    // Today's date
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("invoice_date").value = today;
+    document.getElementById("due_date").value = today;
 
-            // Invoice Number
-            document.getElementById("invoice_number").value =
-                "INV-" + Date.now();
+  fetch("https://karthikeyanportfolio.helioho.st/api/invoice/get_next_invoice.php")
+.then(res=>res.json())
+.then(data=>{
 
-            calculateTotals();
+    document.getElementById("invoice_number").value =
+        data.invoice_number;
+
+});
+    calculateTotals();
+
+});
+
+function loadSignatories() {
+
+    fetch("https://karthikeyanportfolio.helioho.st/api/signatures/get-signatures.php")
+
+        .then(res => res.json())
+
+        .then(res => {
+
+            if (res.status) {
+
+                let html = `
+                    <option value="">
+                        Select Signatory
+                    </option>
+                `;
+
+                res.data.forEach(signature => {
+
+                    html += `
+                        <option value="${signature.id}">
+                            ${signature.name}
+                        </option>
+                    `;
+
+                });
+
+                document.getElementById("signatory").innerHTML = html;
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.log("Signature Load Error:", error);
 
         });
+
+}
 
 
         // =========================
