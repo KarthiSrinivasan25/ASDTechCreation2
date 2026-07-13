@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex,nofollow">
   <meta name="description" content="ASD TechCreation professional admin dashboard template">
   <title>Dashboard | ASD TechCreation</title>
 
@@ -36,70 +36,53 @@
           <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
           <span class="nav-text">Clients</span>
         </a>
-        
+
         <a class="nav-link" href="invoice.html">
           <span class="nav-icon"><i class="bi bi-receipt"></i></span>
           <span class="nav-text">Invoice</span>
         </a>
 
-         <a class="nav-link " href="payments.html">
-                    <span class="nav-icon"><i class="bi bi-credit-card-2-front"></i></span>
-                    <span class="nav-text">Payments</span>
-                </a>
+        <a class="nav-link " href="payments.html">
+          <span class="nav-icon"><i class="bi bi-credit-card-2-front"></i></span>
+          <span class="nav-text">Payments</span>
+        </a>
       </nav>
 
-      <div class="sidebar-user">
-        <img class="avatar-img avatar-md sidebar-user-avatar" src="../assets/images/avatar/asd_logo.jpg" alt="Admin ">
-        <strong>Admin</strong>
-        <small>Active Workspace</small>
-      </div>
-
-      <div class="sidebar-footer">
-        <span class="status-dot"></span>
-        <span class="sidebar-footer-text">System running smoothly</span>
-      </div>
+     
     </aside>
 
     <div class="admin-main">
       <nav class="navbar admin-navbar navbar-expand bg-white">
         <div class="container-fluid px-3 px-lg-4">
-          <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="adminSidebar" aria-expanded="true" aria-label="Toggle sidebar">
+          <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="adminSidebar"
+            aria-expanded="true" aria-label="Toggle sidebar">
             <span></span>
             <span></span>
             <span></span>
           </button>
 
           <form class="d-none d-md-flex ms-3 flex-grow-1" role="search">
-            <input class="form-control search-input" type="search" placeholder="Search users, orders, reports" aria-label="Search">
+            <input class="form-control search-input" type="search" placeholder="Search users, orders, reports"
+              aria-label="Search">
           </form>
 
           <div class="navbar-actions ms-auto">
-            <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme">
+            <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"
+              title="Switch color theme">
               <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
             </button>
-            <div class="dropdown">
-              <button class="icon-button" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Notifications">
-                <span class="notification-dot"></span>
-                <i class="bi bi-bell" aria-hidden="true"></i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-end notification-menu">
-                <div class="dropdown-header fw-bold text-body">Notifications</div>
-                <a class="dropdown-item" href="users.html">
-                  <span class="notification-title">New user registered</span>
-                  <span class="notification-time">4 minutes ago</span>
-                </a>
-                <a class="dropdown-item" href="charts.html">
-                  <span class="notification-title">Revenue target reached</span>
-                  <span class="notification-time">32 minutes ago</span>
-                </a>
-                <a class="dropdown-item" href="settings.html">
-                  <span class="notification-title">Security review completed</span>
-                  <span class="notification-time">1 hour ago</span>
-                </a>
-              </div>
-            </div>
 
-            
+            <div class="dropdown">
+              <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                <span class="profile-name d-none d-sm-inline">Admin</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="company-profile.html">Profile</a></li>
+                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
@@ -108,27 +91,49 @@
         <div class="container-fluid px-3 px-lg-4 py-4">
           <div class="page-heading">
             <div class="page-heading-copy">
-              <span class="page-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
               <div>
-                <p class="eyebrow mb-1">Overview</p>
-                <h1 class="h3 mb-1">Dashboard</h1>
-                <p class="text-muted mb-0">Monitor performance, sales, users, and support from one clean workspace.</p>
+                <p class="eyebrow mb-1">Dashboard</p>
               </div>
             </div>
-            <div class="heading-actions"><button class="btn btn-outline-secondary btn-sm" type="button"><i class="bi bi-download" aria-hidden="true"></i> Export</button><button class="btn btn-primary btn-sm" type="button"><i class="bi bi-file-earmark-plus" aria-hidden="true"></i> Create Report</button></div>
           </div>
 
           <section class="row g-3 mt-1" aria-label="Dashboard metrics">
             <div class="col-12 col-sm-6 col-xl-3">
               <article class="metric-card metric-primary">
                 <div class="metric-top">
-                  <span class="metric-label">Revenue</span>
-                  <span class="metric-icon"><i class="bi bi-currency-dollar" aria-hidden="true"></i></span>
+                  <span class="metric-label">Clients</span>
+                  <span class="metric-icon">
+                    <i class="bi bi-people"></i>
+                  </span>
                 </div>
-                <div class="metric-value">$48,240</div>
-                <div class="metric-meta">
-                  <span class="text-success">+12.5%</span>
-                  <span>from last month</span>
+                <div class="metric-value" id="totalClients">0</div>
+              </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+              <article class="metric-card metric-success">
+                <div class="metric-top">
+                  <span class="metric-label">Invoices</span>
+                  <span class="metric-icon">
+                    <i class="bi bi-receipt"></i>
+                  </span>
+                </div>
+                <div class="metric-value" id="totalInvoices">0</div>
+              </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+              <article class="metric-card metric-warning">
+                <div class="metric-top">
+                  <span class="metric-label">
+                    Invoice Amount
+                  </span>
+                  <span class="metric-icon">
+                    <i class="bi bi-cash-stack"></i>
+                  </span>
+                </div>
+                <div class="metric-value" id="invoiceAmount">
+                  ₹0
                 </div>
               </article>
             </div>
@@ -136,27 +141,15 @@
             <div class="col-12 col-sm-6 col-xl-3">
               <article class="metric-card metric-success">
                 <div class="metric-top">
-                  <span class="metric-label">Orders</span>
-                  <span class="metric-icon"><i class="bi bi-bag-check" aria-hidden="true"></i></span>
+                  <span class="metric-label">
+                    Paid Amount
+                  </span>
+                  <span class="metric-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                  </span>
                 </div>
-                <div class="metric-value">1,284</div>
-                <div class="metric-meta">
-                  <span class="text-success">+8.2%</span>
-                  <span>new orders</span>
-                </div>
-              </article>
-            </div>
-
-            <div class="col-12 col-sm-6 col-xl-3">
-              <article class="metric-card metric-warning">
-                <div class="metric-top">
-                  <span class="metric-label">Customers</span>
-                  <span class="metric-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
-                </div>
-                <div class="metric-value">8,742</div>
-                <div class="metric-meta">
-                  <span class="text-success">+5.1%</span>
-                  <span>active users</span>
+                <div class="metric-value" id="paidAmount">
+                  ₹0
                 </div>
               </article>
             </div>
@@ -164,170 +157,362 @@
             <div class="col-12 col-sm-6 col-xl-3">
               <article class="metric-card metric-danger">
                 <div class="metric-top">
-                  <span class="metric-label">Tickets</span>
-                  <span class="metric-icon"><i class="bi bi-life-preserver" aria-hidden="true"></i></span>
+                  <span class="metric-label">
+                    Pending Amount
+                  </span>
+                  <span class="metric-icon">
+                    <i class="bi bi-clock-history"></i>
+                  </span>
                 </div>
-                <div class="metric-value">36</div>
-                <div class="metric-meta">
-                  <span class="text-danger">3 urgent</span>
-                  <span>need review</span>
+                <div class="metric-value" id="pendingAmount">
+                  ₹0
                 </div>
               </article>
             </div>
           </section>
 
-          <section class="row g-3 mt-1">
-            <div class="col-12 col-xl-8">
-              <div class="panel">
-                <div class="panel-header">
-                  <div>
-                    <h2 class="h5 mb-1 section-title"><i class="bi bi-graph-up-arrow" aria-hidden="true"></i><span>Sales Performance</span></h2>
-                    <p class="text-muted mb-0">Monthly revenue compared with operational targets.</p>
-                  </div>
-                  <a class="btn btn-light btn-sm" href="charts.html">View Details</a>
+          <section class="row g-3 mt-3">
+            <!-- Recent Invoices -->
+            <div class="col-lg-7">
+              <div class="card shadow-sm">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    Recent Invoices
+                  </h5>
                 </div>
-
-                <div class="chart-bars" aria-label="Sales performance chart">
-                  <div class="chart-column bar-42"><span></span><small>Jan</small></div>
-                  <div class="chart-column bar-58"><span></span><small>Feb</small></div>
-                  <div class="chart-column bar-51"><span></span><small>Mar</small></div>
-                  <div class="chart-column bar-72"><span></span><small>Apr</small></div>
-                  <div class="chart-column bar-66"><span></span><small>May</small></div>
-                  <div class="chart-column bar-83"><span></span><small>Jun</small></div>
+                <div class="card-body table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Invoice No</th>
+                        <th>Client</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody id="invoiceTable">
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
 
-            <div class="col-12 col-xl-4">
-              <div class="panel h-100">
-                <div class="panel-header">
-                  <div>
-                    <h2 class="h5 mb-1 section-title"><i class="bi bi-activity" aria-hidden="true"></i><span>Team Activity</span></h2>
-                    <p class="text-muted mb-0">Recent operational updates.</p>
-                  </div>
+            <!-- Recent Payments -->
+            <div class="col-lg-5">
+              <div class="card shadow-sm">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    Recent Payments
+                  </h5>
                 </div>
-
-                <div class="activity-list">
-                  <div class="activity-item"><span class="activity-dot bg-primary"></span><div><p class="mb-1 fw-semibold">New campaign launched</p><p class="text-muted small mb-0">Marketing team published the May offer.</p></div></div>
-                  <div class="activity-item"><span class="activity-dot bg-success"></span><div><p class="mb-1 fw-semibold">Payment batch cleared</p><p class="text-muted small mb-0">246 invoices were processed successfully.</p></div></div>
-                  <div class="activity-item"><span class="activity-dot bg-warning"></span><div><p class="mb-1 fw-semibold">Support queue rising</p><p class="text-muted small mb-0">Average first response time is 18 minutes.</p></div></div>
+                <div class="card-body table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Client</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Method</th>
+                      </tr>
+                    </thead>
+                    <tbody id="paymentTable">
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </section>
 
-          <section class="panel mt-3">
-            <div class="panel-header">
-              <div>
-                <h2 class="h5 mb-1 section-title"><i class="bi bi-people" aria-hidden="true"></i><span>Recent Users</span></h2>
-                <p class="text-muted mb-0">Latest account activity across the workspace.</p>
+          <section class="row g-3 mt-3">
+            <!-- Monthly Revenue -->
+            <div class="col-lg-8">
+              <div class="card shadow-sm">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    Monthly Revenue
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <canvas id="revenueChart"></canvas>
+                </div>
               </div>
-              <a class="btn btn-outline-secondary btn-sm" href="users.html">Manage Users</a>
             </div>
-            <div class="table-responsive">
-              <table class="table align-middle mb-0">
-                <thead><tr><th scope="col">User</th><th scope="col">Role</th><th scope="col">Team</th><th scope="col">Status</th><th scope="col">Joined</th><th scope="col" class="text-end">Action</th></tr></thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-1.jpg" alt="Sarah Ahmed">
-                        <div>
-                          <p class="fw-semibold mb-0">Sarah Ahmed</p>
-                          <p class="text-muted small mb-0">sarah@example.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>Admin</td>
-                    <td>Operations</td>
-                    <td><span class="badge text-bg-success">Active</span></td>
-                    <td>Jan 12, 2026</td>
-                    <td class="text-end"><a class="btn btn-light btn-sm" href="user-details.html">View</a></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-2.jpg" alt="Rafi Khan">
-                        <div>
-                          <p class="fw-semibold mb-0">Rafi Khan</p>
-                          <p class="text-muted small mb-0">rafi@example.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>Manager</td>
-                    <td>Sales</td>
-                    <td><span class="badge text-bg-success">Active</span></td>
-                    <td>Feb 03, 2026</td>
-                    <td class="text-end"><a class="btn btn-light btn-sm" href="user-details.html">View</a></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-3.jpg" alt="Nadia Islam">
-                        <div>
-                          <p class="fw-semibold mb-0">Nadia Islam</p>
-                          <p class="text-muted small mb-0">nadia@example.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>Editor</td>
-                    <td>Content</td>
-                    <td><span class="badge text-bg-warning">Pending</span></td>
-                    <td>Mar 18, 2026</td>
-                    <td class="text-end"><a class="btn btn-light btn-sm" href="user-details.html">View</a></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-4.jpg" alt="Mina Torres">
-                        <div>
-                          <p class="fw-semibold mb-0">Mina Torres</p>
-                          <p class="text-muted small mb-0">mina@example.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>Viewer</td>
-                    <td>Finance</td>
-                    <td><span class="badge text-bg-secondary">Suspended</span></td>
-                    <td>Apr 07, 2026</td>
-                    <td class="text-end"><a class="btn btn-light btn-sm" href="user-details.html">View</a></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center gap-2">
-                        <img class="avatar-img avatar-sm" src="../assets/images/avatar/avatar-5.jpg" alt="Jon Oliver">
-                        <div>
-                          <p class="fw-semibold mb-0">Jon Oliver</p>
-                          <p class="text-muted small mb-0">jon@example.com</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>Analyst</td>
-                    <td>Data</td>
-                    <td><span class="badge text-bg-success">Active</span></td>
-                    <td>Apr 22, 2026</td>
-                    <td class="text-end"><a class="btn btn-light btn-sm" href="user-details.html">View</a></td>
-                  </tr>
-                </tbody>
-              </table>
+
+            <!-- Invoice Status -->
+            <div class="col-lg-4">
+              <div class="card shadow-sm">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    Invoice Status
+                  </h5>
+                </div>
+                <div class="card-body">
+                  <canvas id="statusChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="row g-3 mt-3">
+            <!-- Pending Clients -->
+            <div class="col-12">
+              <div class="card shadow-sm">
+                <div class="card-header">
+                  <h5 class="mb-0">
+                    Pending Clients
+                  </h5>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Client</th>
+                        <th>Invoice No</th>
+                        <th>Balance</th>
+                        <th>Due Date</th>
+                      </tr>
+                    </thead>
+                    <tbody id="pendingClientTable">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </section>
         </div>
       </main>
 
-      <footer class="admin-footer">
-        <div class="container-fluid px-3 px-lg-4">
-          <span>Copyright 2026 ASD TechCreation. <br> Developed by <a target="_blank" class="fw-bold text-success" href="https://github.com/MahmudDev">Md.  Mahmud</a> • Distributed by <a target="_blank" class="fw-bold text-success" href="https://themewagon.com">ThemeWagon</a> </span>
-          <span>Professional dashboard template.</span>
-        </div>
-      </footer>
+
     </div>
   </div>
 
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      loadDashboard();
+    });
 
-  <script src="assets/js/auth.js"></script>
-   <script src="assets/js/logout.js"></script>
+    function loadDashboard() {
+      fetch("api/dashboard.php")
+        .then(response => response.json())
+        .then(data => {
+          if (data.status) {
+            let dashboard = data.dashboard;
+            // Cards
+
+            document.getElementById("totalClients").innerHTML =
+              dashboard.total_clients;
+
+            document.getElementById("totalInvoices").innerHTML =
+              dashboard.total_invoices;
+
+            document.getElementById("invoiceAmount").innerHTML =
+              formatAmount(dashboard.invoice_amount);
+
+            document.getElementById("paidAmount").innerHTML =
+              formatAmount(dashboard.paid_amount);
+
+            document.getElementById("pendingAmount").innerHTML =
+              formatAmount(dashboard.pending_amount);
+
+            // Tables
+            loadRecentInvoices(data.recent_invoices);
+            loadRecentPayments(data.recent_payments);
+            loadPendingClients(data.pending_clients);
+
+            // Charts
+
+            loadRevenueChart(
+              data.charts.monthly_revenue
+            );
+            loadStatusChart(
+              data.charts.invoice_status
+            );
+          } else {
+            console.log("Dashboard load failed:", data.message);
+          }
+        })
+        .catch(error => {
+
+          console.log(
+            "Dashboard Error:",
+            error
+          );
+
+        });
+    }
+
+    // Amount Format
+
+    function formatAmount(amount) {
+      return "₹ " +
+        Number(amount).toLocaleString('en-IN');
+    }
+
+    // Recent Invoice Table
+
+    function loadRecentInvoices(invoices) {
+      let html = "";
+      invoices.forEach(invoice => {
+        let badge = "";
+        if (invoice.status == "Paid") {
+          badge =
+            `<span class="badge bg-success">
+                Paid
+            </span>`;
+        }
+        else if (invoice.status == "Partial") {
+          badge =
+            `<span class="badge bg-warning">
+                Partial
+            </span>`;
+        }
+        else {
+          badge =
+            `<span class="badge bg-danger">
+                Pending
+            </span>`;
+        }
+
+        html += `
+        <tr>
+            <td>
+                ${invoice.invoice_number}
+            </td>
+            <td>
+                ${invoice.client_name}
+            </td>
+            <td>
+                ${invoice.invoice_date}
+            </td>
+            <td>
+                ${formatAmount(invoice.total_amount)}
+            </td>
+            <td>
+                ${badge}
+            </td>
+        </tr>
+        `;
+      });
+      document.getElementById("invoiceTable").innerHTML = html;
+    }
+
+    // Recent Payments Table
+
+    function loadRecentPayments(payments) {
+      let html = "";
+      payments.forEach(payment => {
+        html += `
+        <tr>
+            <td>
+                ${payment.client_name}
+            </td>
+            <td>
+                ${formatAmount(payment.amount_paid)}
+            </td>
+            <td>
+                ${payment.payment_date}
+            </td>
+            <td>
+                ${payment.payment_method}
+            </td>
+        </tr>
+        `;
+      });
+      document.getElementById("paymentTable").innerHTML = html;
+    }
+
+    // Pending Client Table
+
+    function loadPendingClients(clients) {
+      let html = "";
+
+      clients.forEach(client => {
+        html += `
+        <tr>
+            <td>
+                ${client.client_name}
+            </td>
+            <td>
+                ${client.invoice_number}
+            </td>
+            <td>
+                ${formatAmount(client.balance_amount)}
+            </td>
+            <td>
+                ${client.due_date}
+            </td>
+        </tr>
+        `;
+      });
+
+      document.getElementById("pendingClientTable").innerHTML = html;
+    }
+
+    // Monthly Revenue Chart
+
+    function loadRevenueChart(data) {
+      let months = [];
+      let amounts = [];
+
+      data.forEach(item => {
+        months.push(item.month);
+        amounts.push(item.amount);
+      });
+
+      new Chart(
+        document.getElementById("revenueChart"),
+        {
+          type: "bar",
+          data: {
+            labels: months,
+            datasets: [{
+              label: "Revenue",
+              data: amounts,
+              backgroundColor: "#0d6efd"
+            }]
+          },
+
+          options: {
+            responsive: true
+          }
+        });
+    }
+    // Invoice Status Chart
+
+    function loadStatusChart(data) {
+      let labels = [];
+      let values = [];
+      data.forEach(item => {
+        labels.push(item.status);
+        values.push(item.total);
+      });
+
+      new Chart(
+        document.getElementById("statusChart"),
+        {
+          type: "doughnut",
+          data: {
+            labels: labels,
+            datasets: [{
+              data: values,
+              backgroundColor: [
+                "#ffc107",
+                "#198754",
+                "#dc3545"
+              ]
+            }]
+          },
+
+          options: {
+            responsive: true
+          }
+        });
+    }
+  </script>
 </body>
+
 </html>
