@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ASD TechCreation professional admin dashboard template">
+    <title>Client | ASD TechCreation</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="admin-shell">
+        <div class="sidebar-backdrop" data-sidebar-close></div>
+
+        <aside class="admin-sidebar" id="adminSidebar" aria-label="Main navigation">
+            <div class="sidebar-header">
+                <a class="brand-mark" href="index.html" aria-label="ASD TechCreation dashboard">
+                    <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                    <span class="brand-copy">
+                        <span class="brand-title">ASD TechCreation</span>
+                    </span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a class="nav-link" href="index.html">
+                    <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a class="nav-link " href="client.html">
+                    <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
+                    <span class="nav-text">Clients</span>
+                </a>
+                <a class="nav-link" href="invoice.html">
+                    <span class="nav-icon"><i class="bi bi-receipt"></i></span>
+                    <span class="nav-text">Invoice</span>
+                </a>
+
+                <a class="nav-link" href="payments.html">
+                    <span class="nav-icon"><i class="bi bi-credit-card-2-front"></i></span>
+                    <span class="nav-text">Payments</span>
+                </a>
+            </nav>
+
+        </aside>
+
+        <div class="admin-main">
+            <nav class="navbar admin-navbar navbar-expand bg-white">
+                <div class="container-fluid px-3 px-lg-4">
+                    <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-controls="adminSidebar"
+                        aria-expanded="true" aria-label="Toggle sidebar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <form class="d-none d-md-flex ms-3 flex-grow-1" role="search">
+                        <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+
+                    <div class="navbar-actions ms-auto">
+                        <button class="icon-button theme-toggle" type="button" data-theme-toggle
+                            aria-label="Switch color theme" title="Switch color theme">
+                            <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
+                        </button>
+
+
+                        <div class="dropdown">
+                            <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
+                                <span class="profile-name d-none d-sm-inline">Admin</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                                <li><a class="dropdown-item" href="login.html">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="dashboard-content">
+                <div class="container-fluid px-3 px-lg-4 py-4">
+                    <div class="page-heading">
+                        <div class="page-heading-copy">
+
+                            <div>
+                                <p class="eyebrow mb-1">Company Profile</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="container mt-4">
+
+
+                        <div class="card shadow-sm">
+
+
+                            <div class="card-header d-flex justify-content-between">
+
+                                <h5>
+                                    Company Profile
+                                </h5>
+
+
+                                <button class="btn btn-primary" onclick="saveProfile()">
+                                    Save Profile
+                                </button>
+
+
+                            </div>
+
+
+
+
+                            <div class="card-body">
+
+
+                                <div class="row g-3">
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Company Name
+                                        </label>
+
+                                        <input type="text" id="company_name" class="form-control">
+
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Owner Name
+                                        </label>
+
+                                        <input type="text" id="owner_name" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Email
+                                        </label>
+
+                                        <input type="email" id="email" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Phone
+                                        </label>
+
+                                        <input type="text" id="phone" class="form-control">
+
+                                    </div>
+
+
+
+
+
+
+                                    <div class="col-md-12">
+
+                                        <label>
+                                            Address
+                                        </label>
+
+                                        <textarea id="address" class="form-control"></textarea>
+
+                                    </div>
+
+
+
+
+
+
+                                    <div class="col-md-4">
+
+                                        <label>
+                                            City
+                                        </label>
+
+                                        <input type="text" id="city" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-4">
+
+                                        <label>
+                                            State
+                                        </label>
+
+                                        <input type="text" id="state" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-4">
+
+                                        <label>
+                                            Pincode
+                                        </label>
+
+                                        <input type="text" id="pincode" class="form-control">
+
+                                    </div>
+
+
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            GST Number
+                                        </label>
+
+                                        <input type="text" id="gst_number" class="form-control">
+
+                                    </div>
+
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            PAN Number
+                                        </label>
+
+                                        <input type="text" id="pan_number" class="form-control">
+
+                                    </div>
+
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Website
+                                        </label>
+
+                                        <input type="text" id="website" class="form-control">
+
+                                    </div>
+
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Signatory Name
+                                        </label>
+
+                                        <input type="text" id="signatory" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <hr>
+
+
+
+
+
+                                    <h5>
+                                        Bank Details
+                                    </h5>
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Bank Name
+                                        </label>
+
+                                        <input type="text" id="bank_name" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Account Holder
+                                        </label>
+
+                                        <input type="text" id="account_holder" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Account Number
+                                        </label>
+
+                                        <input type="text" id="account_number" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            IFSC Code
+                                        </label>
+
+                                        <input type="text" id="ifsc_code" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            UPI ID
+                                        </label>
+
+                                        <input type="text" id="upi_id" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Invoice Prefix
+                                        </label>
+
+                                        <input type="text" id="invoice_prefix" value="INV" class="form-control">
+
+                                    </div>
+
+
+
+
+
+                                    <div class="col-md-6">
+
+                                        <label>
+                                            Invoice Due Days
+                                        </label>
+
+                                        <input type="number" id="invoice_due_days" value="15" class="form-control">
+
+                                    </div>
+
+
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </main>
+
+
+        </div>
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+
+            loadCompanyProfile();
+
+
+        });
+
+
+
+
+
+
+        function loadCompanyProfile() {
+
+
+            fetch("https://karthikeyanportfolio.helioho.st/api/company_profile/company-profile-get.php")
+
+
+                .then(res => res.json())
+
+
+                .then(data => {
+
+
+                    if (data.status) {
+
+
+                        let c = data.data;
+
+
+
+                        Object.keys(c).forEach(key => {
+
+
+                            let field = document.getElementById(key);
+
+
+                            if (field) {
+
+                                field.value = c[key];
+
+                            }
+
+
+                        });
+
+
+
+                    }
+
+
+                });
+
+
+
+        }
+
+
+
+
+
+
+
+
+        function saveProfile() {
+
+
+            let data = {
+
+
+                company_name:
+                    document.getElementById("company_name").value,
+
+
+                owner_name:
+                    document.getElementById("owner_name").value,
+
+
+                email:
+                    document.getElementById("email").value,
+
+
+                phone:
+                    document.getElementById("phone").value,
+
+
+                address:
+                    document.getElementById("address").value,
+
+
+                city:
+                    document.getElementById("city").value,
+
+
+                state:
+                    document.getElementById("state").value,
+
+
+                pincode:
+                    document.getElementById("pincode").value,
+
+
+                gst_number:
+                    document.getElementById("gst_number").value,
+
+
+                pan_number:
+                    document.getElementById("pan_number").value,
+
+
+                website:
+                    document.getElementById("website").value,
+
+
+                bank_name:
+                    document.getElementById("bank_name").value,
+
+
+                account_holder:
+                    document.getElementById("account_holder").value,
+
+
+                account_number:
+                    document.getElementById("account_number").value,
+
+
+                ifsc_code:
+                    document.getElementById("ifsc_code").value,
+
+
+                upi_id:
+                    document.getElementById("upi_id").value,
+
+
+                invoice_prefix:
+                    document.getElementById("invoice_prefix").value,
+
+
+                invoice_due_days:
+                    document.getElementById("invoice_due_days").value,
+
+
+                signatory:
+                    document.getElementById("signatory").value
+
+
+
+            };
+
+
+
+
+
+            fetch("https://karthikeyanportfolio.helioho.st/api/company_profile/company-profile-save.php", {
+
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type": "application/json"
+
+                },
+
+
+                body: JSON.stringify(data)
+
+
+
+            })
+
+
+                .then(res => res.json())
+
+
+                .then(result => {
+
+
+                    alert(result.message);
+
+
+                });
+
+
+
+        }
+
+
+
+    </script>
+</body>
+ <script src="assets/js/auth.js"></script>
+   <script src="assets/js/logout.js"></script>
+</html>
