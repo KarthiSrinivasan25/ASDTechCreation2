@@ -692,11 +692,7 @@ document.getElementById("sendInvoice").addEventListener("click", function () {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: inv.id })
     })
-        .then(async res => {
-    const text = await res.text();
-    console.log("Server Response:", text);
-    return JSON.parse(text);
-})
+        .then(res => res.json())
         .then(res => {
             if (res.status === "success") {
                 Swal.fire({
