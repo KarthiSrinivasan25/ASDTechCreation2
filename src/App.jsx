@@ -19,6 +19,7 @@ import Accessibility from "./pages/Accessibility";
 import ScrollToTopButton from "./component/ScrollToTopButton";
 import HelpCenter from "./pages/HelpCenter";
 import TermsConditions from "./pages/TermsConditions";
+import ReceiptVerification from "./pages/ReceiptVerification";
 
 function App() {
 
@@ -43,6 +44,8 @@ function App() {
         <Route path="/cookies-policy" element={<CookiesPolicy />} />
         <Route path="/accessibility" element={<Accessibility />} />
         <Route path="/terms-and-conditions" element={<TermsConditions />} />
+
+        <Route path="/receipt-verification" element={<ReceiptVerification />} />
       </Routes>
 
       <AnniversaryWidget />
