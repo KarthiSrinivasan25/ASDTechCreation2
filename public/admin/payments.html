@@ -132,9 +132,9 @@
 
                                         <div class="col-md-4">
 
-                                           <input class="form-control form-control-sm table-search" type="search"
-                                        placeholder="Search Payment" data-table-search="ordersTable"
-                                        aria-label="Search Payment">
+                                            <input type="text" id="searchPayment" class="form-control"
+                                                placeholder="Search Client / Receipt / Invoice">
+
                                         </div>
 
                                         <div class="col-md-3">
@@ -155,13 +155,17 @@
 
                                         </div>
 
-                                   
+                                        <div class="col-md-3">
+
+                                            <input type="date" id="dateFilter" class="form-control">
+
+                                        </div>
 
                                     </div>
 
                                     <div class="table-responsive">
 
-                                        <table id="ordersTable" class="table table-bordered table-hover align-middle">
+                                        <table class="table table-bordered table-hover align-middle">
 
                                             <thead class="table-light">
 
@@ -460,7 +464,7 @@ No Payments Found
         }
 
     </script>
-  <script src="assets/js/login.js"></script>
+
   <script src="assets/js/auth.js"></script>
    <script src="assets/js/logout.js"></script>
 </body>
