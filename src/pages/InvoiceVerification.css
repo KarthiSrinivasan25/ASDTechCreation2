@@ -1,0 +1,113 @@
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  max-width: 440px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-header {
+  background: linear-gradient(135deg, #eb7425, #e55146);
+  color: white;
+  text-align: center;
+  padding: 24px;
+}
+
+.error-header {
+  background: linear-gradient(135deg, #8a8a8a, #5a5a5a);
+}
+
+.badge-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  font-size: 28px;
+}
+
+.card-header h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card-header p {
+  margin-top: 5px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.card-body {
+  padding: 22px 24px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #6b6b6b;
+}
+
+.value {
+  font-weight: 600;
+  text-align: right;
+}
+
+.status-pill {
+  display: inline-block;
+  color: white;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.footer-note {
+  text-align: center;
+  color: #9a9a9a;
+  font-size: 12px;
+  padding: 14px 24px 22px;
+}
+
+.not-found {
+  text-align: center;
+}
+
+.badge-icon-error {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #fdecea;
+  color: #f44336;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 14px;
+  font-size: 28px;
+}
+
+.loading {
+  text-align: center;
+  padding: 50px 24px;
+  color: #666;
+}

@@ -20,6 +20,7 @@ import ScrollToTopButton from "./component/ScrollToTopButton";
 import HelpCenter from "./pages/HelpCenter";
 import TermsConditions from "./pages/TermsConditions";
 import ReceiptVerification from "./pages/ReceiptVerification";
+import InvoiceVerification from "./pages/InvoiceVerification";
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
         <Route path="/terms-and-conditions" element={<TermsConditions />} />
 
         <Route path="/receipt-verification" element={<ReceiptVerification />} />
+        <Route path="/invoice-verification" element={<InvoiceVerification />} />
       </Routes>
 
       <AnniversaryWidget />
