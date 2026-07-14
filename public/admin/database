@@ -123,106 +123,106 @@
 
 
 
-ALTER TABLE invoices
-ADD COLUMN signatory VARCHAR(50) DEFAULT 'Person 1';
+-- ALTER TABLE invoices
+-- ADD COLUMN signatory VARCHAR(50) DEFAULT 'Person 1';
 
 
-CREATE TABLE company_profile (
+-- CREATE TABLE company_profile (
 
-id INT AUTO_INCREMENT PRIMARY KEY,
+-- id INT AUTO_INCREMENT PRIMARY KEY,
 
-company_name VARCHAR(150),
-logo VARCHAR(255),
+-- company_name VARCHAR(150),
+-- logo VARCHAR(255),
 
-owner_name VARCHAR(100),
+-- owner_name VARCHAR(100),
 
-email VARCHAR(150),
-phone VARCHAR(30),
+-- email VARCHAR(150),
+-- phone VARCHAR(30),
 
-address TEXT,
-city VARCHAR(100),
-state VARCHAR(100),
-pincode VARCHAR(20),
+-- address TEXT,
+-- city VARCHAR(100),
+-- state VARCHAR(100),
+-- pincode VARCHAR(20),
 
-gst_number VARCHAR(50),
-pan_number VARCHAR(50),
+-- gst_number VARCHAR(50),
+-- pan_number VARCHAR(50),
 
-website VARCHAR(150),
+-- website VARCHAR(150),
 
-bank_name VARCHAR(100),
-account_holder VARCHAR(100),
-account_number VARCHAR(50),
-ifsc_code VARCHAR(50),
-upi_id VARCHAR(100),
+-- bank_name VARCHAR(100),
+-- account_holder VARCHAR(100),
+-- account_number VARCHAR(50),
+-- ifsc_code VARCHAR(50),
+-- upi_id VARCHAR(100),
 
-invoice_prefix VARCHAR(20) DEFAULT 'INV',
-invoice_due_days INT DEFAULT 15,
+-- invoice_prefix VARCHAR(20) DEFAULT 'INV',
+-- invoice_due_days INT DEFAULT 15,
 
-signatory VARCHAR(100),
+-- signatory VARCHAR(100),
 
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
-);
-
-
-CREATE TABLE signatures (
-
-    id INT AUTO_INCREMENT PRIMARY KEY,
-
-    name VARCHAR(100) NOT NULL,
-
-    image VARCHAR(255) NOT NULL,
-
-    status ENUM('Active','Inactive') DEFAULT 'Active',
-
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
-);
+-- );
 
 
-ALTER TABLE company_profile
-DROP COLUMN signatory;
+-- CREATE TABLE signatures (
+
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+
+--     name VARCHAR(100) NOT NULL,
+
+--     image VARCHAR(255) NOT NULL,
+
+--     status ENUM('Active','Inactive') DEFAULT 'Active',
+
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+-- );
 
 
-ALTER TABLE company_profile
-ADD COLUMN signature_1_id INT,
-ADD COLUMN signature_2_id INT;
+-- ALTER TABLE company_profile
+-- DROP COLUMN signatory;
 
 
-ALTER TABLE invoices
-DROP COLUMN signatory;
-
-ALTER TABLE invoices
-ADD COLUMN signature_id INT;
-
-ALTER TABLE invoices
-
-ADD CONSTRAINT fk_invoice_signature
-
-FOREIGN KEY(signature_id)
-
-REFERENCES signatures(id)
-
-ON DELETE SET NULL;
+-- ALTER TABLE company_profile
+-- ADD COLUMN signature_1_id INT,
+-- ADD COLUMN signature_2_id INT;
 
 
-ALTER TABLE company_profile
+-- ALTER TABLE invoices
+-- DROP COLUMN signatory;
 
-ADD CONSTRAINT fk_company_signature1
+-- ALTER TABLE invoices
+-- ADD COLUMN signature_id INT;
 
-FOREIGN KEY(signature_1_id)
+-- ALTER TABLE invoices
 
-REFERENCES signatures(id)
+-- ADD CONSTRAINT fk_invoice_signature
 
-ON DELETE SET NULL;
+-- FOREIGN KEY(signature_id)
+
+-- REFERENCES signatures(id)
+
+-- ON DELETE SET NULL;
 
 
-ALTER TABLE company_profile
+-- ALTER TABLE company_profile
 
-ADD CONSTRAINT fk_company_signature2
+-- ADD CONSTRAINT fk_company_signature1
 
-FOREIGN KEY(signature_2_id)
+-- FOREIGN KEY(signature_1_id)
 
-REFERENCES signatures(id)
+-- REFERENCES signatures(id)
 
-ON DELETE SET NULL;
+-- ON DELETE SET NULL;
+
+
+-- ALTER TABLE company_profile
+
+-- ADD CONSTRAINT fk_company_signature2
+
+-- FOREIGN KEY(signature_2_id)
+
+-- REFERENCES signatures(id)
+
+-- ON DELETE SET NULL;
