@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import "./ReceiptVerification.css";
+import BreadCrumb from "../component/BreadCrumb";
 
 const API_URL =
   "https://karthikeyanportfolio.helioho.st/api/verify-pdf/verify-receipt.php";
@@ -133,4 +134,3 @@ export default function ReceiptVerification() {
   );
 }
 
-export default ReceiptVerification
