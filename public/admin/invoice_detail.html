@@ -688,25 +688,39 @@ document.getElementById("sendInvoice").addEventListener("click", function () {
     });
  
     fetch("https://karthikeyanportfolio.helioho.st/api/invoice/send_invoice_email.php", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ id: inv.id })
-})
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: inv.id })
+    })
         .then(async res => {
-    console.log("Status:", res.status);
-
     const text = await res.text();
-    console.log(text);
-
+    console.log("Server Response:", text);
     return JSON.parse(text);
 })
-.then(res => {
-    console.log(res);
-})
-        .catch(err =>{
-          console.error(err);
+        .then(res => {
+            if (res.status === "success") {
+                Swal.fire({
+                    icon: "success",
+                    title: "Invoice Sent!",
+                    text: res.message,
+                    confirmButtonColor: "#eb7425"
+                });
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Failed to Send",
+                    text: res.message || "Something went wrong. Please try again.",
+                    confirmButtonColor: "#eb7425"
+                });
+            }
+        })
+        .catch(() => {
+            Swal.fire({
+                icon: "error",
+                title: "Network Error",
+                text: "Could not reach the server. Please check your connection and try again.",
+                confirmButtonColor: "#eb7425"
+            });
         })
         .finally(() => {
             btn.disabled = false;
