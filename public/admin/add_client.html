@@ -216,35 +216,13 @@
   <script src="assets/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const status = urlParams.get('status');
-
-    if (status === 'success') {
-      Swal.fire({
-        icon: 'success',
-        title: 'Success!',
-        text: 'Client saved successfully',
-        timer: 2000,
-        showConfirmButton: false
-      }).then(() => {
-        window.location.href = "add_client.html";
-      });
-    }
-
-    if (status === 'error') {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops!',
-        text: 'Something went wrong'
-      });
-    }
-
-
     document.addEventListener("DOMContentLoaded", function () {
 
-      const form = document.querySelector("form");
+    const form = document.querySelector("form");
 
-      form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", function (e) {
+
+        e.preventDefault();
 
         let isValid = true;
         let messages = [];
@@ -254,77 +232,130 @@
         const email = form.email.value.trim();
         const phone = form.phone.value.trim();
         const address = form.address.value.trim();
-        //const gst_number = form.gst_number.value.trim();
         const project_name = form.project_name.value.trim();
         const service = form.service.value.trim();
         const project_value = form.project_value.value.trim();
         const status = form.status.value.trim();
         const notes = form.notes.value.trim();
 
+
         if (!client_name) {
-          isValid = false;
-          messages.push("Client Name required");
+            isValid = false;
+            messages.push("Client Name required");
         }
 
         if (!company_name) {
-          isValid = false;
-          messages.push("Company Name required");
+            isValid = false;
+            messages.push("Company Name required");
         }
 
         if (!email) {
-          isValid = false;
-          messages.push("Email required");
+            isValid = false;
+            messages.push("Email required");
         }
 
         if (!phone) {
-          isValid = false;
-          messages.push("Phone required");
+            isValid = false;
+            messages.push("Phone required");
         }
 
         if (!address) {
-          isValid = false;
-          messages.push("Address required");
+            isValid = false;
+            messages.push("Address required");
         }
 
-        // if (!gst_number) {
-        //     isValid = false;
-        //     messages.push("GST Number required");
-        // }
-
         if (!project_name) {
-          isValid = false;
-          messages.push("Project Name required");
+            isValid = false;
+            messages.push("Project Name required");
         }
 
         if (!service) {
-          isValid = false;
-          messages.push("Service required");
+            isValid = false;
+            messages.push("Service required");
         }
 
         if (!project_value) {
-          isValid = false;
-          messages.push("Project Value required");
+            isValid = false;
+            messages.push("Project Value required");
         }
 
         if (!status) {
-          isValid = false;
-          messages.push("Status required");
+            isValid = false;
+            messages.push("Status required");
         }
 
         if (!notes) {
-          isValid = false;
-          messages.push("Notes required");
+            isValid = false;
+            messages.push("Notes required");
         }
+
 
         if (!isValid) {
-          e.preventDefault();
 
-          alert("Please fill all fields:\n\n" + messages.join("\n"));
+            Swal.fire({
+                icon: "warning",
+                title: "Validation Error",
+                text: messages.join("\n")
+            });
+
+            return;
         }
 
-      });
+
+        fetch("https://karthikeyanportfolio.helioho.st/api/client/save_client.php", {
+
+            method: "POST",
+            body: new FormData(form)
+
+        })
+
+        .then(res => res.json())
+
+        .then(res => {
+
+            if (res.status === "success") {
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: res.message,
+                    timer: 1800,
+                    showConfirmButton: false
+                })
+                .then(() => {
+
+                    window.location.href = "client.html";
+
+                });
+
+
+            } else {
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: res.message
+                });
+
+            }
+
+        })
+
+        .catch(error => {
+
+            Swal.fire({
+                icon: "error",
+                title: "Server Error",
+                text: "Unable to save client."
+            });
+
+            console.error(error);
+
+        });
 
     });
+
+});
   </script>
   <script src="assets/js/login.js"></script>
   <script src="assets/js/auth.js"></script>
