@@ -105,10 +105,10 @@
 
                         <div class="col-12">
 
-                            <div class="card shadow-sm" style="border-bottom: 2px dashed #6c757d;">
+                            <div class="card shadow-sm border-0">
 
-                                <div class="card-header  d-flex justify-content-between align-items-center"
-                                   >
+                                <div class="card-header text-white d-flex justify-content-between align-items-center"
+                                    style="background:linear-gradient(135deg,#eb7425,#e55146);">
 
                                     <h5 class="mb-0">
 
@@ -116,7 +116,7 @@
 
                                     </h5>
 
-                                    <a href="add_payment.html" class="btn btn-primary btn-sm">
+                                    <a href="add_payment.html" class="btn btn-light btn-sm">
 
                                         <i class="bi bi-plus-circle"></i>
 
@@ -128,7 +128,7 @@
 
                                 <div class="card-body">
 
-                                    <div class="row mb-3" >
+                                    <div class="row mb-3">
 
                                         <div class="col-md-4">
 
@@ -335,17 +335,17 @@ ${pay.payment_method}
 
 <a
 href="payment_detail.html?id=${pay.id}"
-class="btn btn-info btn-sm">
+class="btn btn-light btn-sm">
 
-<i class="bi bi-eye"></i>
+<i class="bi bi-eye text-white"></i>
 
 </a>
 
 <a
 href="edit_payment.html?id=${pay.id}"
-class="btn btn-warning btn-sm">
+class="btn btn-primary btn-sm">
 
-<i class="bi bi-pencil"></i>
+<i class="bi bi-pencil text-white"></i>
 
 </a>
 
@@ -355,7 +355,7 @@ class="btn btn-danger btn-sm"
 
 onclick="deletePayment(${pay.id})">
 
-<i class="bi bi-trash"></i>
+<i class="bi bi-trash text-white"></i>
 
 </button>
 
