@@ -37,11 +37,11 @@
                     <span class="nav-text">Clients</span>
                 </a>
                 <a class="nav-link active" href="invoice.html">
-          <span class="nav-icon"><i class="bi bi-receipt"></i></span>
-          <span class="nav-text">Invoice</span>
-        </a>
+                    <span class="nav-icon"><i class="bi bi-receipt"></i></span>
+                    <span class="nav-text">Invoice</span>
+                </a>
 
-         <a class="nav-link active" href="payments.html">
+                <a class="nav-link active" href="payments.html">
                     <span class="nav-icon"><i class="bi bi-credit-card-2-front"></i></span>
                     <span class="nav-text">Payments</span>
                 </a>
@@ -68,17 +68,19 @@
                             aria-label="Switch color theme" title="Switch color theme">
                             <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
                         </button>
-                        
+
                         <div class="dropdown">
                             <button class="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <img class="avatar-img avatar-sm" src="assets/images/avatar/asd_logo.jpg" alt="Admin">
                                 <span class="profile-name d-none d-sm-inline">Admin</span>
                             </button>
-                            <li><a class="dropdown-item" href="company-profile.html">Profile</a></li>
-                <li><a class="dropdown-item" href="#" onclick="logout()">
-                    Sign out
-                  </a></li>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="company-profile.html">Profile</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="logout()">
+                                        Sign out
+                                    </a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -100,173 +102,136 @@
                     <section class="row g-3">
                         <div class="col-12 ">
                             <div class="card shadow-sm border-0">
-                                <div class="card-header text-white" style="background: linear-gradient(135deg, #eb7425, #e55146);
-">
+                                <div class="card-header text-white d-flex justify-content-between align-items-center"
+                                    style="background: linear-gradient(135deg, #eb7425, #e55146);">
+
                                     <h5 class="mb-0">Edit Payment</h5>
+
+                                    <a href="invoice.html" class="btn btn-light btn-sm">
+                                        <i class="bi bi-arrow-left"></i> Back
+                                    </a>
                                 </div>
 
                                 <div class="card-body">
-                                   <form id="editPaymentForm" class="row g-3">
+                                    <form id="editPaymentForm" class="row g-3">
 
-<input type="hidden" id="id" name="id">
+                                        <input type="hidden" id="id" name="id">
 
-<input type="hidden" id="client_id" name="client_id">
+                                        <input type="hidden" id="client_id" name="client_id">
 
-<input type="hidden" id="invoice_id" name="invoice_id">
+                                        <input type="hidden" id="invoice_id" name="invoice_id">
 
-<div class="col-md-6">
+                                        <div class="col-md-6">
 
-<label class="form-label">Receipt Number</label>
+                                            <label class="form-label">Receipt Number</label>
 
-<input
-type="text"
-id="receipt_number"
-class="form-control"
-readonly>
+                                            <input type="text" id="receipt_number" class="form-control" readonly>
 
-</div>
+                                        </div>
 
-<div class="col-md-6">
+                                        <div class="col-md-6">
 
-<label class="form-label">Client</label>
+                                            <label class="form-label">Client</label>
 
-<input
-type="text"
-id="client_name"
-class="form-control"
-readonly>
+                                            <input type="text" id="client_name" class="form-control" readonly>
 
-</div>
+                                        </div>
 
-<div class="col-md-6">
+                                        <div class="col-md-6">
 
-<label class="form-label">Invoice Number</label>
+                                            <label class="form-label">Invoice Number</label>
 
-<input
-type="text"
-id="invoice_number"
-class="form-control"
-readonly>
+                                            <input type="text" id="invoice_number" class="form-control" readonly>
 
-</div>
+                                        </div>
 
-<div class="col-md-6">
+                                        <div class="col-md-6">
 
-<label class="form-label">Payment Date</label>
+                                            <label class="form-label">Payment Date</label>
 
-<input
-type="date"
-id="payment_date"
-name="payment_date"
-class="form-control"
-required>
+                                            <input type="date" id="payment_date" name="payment_date"
+                                                class="form-control" required>
 
-</div>
+                                        </div>
 
-<div class="col-md-4">
+                                        <div class="col-md-4">
 
-<label class="form-label">Invoice Total</label>
+                                            <label class="form-label">Invoice Total</label>
 
-<input
-type="number"
-id="total_amount"
-class="form-control"
-readonly>
+                                            <input type="number" id="total_amount" class="form-control" readonly>
 
-</div>
+                                        </div>
 
-<div class="col-md-4">
+                                        <div class="col-md-4">
 
-<label class="form-label">Current Paid</label>
+                                            <label class="form-label">Current Paid</label>
 
-<input
-type="number"
-id="paid_amount"
-class="form-control"
-readonly>
+                                            <input type="number" id="paid_amount" class="form-control" readonly>
 
-</div>
+                                        </div>
 
-<div class="col-md-4">
+                                        <div class="col-md-4">
 
-<label class="form-label">Balance</label>
+                                            <label class="form-label">Balance</label>
 
-<input
-type="number"
-id="balance_amount"
-class="form-control"
-readonly>
+                                            <input type="number" id="balance_amount" class="form-control" readonly>
 
-</div>
+                                        </div>
 
-<div class="col-md-6">
+                                        <div class="col-md-6">
 
-<label class="form-label">Amount Paid</label>
+                                            <label class="form-label">Amount Paid</label>
 
-<input
-type="number"
-id="amount_paid"
-name="amount_paid"
-class="form-control"
-required>
+                                            <input type="number" id="amount_paid" name="amount_paid"
+                                                class="form-control" required>
 
-</div>
+                                        </div>
 
-<div class="col-md-6">
+                                        <div class="col-md-6">
 
-<label class="form-label">Payment Method</label>
+                                            <label class="form-label">Payment Method</label>
 
-<select
-id="payment_method"
-name="payment_method"
-class="form-select">
+                                            <select id="payment_method" name="payment_method" class="form-select">
 
-<option>Cash</option>
-<option>UPI</option>
-<option>Bank Transfer</option>
-<option>Card</option>
+                                                <option>Cash</option>
+                                                <option>UPI</option>
+                                                <option>Bank Transfer</option>
+                                                <option>Card</option>
 
-</select>
+                                            </select>
 
-</div>
+                                        </div>
 
-<div class="col-md-12">
+                                        <div class="col-md-12">
 
-<label class="form-label">Transaction ID</label>
+                                            <label class="form-label">Transaction ID</label>
 
-<input
-type="text"
-id="transaction_id"
-name="transaction_id"
-class="form-control">
+                                            <input type="text" id="transaction_id" name="transaction_id"
+                                                class="form-control">
 
-</div>
+                                        </div>
 
-<div class="col-md-12">
+                                        <div class="col-md-12">
 
-<label class="form-label">Notes</label>
+                                            <label class="form-label">Notes</label>
 
-<textarea
-id="notes"
-name="notes"
-rows="4"
-class="form-control"></textarea>
+                                            <textarea id="notes" name="notes" rows="4" class="form-control"></textarea>
 
-</div>
+                                        </div>
 
-<div class="col-12">
+                                        <div class="col-12">
 
-<button class="btn btn-primary">
+                                            <button class="btn btn-primary">
 
-<i class="bi bi-save"></i>
+                                                <i class="bi bi-save"></i>
 
-Update Payment
+                                                Update Payment
 
-</button>
+                                            </button>
 
-</div>
+                                        </div>
 
-</form>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -283,104 +248,104 @@ Update Payment
     <script src="assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
+    <script>
 
-const id=new URLSearchParams(window.location.search).get("id");
+        const id = new URLSearchParams(window.location.search).get("id");
 
-fetch("https://karthikeyanportfolio.helioho.st/api/payments/get_payment.php?id="+id)
+        fetch("https://karthikeyanportfolio.helioho.st/api/payments/get_payment.php?id=" + id)
 
-.then(res=>res.json())
+            .then(res => res.json())
 
-.then(res=>{
+            .then(res => {
 
-if(res.status!="success") return;
+                if (res.status != "success") return;
 
-const d=res.data;
+                const d = res.data;
 
-document.getElementById("id").value=d.id;
-document.getElementById("client_id").value=d.client_id;
-document.getElementById("invoice_id").value=d.invoice_id;
+                document.getElementById("id").value = d.id;
+                document.getElementById("client_id").value = d.client_id;
+                document.getElementById("invoice_id").value = d.invoice_id;
 
-document.getElementById("receipt_number").value=d.receipt_number;
-document.getElementById("client_name").value=d.client_name;
-document.getElementById("invoice_number").value=d.invoice_number;
+                document.getElementById("receipt_number").value = d.receipt_number;
+                document.getElementById("client_name").value = d.client_name;
+                document.getElementById("invoice_number").value = d.invoice_number;
 
-document.getElementById("payment_date").value=d.payment_date;
+                document.getElementById("payment_date").value = d.payment_date;
 
-document.getElementById("total_amount").value=d.total_amount;
-document.getElementById("paid_amount").value=d.paid_amount;
-document.getElementById("balance_amount").value=d.balance_amount;
+                document.getElementById("total_amount").value = d.total_amount;
+                document.getElementById("paid_amount").value = d.paid_amount;
+                document.getElementById("balance_amount").value = d.balance_amount;
 
-document.getElementById("amount_paid").value=d.amount_paid;
+                document.getElementById("amount_paid").value = d.amount_paid;
 
-document.getElementById("payment_method").value=d.payment_method;
+                document.getElementById("payment_method").value = d.payment_method;
 
-document.getElementById("transaction_id").value=d.transaction_id;
+                document.getElementById("transaction_id").value = d.transaction_id;
 
-document.getElementById("notes").value=d.notes;
+                document.getElementById("notes").value = d.notes;
 
-});
+            });
 
-document.getElementById("editPaymentForm")
+        document.getElementById("editPaymentForm")
 
-.addEventListener("submit",function(e){
+            .addEventListener("submit", function (e) {
 
-e.preventDefault();
+                e.preventDefault();
 
-fetch("https://karthikeyanportfolio.helioho.st/api/payments/update_payment.php",{
+                fetch("https://karthikeyanportfolio.helioho.st/api/payments/update_payment.php", {
 
-method:"POST",
+                    method: "POST",
 
-body:new FormData(this)
+                    body: new FormData(this)
 
-})
+                })
 
-.then(res=>res.json())
+                    .then(res => res.json())
 
-.then(res=>{
+                    .then(res => {
 
-if(res.status=="success"){
+                        if (res.status == "success") {
 
-Swal.fire({
+                            Swal.fire({
 
-icon:"success",
+                                icon: "success",
 
-title:"Updated",
+                                title: "Updated",
 
-text:res.message,
+                                text: res.message,
 
-timer:1500,
+                                timer: 1500,
 
-showConfirmButton:false
+                                showConfirmButton: false
 
-}).then(()=>{
+                            }).then(() => {
 
-window.location="payments.html";
+                                window.location = "payments.html";
 
-});
+                            });
 
-}else{
+                        } else {
 
-Swal.fire({
+                            Swal.fire({
 
-icon:"error",
+                                icon: "error",
 
-title:"Error",
+                                title: "Error",
 
-text:res.message
+                                text: res.message
 
-});
+                            });
 
-}
+                        }
 
-});
+                    });
 
-});
+            });
 
-</script>
-  
-  <script src="assets/js/auth.js"></script>
-     <script src="assets/js/logout.js"></script>
+    </script>
+
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/logout.js"></script>
 </body>
 
 </html>
