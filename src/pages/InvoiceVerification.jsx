@@ -49,7 +49,7 @@ export default function InvoiceVerification() {
   if (loading) {
     return (
       <div className="page">
-        <div className="card">
+        <div className="verification-card">
           <div className="loading">Verifying invoice...</div>
         </div>
       </div>
@@ -65,16 +65,16 @@ export default function InvoiceVerification() {
      <BreadCrumb pageName="Verified Invoice" />
 
      <div className="page">
-      <div className="card">
+      <div className="verification-card">
         {verified ? (
           <>
-            <div className="card-header">
+            <div className="verification-card-header">
               <div className="badge-icon">✓</div>
               <h1>Genuine Invoice</h1>
               <p>Issued by {companyName}</p>
             </div>
 
-            <div className="card-body">
+            <div className="verification-card-body">
               <div className="row">
                 <span className="label">Invoice No</span>
                 <span className="value">{data.invoice_number}</span>
@@ -121,12 +121,12 @@ export default function InvoiceVerification() {
           </>
         ) : (
           <>
-            <div className="card-header error-header">
+            <div className="verification-card-header error-header">
               <div className="badge-icon">!</div>
               <h1>Verification Failed</h1>
             </div>
 
-            <div className="card-body not-found">
+            <div className="verification-card-body not-found">
               <div className="badge-icon-error">✕</div>
               <h2>No matching invoice found</h2>
               <p>

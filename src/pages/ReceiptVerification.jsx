@@ -44,7 +44,7 @@ export default function ReceiptVerification() {
   if (loading) {
     return (
       <div className="page">
-        <div className="card">
+        <div className="verification-card">
           <div className="loading">Verifying receipt...</div>
         </div>
       </div>
@@ -58,16 +58,16 @@ export default function ReceiptVerification() {
 
 
     <div className="page">
-      <div className="card">
+      <div className="verification-card">
         {verified ? (
           <>
-            <div className="card-header">
+            <div className="verification-card-header">
               <div className="badge-icon">✓</div>
               <h1>Payment Received</h1>
               <p>Verified by {companyName}</p>
             </div>
 
-            <div className="card-body">
+            <div className="verification-card-body">
               <div className="row">
                 <span className="label">Receipt No</span>
                 <span className="value">{data.receipt_number}</span>
@@ -107,12 +107,12 @@ export default function ReceiptVerification() {
           </>
         ) : (
           <>
-            <div className="card-header error-header">
+            <div className="verification-card-header error-header">
               <div className="badge-icon">!</div>
               <h1>Verification Failed</h1>
             </div>
 
-            <div className="card-body not-found">
+            <div className="verification-card-body not-found">
               <div className="badge-icon-error">✕</div>
               <h2>No matching receipt found</h2>
               <p>

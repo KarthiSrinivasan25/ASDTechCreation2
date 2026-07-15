@@ -6,7 +6,7 @@
   padding: 24px;
 }
 
-.card {
+.verification-card {
   background: #fff;
   border-radius: 14px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-.card-header {
+.verification-card-header {
   background: linear-gradient(135deg, #eb7425, #e55146);
   color: white;
   text-align: center;
@@ -38,18 +38,18 @@
   font-size: 28px;
 }
 
-.card-header h1 {
+.verification-card-header h1 {
   margin: 0;
   font-size: 18px;
 }
 
-.card-header p {
+.verification-card-header p {
   margin-top: 5px;
   font-size: 13px;
   opacity: 0.9;
 }
 
-.card-body {
+.verification-card-body {
   padding: 22px 24px;
 }
 
