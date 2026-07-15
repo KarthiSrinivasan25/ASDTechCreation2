@@ -180,13 +180,11 @@ function SmartModal({
             onChange={handleChange}
           >
             <option value="">Select Service</option>
-            <option value="Web Development">
-              Website Development
-            </option>
-            <option value="Mobile App Development">
-              App Development
-            </option>
-            <option value="SEO">SEO</option>
+            <option value="Web Development">Web Development</option>
+                  <option value="Mobile App Development">Mobile App Development</option>
+                  <option value="UI/UX Design">UI/UX Design</option>
+                  <option value="E-Commerce Solutions">E-Commerce Solutions</option>
+                  <option value="SEO">SEO</option>
           </select>
 
           <textarea
