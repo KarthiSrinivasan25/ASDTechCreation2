@@ -203,17 +203,19 @@
 
                        <button class="btn btn-light btn-sm"
     onclick="window.location.href='client_details.html?id=${row.id}'">
-    View
+    <i class="bi bi-eye"></i>
 </button>
+
 
                         <a href="edit_client.html?id=${row.id}"
                            class="btn btn-primary btn-sm">
-                           Edit
+                           <i class="bi bi-pencil"></i>
                         </a>
+
 
                         <button class="btn btn-danger btn-sm"
                             onclick="deleteClient(${row.id})">
-                            Delete
+                            <i class="bi bi-trash"></i>
                         </button>
 
                     </td>
