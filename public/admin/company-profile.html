@@ -109,15 +109,24 @@
 
                                 <h5 class="mb-0">Company Profile</h5>
 
-                                <div class="d-flex gap-2">
-                                    <a href="signature.html" class="btn btn-light btn-sm">
-                                        Signature
-                                    </a>
+                               <div class="d-flex gap-2">
+    <a href="signature.html" class="btn btn-light btn-sm">
+        Signature
+    </a>
 
-                                    <button class="btn btn-primary btn-sm" onclick="saveProfile()">
-                                        Save Profile
-                                    </button>
-                                </div>
+    <button id="editBtn"
+        class="btn btn-warning btn-sm"
+        onclick="enableEdit()"
+        style="display:none;">
+        Edit Profile
+    </button>
+
+    <button id="saveBtn"
+        class="btn btn-primary btn-sm"
+        onclick="saveProfile()">
+        Save Profile
+    </button>
+</div>
 
                             </div>
 
@@ -613,6 +622,11 @@
 
                     let c = data.data;
 
+                    setFormDisabled(true);
+
+document.getElementById("saveBtn").style.display = "none";
+
+document.getElementById("editBtn").style.display = "inline-block";
 
 
                     Object.keys(c).forEach(key => {
@@ -744,6 +758,30 @@
         }
 
 
+        function setFormDisabled(disabled) {
+
+    document.querySelectorAll(
+        "#company_name, #owner_name, #email, #phone, #address, #city, #state, #pincode, #gst_number, #pan_number, #website, #bank_name, #account_holder, #account_number, #ifsc_code, #upi_id, #invoice_prefix, #invoice_due_days, #signature_1_id, #signature_2_id"
+    ).forEach(element => {
+
+        element.disabled = disabled;
+
+    });
+
+}
+
+
+function enableEdit() {
+
+    setFormDisabled(false);
+
+    document.getElementById("editBtn").style.display = "none";
+
+    document.getElementById("saveBtn").style.display = "inline-block";
+
+}
+
+
 
 
 
@@ -871,19 +909,27 @@
 
                 .then(res => res.json())
 
-                .then(result => {
+               .then(result => {
 
+    Swal.fire({
 
-                    Swal.fire({
+        icon: result.status ? "success" : "error",
 
-                        icon: result.status ? "success" : "error",
+        title: result.message
 
-                        title: result.message
+    });
 
-                    });
+    if(result.status){
 
+        setFormDisabled(true);
 
-                });
+        document.getElementById("saveBtn").style.display = "none";
+
+        document.getElementById("editBtn").style.display = "inline-block";
+
+    }
+
+});
 
 
         }
